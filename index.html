@@ -338,11 +338,11 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:64px
       </button>
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px" id="match-filters">
-      <button class="filt on" onclick="mflt('all',this)">&#127758; All Festivals</button>
-      <button class="filt" onclick="mflt('near',this)" id="mfilt-near" style="display:none">&#128205; Near You</button>
-      <button class="filt" onclick="mflt('netherlands',this)">&#127475;&#127473; Netherlands</button>
-      <button class="filt" onclick="mflt('europe',this)">&#127466;&#127482; Europe</button>
-      <button class="filt" onclick="mflt('international',this)">&#127758; International</button>
+      <button class="filt on" onclick="mflt('all',this)">All Festivals</button>
+      <button class="filt" onclick="mflt('near',this)" id="mfilt-near" style="display:none">My Country</button>
+      <button class="filt" onclick="mflt('netherlands',this)">Netherlands</button>
+      <button class="filt" onclick="mflt('europe',this)">Europe</button>
+      <button class="filt" onclick="mflt('international',this)">International</button>
     </div>
     <div id="m-hero"></div>
     <div id="m-dna"></div>
@@ -358,12 +358,12 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:64px
     <div class="discover-head"><h1>Discover Festivals</h1><p id="disc-sub">Browse 35+ festivals worldwide</p></div>
     <div id="sp-cbar"></div>
     <div class="filters" id="discover-filters">
-      <button class="filt on" onclick="flt('all',this)" id="filt-all">&#127758; All Festivals</button>
-      <button class="filt" onclick="flt('near',this)" id="filt-near" style="display:none">&#128205; Near You</button>
+      <button class="filt on" onclick="flt('all',this)" id="filt-all">All Festivals</button>
+      <button class="filt" onclick="flt('near',this)" id="filt-near" style="display:none">My Country</button>
       <button class="filt" onclick="flt('popular',this)">&#128293; Popular</button>
-      <button class="filt" onclick="flt('netherlands',this)" id="filt-nl">&#127475;&#127473; Netherlands</button>
-      <button class="filt" onclick="flt('europe',this)">&#127466;&#127482; Europe</button>
-      <button class="filt" onclick="flt('international',this)">&#127758; International</button>
+      <button class="filt" onclick="flt('netherlands',this)" id="filt-nl">Netherlands</button>
+      <button class="filt" onclick="flt('europe',this)">Europe</button>
+      <button class="filt" onclick="flt('international',this)">International</button>
       <button class="filt" onclick="flt('electronic',this)">Electronic</button>
       <button class="filt" onclick="flt('techno',this)">Techno</button>
       <button class="filt" onclick="flt('indie',this)">Indie / Alt</button>
@@ -539,7 +539,7 @@ const F=[
 {id:"primavera",cc:"ES",n:"Primavera Sound",d:"May 28 - Jun 1, 2025",loc:"Barcelona, Spain",country:"europe",genre:["indie","alternative","electronic"],pop:true,bg:"linear-gradient(135deg,#0c4a6e,#8B5CF6)",img:"https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=800&q=80",url:"https://primaverasound.com",price:"€295",cap:"60,000",artists:["Charli XCX","Pulp","Vampire Weekend","Portishead","Eels","Slowdive","Kelela","Perfume Genius","Caroline Polachek","Alvvays"],desc:"The acclaimed Barcelona festival known for its bold and eclectic programming."},
 {id:"roskilde",cc:"DK",n:"Roskilde Festival",d:"Jun 28 - Jul 5, 2025",loc:"Roskilde, Denmark",country:"europe",genre:["rock","electronic","indie","hiphop","pop"],pop:true,bg:"linear-gradient(135deg,#7f1d1d,#f97316)",img:"https://images.unsplash.com/photo-1567942712661-82b9b407abbf?w=800&q=80",url:"https://roskilde-festival.dk",price:"DKK 2,500",cap:"130,000",artists:["Kendrick Lamar","Nine Inch Nails","The Prodigy","Mitski","James Blake","Massive Attack","Aphex Twin","Fontaines D.C.","AURORA","A$AP Rocky","Burna Boy","Tyler the Creator","21 Savage"],desc:"Scandinavia's largest festival, entirely run by volunteers."},
 {id:"sziget",cc:"HU",n:"Sziget Festival",d:"Aug 6-11, 2025",loc:"Budapest, Hungary",country:"europe",genre:["pop","rock","indie","electronic","hiphop"],pop:true,bg:"linear-gradient(135deg,#78350f,#8B5CF6)",img:"https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=800&q=80",url:"https://szigetfestival.com",price:"€340",cap:"100,000",artists:["Dua Lipa","Calvin Harris","Kygo","The Lumineers","Macklemore","Tove Lo","Jungle","Burna Boy","Stormzy","Wizkid"],desc:"One of Europe's largest multi-genre festivals on an island in Budapest."},
-{id:"coachella",cc:"US",n:"Coachella",d:"Apr 11-20, 2025",loc:"California, USA",country:"international",genre:["pop","rock","electronic","hiphop","dance"],pop:true,bg:"linear-gradient(135deg,#78350f,#EC4899)",img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",url:"https://coachella.com",price:"$599",cap:"125,000",artists:["Lady Gaga","Green Day","Post Malone","Travis Scott","Charli XCX","Sabrina Carpenter","Doechii","Clairo","Fred again..","Gracie Abrams","50 Cent","Gunna","Burna Boy","J. Cole","Lil Baby"],desc:"The world's most famous arts and music festival in the California desert."},
+{id:"coachella",cc:"US",n:"Coachella",d:"Apr 11-20, 2025",loc:"California, USA",country:"international",genre:["pop","rock","electronic","hiphop","dance"],pop:true,bg:"linear-gradient(135deg,#78350f,#EC4899)",img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",url:"https://coachella.com",price:"$599",cap:"125,000",artists:["Lady Gaga","Green Day","Post Malone","Travis Scott","Charli XCX","Sabrina Carpenter","Doechii","Clairo","Fred again..","Gracie Abrams","50 Cent","Gunna","Burna Boy","J. Cole","Lil Baby","Hef","Stormzy","Central Cee","Dave","Skepta"],desc:"The world's most famous arts and music festival in the California desert."},
 ];
 const GTAG={electronic:"el",techno:"tc",indie:"in",alternative:"in",pop:"po",rock:"ro",dance:"da",hardstyle:"da",hiphop:"el"};
 const GCLS={el:"t-el",tc:"t-tc",in:"t-in",po:"t-po",ro:"t-ro",da:"t-da"};
@@ -579,14 +579,20 @@ function sc(f){
   if(!spD?.artists)return null;
   const my=spD.artists.map(a=>a.toLowerCase());
   const fa=f.artists.map(a=>a.toLowerCase());
-  const hit=fa.filter(a=>my.some(m=>m.includes(a)||a.includes(m)));
-  const myG=(spD.genres||[]).filter(Boolean).map(g=>g.toLowerCase());
+  // Artist match - exact + partial
+  const hit=fa.filter(a=>my.some(m=>m.includes(a)||a.includes(m)||m.split(" ").some(w=>w.length>3&&a.includes(w))));
+  const artistScore=Math.round(hit.length/Math.max(fa.length,1)*70);
+  // Genre match - use Spotify genres OR infer from artist names
+  const rawGenres=(spD.genres||[]).filter(Boolean).map(g=>g.toLowerCase());
+  const myG=rawGenres.length>0?rawGenres:inferGenres(spD.artists||[]).map(g=>g.toLowerCase());
   const fG=f.genre.map(g=>g.toLowerCase());
-  const gKeywords={hiphop:["hip","hop","rap","trap","drill","grime","urban","r&b","rnb","afro","soul","nederhop","conscious"],electronic:["electro","edm","house","dance","techno","synth","rave","club"],techno:["techno","industrial","dark","acid","minimal"],indie:["indie","alternative","alt","emo","shoegaze","dream","folk","singer"],pop:["pop","bubblegum","teen","kpop","synth pop"],rock:["rock","metal","punk","grunge","hardcore"],dance:["dance","edm","house","disco","funk"]};
+  const gKeywords={hiphop:["hip","hop","rap","trap","drill","grime","urban","r&b","rnb","afro","soul","nederhop","conscious","french rap","uk rap"],electronic:["electro","edm","house","dance","techno","synth","rave","club","ambient"],techno:["techno","industrial","dark","acid","minimal","hard"],indie:["indie","alternative","alt","emo","shoegaze","dream","folk","singer","songwriter"],pop:["pop","bubblegum","teen","kpop"],rock:["rock","metal","punk","grunge","hardcore","emo"],dance:["dance","edm","house","disco","funk","club"]};
   let gs=0;
-  fG.forEach(fg=>{const kws=gKeywords[fg]||[fg];if(myG.some(mg=>kws.some(k=>mg.includes(k))||mg.includes(fg)||fg.includes(mg)))gs+=18;});
-  gs=Math.min(gs,25);
-  const artistScore=Math.round(hit.length/Math.max(fa.length,1)*74);
+  fG.forEach(fg=>{
+    const kws=gKeywords[fg]||[fg];
+    if(myG.some(mg=>kws.some(k=>mg.includes(k))||mg.includes(fg)||fg.includes(mg)))gs+=22;
+  });
+  gs=Math.min(gs,30);
   return Math.min(99,artistScore+gs);
 }
 function hitA(f){if(!spD?.artists)return[];const my=spD.artists.map(a=>a.toLowerCase());return f.artists.filter(a=>my.some(m=>m.includes(a.toLowerCase())||a.toLowerCase().includes(m)));}
@@ -674,6 +680,8 @@ async function detectCountry(){
       // Also set the match page near button
       const mNear=document.getElementById("mfilt-near");
       if(mNear){mNear.innerHTML=nearBtn.innerHTML;mNear.style.display="inline-flex";mNear.setAttribute("data-cc",userCC);mNear.setAttribute("data-eu",inEu?"1":"0");}
+      // Hide Netherlands button if user is already in NL (no duplicate)
+      if(cc==="NL"){const nlBtn=document.getElementById("filt-nl");if(nlBtn)nlBtn.style.display="none";}
     }
   }catch(e){}
 }
