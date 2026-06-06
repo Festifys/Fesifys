@@ -903,13 +903,34 @@ function openF(id){
   document.getElementById("tab-overview").innerHTML=mb
     +'<p style="color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:20px">'+f.desc+'</p>'
     +'<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">'+genreTags+'</div>'
-    +newsHtml
+    +(fNews.length?'<div style="margin:16px 0 0"><div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">Latest News</div><div style="display:flex;flex-direction:column;gap:6px">'+fNews.map(function(n){var tc={Lineup:"#8B5CF6",Tickets:"#f59e0b",News:"#4338ca",Review:"#EC4899"}[n.tag]||"#8B5CF6";return'<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--card);border-radius:10px;border-left:3px solid '+tc+'"><span style="font-size:10px;font-weight:700;color:'+tc+';min-width:40px">'+n.tag+'</span><span style="font-size:12px;font-weight:600;flex:1;line-height:1.3">'+n.title+'</span><span style="font-size:10px;color:var(--text3);white-space:nowrap">'+n.time+'</span></div>';}).join("")+'</div></div>':'')
     +'<div class="modal-acts">'
       +'<button class="btn btn-sp btn-sm" id="ov-ticket">&#127243; Get Tickets</button>'
       +'<button class="btn btn-dark btn-sm" id="ov-save" onclick="toggleSvM(this.dataset.id)" data-id="'+f.id+'">'+(isSv2?"&#9829; Saved":"&#9825; Save")+'</button>'
     +'</div>';
   document.getElementById("ov-ticket").onclick=function(){window.open(f.url,"_blank");};
-  document.getElementById("tab-lineup").innerHTML=(s!==null&&hit.length?'<div style="font-size:12px;color:#c4b5fd;font-weight:600;margin-bottom:14px">&#9733; = your artist on Spotify</div>':'')+'<div class="lineup-grid">'+f.artists.map(a=>'<div class="la'+(hit.includes(a)?" hit":"")+'">'+a+'</div>').join("")+'</div>';
+  document.getElementById("tab-lineup").innerHTML="<div id='lg-"+f.id+"'></div>";
+  var lg=document.getElementById("lg-"+f.id);
+  var colors=["linear-gradient(135deg,#8B5CF6,#EC4899)","linear-gradient(135deg,#EC4899,#f97316)","linear-gradient(135deg,#0ea5e9,#8B5CF6)","linear-gradient(135deg,#14b8a6,#0ea5e9)","linear-gradient(135deg,#f59e0b,#EC4899)","linear-gradient(135deg,#dc2626,#f97316)"];
+  if(s!==null&&hit.length){var hdr=document.createElement("div");hdr.style.cssText="font-size:12px;color:#c4b5fd;font-weight:600;margin-bottom:16px";hdr.textContent="★ = your Spotify artist";lg.appendChild(hdr);}
+  var grid=document.createElement("div");grid.style.cssText="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px";lg.appendChild(grid);
+  f.artists.forEach(function(a,i){
+    var isHit=hit.includes(a);var info=getArtistInfo(f.id,a);
+    var ci=a.charCodeAt(0)%colors.length;
+    var initials=a.split(" ").slice(0,2).map(function(w){return w[0]||"";}).join("").toUpperCase();
+    var card=document.createElement("div");
+    card.style.cssText="background:"+(isHit?"rgba(139,92,246,.12)":"var(--card)")+";border:1px solid "+(isHit?"rgba(139,92,246,.4)":"var(--border)")+";border-radius:12px;overflow:hidden;transition:.3s;cursor:default";
+    card.onmouseenter=function(){this.style.transform="translateY(-3px)";};
+    card.onmouseleave=function(){this.style.transform="";};
+    var imgBox=document.createElement("div");imgBox.style.cssText="width:100%;aspect-ratio:1/1;background:"+colors[ci]+";display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:rgba(255,255,255,.9);position:relative;overflow:hidden";
+    imgBox.textContent=isHit?"★":initials;
+    var info2=document.createElement("div");info2.style.cssText="padding:8px 6px;text-align:center";
+    var name=document.createElement("div");name.style.cssText="font-size:11px;font-weight:"+(isHit?"700":"600")+";color:"+(isHit?"#c4b5fd":"var(--text)")+";line-height:1.3;margin-bottom:3px";name.textContent=a;info2.appendChild(name);
+    if(info.time){var t=document.createElement("div");t.style.cssText="font-size:10px;font-weight:600;color:var(--text2);background:var(--card2);padding:1px 6px;border-radius:50px;display:inline-block;margin-bottom:2px";t.textContent=info.time;info2.appendChild(t);}
+    if(info.stage){var st=document.createElement("div");st.style.cssText="font-size:9px;color:var(--text3);font-weight:500";st.textContent=info.stage;info2.appendChild(st);}
+    card.appendChild(imgBox);card.appendChild(info2);grid.appendChild(card);
+    fetch("https://itunes.apple.com/search?term="+encodeURIComponent(a)+"&entity=musicArtist&limit=1").then(function(r){return r.json();}).then(function(d){if(d.results&&d.results[0]&&d.results[0].artworkUrl100){var img=new Image();img.src=d.results[0].artworkUrl100.replace("100x100","300x300");img.style.cssText="width:100%;height:100%;object-fit:cover;position:absolute;inset:0";img.onload=function(){imgBox.innerHTML="";imgBox.appendChild(img);};imgBox.appendChild(img);}}).catch(function(){});
+  })
   document.getElementById("tab-info").innerHTML='<div style="display:grid;gap:10px"><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Date</div><div style="font-weight:600">'+f.d+'</div></div><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Location</div><div style="font-weight:600">'+f.loc+'</div></div><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Price</div><div style="font-weight:600">'+f.price+'</div></div><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Capacity</div><div style="font-weight:600">'+f.cap+'</div></div></div><div class="modal-acts" style="margin-top:20px"><button class="btn btn-sp btn-sm" onclick="window.open(\''+f.url+'\',\'_blank\')">&#127243; Get Tickets</button></div>';
   document.querySelectorAll(".modal-tab").forEach((t,i)=>t.classList.toggle("on",i===0));
   document.querySelectorAll(".modal-tc").forEach((t,i)=>t.classList.toggle("on",i===0));
