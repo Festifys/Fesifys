@@ -6,191 +6,330 @@
 <title>Festifys — Your Festival DNA</title>
 <meta name="description" content="Connect Spotify. Discover festivals that match your music taste.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--p:#8B5CF6;--pk:#EC4899;--grad:linear-gradient(135deg,#8B5CF6,#EC4899);--bg:#09090f;--surface:#111120;--card:#181830;--card2:#1e1e38;--border:rgba(255,255,255,0.07);--text:#fff;--text2:#8888aa;--text3:#444466;--r:14px}
+:root{
+  --p:#8B5CF6;--pk:#EC4899;
+  --grad:linear-gradient(135deg,#8B5CF6,#EC4899);
+  --bg:#050508;--surface:#0e0e1a;--card:#141426;--card2:#1a1a2e;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.1);
+  --text:#fff;--text2:#9090b8;--text3:#404060;--r:16px;
+}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;font-family:inherit;border:none;outline:none}
 input{font-family:inherit;outline:none}
 ::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(9,9,15,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+::-webkit-scrollbar-thumb{background:rgba(139,92,246,.3);border-radius:2px}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background:rgba(5,5,8,0.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
 .logo{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
-.logo-mark{width:34px;height:34px;border-radius:9px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:16px}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 16px rgba(139,92,246,.4)}
 .logo-text{font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-mid{display:flex;gap:2px}
-.nav-link{padding:7px 14px;border-radius:50px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;transition:.2s}
-.nav-link:hover,.nav-link.on{color:var(--text);background:var(--card)}
-.nav-right{display:flex;align-items:center;gap:8px}
-.av{width:34px;height:34px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;cursor:pointer;transition:.2s;overflow:hidden}
-.av:hover{transform:scale(1.05)}
+.nav-link{padding:7px 16px;border-radius:50px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;transition:.2s}
+.nav-link:hover,.nav-link.on{color:var(--text);background:var(--card2)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.av{width:36px;height:36px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;cursor:pointer;transition:.2s;overflow:hidden;border:2px solid rgba(139,92,246,.3)}
+.av:hover{transform:scale(1.05);border-color:var(--p)}
 .av img{width:100%;height:100%;object-fit:cover}
-.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:50px;font-weight:600;font-size:14px;transition:.2s;cursor:pointer;border:none}
-.btn-grad{background:var(--grad);color:#fff;box-shadow:0 4px 24px rgba(139,92,246,.3)}
-.btn-grad:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(139,92,246,.45)}
-.btn-ghost{background:var(--card);color:var(--text);border:1px solid var(--border)}
-.btn-ghost:hover{border-color:var(--p)}
-.btn-sp{background:#1DB954;color:#000;font-weight:700;box-shadow:0 4px 18px rgba(29,185,84,.3)}
-.btn-sp:hover{transform:translateY(-2px);filter:brightness(1.06)}
-.btn-sm{padding:8px 16px;font-size:13px}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:50px;font-weight:600;font-size:14px;transition:.2s;cursor:pointer;border:none}
+.btn-grad{background:var(--grad);color:#fff;box-shadow:0 4px 24px rgba(139,92,246,.35)}
+.btn-grad:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(139,92,246,.5)}
+.btn-dark{background:var(--card2);color:var(--text);border:1px solid var(--border2)}
+.btn-dark:hover{border-color:rgba(139,92,246,.4);background:rgba(139,92,246,.1)}
+.btn-sp{background:#1DB954;color:#000;font-weight:700;box-shadow:0 4px 20px rgba(29,185,84,.35)}
+.btn-sp:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn-sm{padding:9px 18px;font-size:13px}
+.btn-ghost{background:transparent;border:1.5px solid var(--border2);color:var(--text2)}
+.btn-ghost:hover{border-color:var(--p);color:var(--text)}
 .btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text2)}
 .btn-outline:hover{border-color:var(--p);color:var(--text)}
-.pg{display:none;min-height:100vh;padding-top:62px}
+
+/* PAGES */
+.pg{display:none;min-height:100vh;padding-top:64px}
 .pg.on{display:block}
-.hero{min-height:calc(100vh - 62px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px 80px;text-align:center;position:relative;overflow:hidden}
-.hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(139,92,246,.16) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 80% 60%,rgba(236,72,153,.10) 0%,transparent 60%)}
-.hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
-.hero-inner{position:relative;z-index:1;max-width:720px}
-.badge{display:inline-flex;align-items:center;gap:7px;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25);padding:7px 15px;border-radius:50px;font-size:12px;font-weight:600;color:#c4b5fd;margin-bottom:28px}
-.hero h1{font-size:clamp(42px,8vw,78px);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:20px}
+
+/* ============ HOME ============ */
+.hero{min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px 100px;text-align:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(139,92,246,.2) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 85% 60%,rgba(236,72,153,.12) 0%,transparent 55%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,black 20%,transparent 80%)}
+.hero-inner{position:relative;z-index:1;max-width:760px}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);padding:8px 18px;border-radius:50px;font-size:12px;font-weight:600;color:#c4b5fd;margin-bottom:32px;letter-spacing:.5px}
+.hero h1{font-size:clamp(44px,8vw,80px);font-weight:900;line-height:1.03;letter-spacing:-2.5px;margin-bottom:22px}
 .grad-text{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{font-size:clamp(15px,2vw,19px);color:var(--text2);line-height:1.75;max-width:520px;margin:0 auto 36px}
-.hero-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
-.trust{margin-top:40px;font-size:13px;color:var(--text3)}
-.trust strong{color:var(--text2)}
-.sec{padding:90px 24px}
-.sec-in{max-width:1080px;margin:0 auto}
-.sec-label{font-size:11px;font-weight:700;letter-spacing:2.5px;color:var(--p);text-transform:uppercase;margin-bottom:12px}
-.sec-title{font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.15;letter-spacing:-.8px;margin-bottom:14px}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:50px}
-.step{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:.3s}
-.step:hover{border-color:rgba(139,92,246,.3);transform:translateY(-3px)}
-.step-n{width:44px;height:44px;border-radius:12px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;margin-bottom:18px}
-.step h3{font-size:16px;font-weight:700;margin-bottom:8px}
-.step p{color:var(--text2);font-size:13px;line-height:1.7}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:50px}
-.feat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:26px;transition:.3s}
-.feat:hover{border-color:rgba(236,72,153,.25)}
-.feat-icon{font-size:28px;margin-bottom:14px}
-.feat h3{font-size:15px;font-weight:700;margin-bottom:7px}
-.feat p{color:var(--text2);font-size:13px;line-height:1.7}
-.page-head{padding:80px 24px 32px;max-width:1080px;margin:0 auto}
-.page-head h1{font-size:28px;font-weight:800;margin-bottom:6px}
-.page-head p{color:var(--text2);font-size:14px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;padding:0 24px;max-width:1080px;margin:0 auto 28px}
-.filt{padding:7px 16px;border-radius:50px;background:var(--card);border:1px solid var(--border);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:.2s}
-.filt:hover,.filt.on{background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.4);color:var(--text)}
-.fest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;padding:0 24px;max-width:1080px;margin:0 auto 80px}
-.fc{border-radius:var(--r);overflow:hidden;background:var(--card);border:1px solid var(--border);cursor:pointer;transition:.3s}
-.fc:hover{transform:translateY(-5px);border-color:rgba(139,92,246,.4);box-shadow:0 16px 48px rgba(0,0,0,.4)}
-.fc-img{height:150px;position:relative;display:flex;align-items:center;justify-content:center;font-size:52px}
-.fc-save{position:absolute;top:10px;left:10px;z-index:1;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.6);border:none;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s}
-.mb{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);border:1px solid var(--border);padding:3px 9px;border-radius:50px;font-size:11px;font-weight:700}
-.fc-body{padding:14px 18px 18px}
-.fc-name{font-size:16px;font-weight:700;margin-bottom:5px}
-.fc-meta{font-size:12px;color:var(--text2);margin-bottom:10px}
-.tag{display:inline-block;padding:3px 9px;border-radius:50px;font-size:11px;font-weight:600}
-.t-el{background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.25)}
-.t-tc{background:rgba(99,102,241,.15);color:#a5b4fc;border:1px solid rgba(99,102,241,.25)}
-.t-in{background:rgba(20,184,166,.15);color:#5eead4;border:1px solid rgba(20,184,166,.25)}
-.t-po{background:rgba(236,72,153,.15);color:#f9a8d4;border:1px solid rgba(236,72,153,.25)}
-.t-ro{background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid rgba(239,68,68,.25)}
-.t-da{background:rgba(6,182,212,.15);color:#67e8f9;border:1px solid rgba(6,182,212,.25)}
-.mbar{height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:10px}
-.mfill{height:100%;background:var(--grad);border-radius:2px}
-.mmeta{font-size:11px;color:var(--text2);margin-top:5px;display:flex;justify-content:space-between}
-.overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:.3s;display:flex;align-items:flex-end;justify-content:center}
-.overlay.on{opacity:1;pointer-events:all}
-.modal{background:var(--surface);border-radius:22px 22px 0 0;width:100%;max-width:660px;max-height:88vh;overflow-y:auto;padding:28px;border:1px solid var(--border);border-bottom:none;transform:translateY(100%);transition:transform .35s cubic-bezier(.32,.72,0,1);position:relative}
-.overlay.on .modal{transform:translateY(0)}
-.modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 22px}
-.modal-x{position:absolute;top:28px;right:28px;width:32px;height:32px;border-radius:50%;background:var(--card);color:var(--text2);font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;transition:.2s}
-.modal-x:hover{background:var(--card2);color:var(--text)}
-.modal-banner{height:180px;border-radius:12px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;font-size:72px}
-.modal-title{font-size:24px;font-weight:800;margin-bottom:6px}
-.modal-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--text2);margin-bottom:18px}
-.lineup{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
-.chip{padding:5px 12px;border-radius:50px;background:var(--card);border:1px solid var(--border);font-size:12px;font-weight:500}
-.chip.hit{background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.4);color:#c4b5fd}
-.modal-acts{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
-.auth-wrap{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 62px);padding:40px 24px}
-.auth-box{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px;width:100%;max-width:420px}
-.auth-logo{display:flex;align-items:center;gap:9px;margin-bottom:28px}
-.auth-title{font-size:24px;font-weight:800;margin-bottom:7px}
-.auth-sub{color:var(--text2);font-size:14px;margin-bottom:24px}
-.divider{display:flex;align-items:center;gap:10px;color:var(--text3);font-size:12px;margin:18px 0}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
-.fg{margin-bottom:14px}
-.fl{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:7px;display:block}
-.fi{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:14px;transition:.2s}
-.fi:focus{border-color:var(--p)}
-.fi::placeholder{color:var(--text3)}
-.auth-sw{text-align:center;color:var(--text2);font-size:13px;margin-top:16px}
-.auth-sw a{color:var(--p);font-weight:600;cursor:pointer}
-.empty{text-align:center;padding:80px 24px}
-.empty-ico{font-size:52px;margin-bottom:14px}
-.empty h3{font-size:18px;font-weight:700;margin-bottom:8px}
-.empty p{color:var(--text2);font-size:14px;margin-bottom:22px}
-.prof-hero{background:linear-gradient(180deg,rgba(139,92,246,.1) 0%,transparent 100%);padding:80px 24px 36px;text-align:center;max-width:700px;margin:0 auto}
-.prof-av{width:80px;height:80px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;margin:0 auto 14px;border:3px solid rgba(139,92,246,.3);overflow:hidden}
-.prof-av img{width:100%;height:100%;object-fit:cover}
-.prof-name{font-size:24px;font-weight:800;margin-bottom:4px}
-.prof-email{color:var(--text2);font-size:13px}
-.prof-stats{display:flex;justify-content:center;gap:36px;margin-top:20px}
-.stat-n{font-size:22px;font-weight:800}
-.stat-l{font-size:12px;color:var(--text2);font-weight:500;margin-top:2px}
-.prof-body{max-width:700px;margin:0 auto;padding:0 24px 80px}
-.card-block{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:22px;margin-bottom:14px}
-.card-block h3{font-size:14px;font-weight:700;margin-bottom:16px}
-.match-hero{background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(236,72,153,.08));border:1px solid rgba(139,92,246,.2);border-radius:20px;padding:32px;margin-bottom:36px}
-.top5-grid{display:grid;gap:12px;margin-bottom:40px}
-.top5-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:.3s}
-.top5-card:hover{border-color:rgba(139,92,246,.4);transform:translateX(4px)}
-.top5-rank{font-size:24px;font-weight:900;min-width:36px;text-align:center}
-.top5-img{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
-.top5-info{flex:1;min-width:0}
+.hero-sub{font-size:clamp(16px,2vw,20px);color:var(--text2);line-height:1.75;max-width:540px;margin:0 auto 40px}
+.hero-ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.hero-trust{margin-top:48px;color:var(--text3);font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px}
+.hero-trust strong{color:var(--text2)}
+.hero-avatars{display:flex}
+.hero-avatars .a{width:28px;height:28px;border-radius:50%;background:var(--grad);border:2px solid var(--bg);margin-left:-8px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* FEATURE GRID */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:52px}
+.feat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:.3s;position:relative;overflow:hidden}
+.feat-card::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:.3s}
+.feat-card:hover{border-color:rgba(139,92,246,.25);transform:translateY(-3px)}
+.feat-card:hover::before{opacity:.04}
+.feat-icon{font-size:30px;margin-bottom:16px;position:relative}
+.feat-card h3{font-size:16px;font-weight:700;margin-bottom:8px;position:relative}
+.feat-card p{color:var(--text2);font-size:13px;line-height:1.7;position:relative}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:52px;position:relative}
+.steps::before{content:'';position:absolute;top:22px;left:calc(16.67% + 22px);right:calc(16.67% + 22px);height:1px;background:linear-gradient(90deg,var(--p),var(--pk));opacity:.4}
+.step-item{text-align:center;padding:0 24px}
+.step-num{width:44px;height:44px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;margin:0 auto 20px;box-shadow:0 0 0 8px rgba(139,92,246,.1)}
+.step-item h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.step-item p{color:var(--text2);font-size:13px;line-height:1.7}
+
+/* SECTIONS */
+.sec{padding:100px 24px}
+.sec-in{max-width:1100px;margin:0 auto}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--p);text-transform:uppercase;margin-bottom:14px}
+.sec-title{font-size:clamp(30px,5vw,46px);font-weight:800;line-height:1.12;letter-spacing:-1px;margin-bottom:16px}
+.sec-sub{font-size:17px;color:var(--text2);line-height:1.7}
+
+/* PREVIEW FESTIVALS */
+.prev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-top:52px}
+
+/* ============ MATCHES PAGE ============ */
+.matches-wrap{max-width:1100px;margin:0 auto;padding:80px 24px 100px}
+
+/* #1 HERO MATCH */
+.hero-match{border-radius:24px;overflow:hidden;position:relative;margin-bottom:48px;min-height:400px;display:flex;flex-direction:column;justify-content:flex-end}
+.hero-match-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.hero-match-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,8,.98) 0%,rgba(5,5,8,.7) 40%,rgba(5,5,8,.2) 100%)}
+.hero-match-content{position:relative;z-index:1;padding:40px}
+.hero-match-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,.2);border:1px solid rgba(139,92,246,.4);padding:6px 14px;border-radius:50px;font-size:12px;font-weight:700;color:#c4b5fd;margin-bottom:16px;backdrop-filter:blur(10px)}
+.hero-match-name{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-1.5px;margin-bottom:8px;line-height:1.05}
+.hero-match-meta{display:flex;gap:20px;flex-wrap:wrap;color:var(--text2);font-size:14px;margin-bottom:20px}
+.hero-match-meta span{display:flex;align-items:center;gap:6px}
+.hero-match-artists{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.hero-match-artist{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:5px 13px;border-radius:50px;font-size:12px;font-weight:600;backdrop-filter:blur(8px)}
+.hero-match-artist.yours{background:rgba(139,92,246,.25);border-color:rgba(139,92,246,.5);color:#c4b5fd}
+.hero-match-score{position:absolute;top:32px;right:40px;text-align:center;background:rgba(0,0,0,.5);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:16px 24px}
+.hero-match-pct{font-size:48px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.hero-match-pct-label{font-size:11px;color:var(--text2);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.hero-match-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+/* DNA SECTION */
+.dna-section{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:32px;margin-bottom:48px}
+.dna-header{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.dna-av{width:56px;height:56px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;flex-shrink:0;overflow:hidden;border:2px solid rgba(139,92,246,.3)}
+.dna-av img{width:100%;height:100%;object-fit:cover}
+.dna-name{font-size:20px;font-weight:800}
+.dna-sub{color:var(--text2);font-size:13px;margin-top:3px}
+.dna-stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:24px}
+.dna-stat{background:var(--card2);border-radius:12px;padding:16px}
+.dna-stat-val{font-size:22px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.dna-stat-label{font-size:11px;color:var(--text2);font-weight:500;margin-top:3px;text-transform:uppercase;letter-spacing:.5px}
+.dna-genres{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.dna-genre{padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;border:1px solid}
+.dna-artists-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.dna-artist{background:var(--card2);border-radius:10px;padding:12px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600}
+.dna-artist-rank{width:24px;height:24px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0}
+.dna-track{background:var(--card2);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;transition:.2s}
+.dna-track:hover{background:rgba(139,92,246,.1)}
+.dna-track-num{width:20px;text-align:center;font-size:12px;color:var(--text3);font-weight:600}
+.dna-track-info{flex:1;min-width:0}
+.dna-track-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dna-track-artist{font-size:11px;color:var(--text2);margin-top:2px}
+
+/* TOP 5 */
+.top5-section{margin-bottom:48px}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.section-header h2{font-size:20px;font-weight:800}
+.section-header a{font-size:13px;color:var(--p);font-weight:600;cursor:pointer}
+.section-header a:hover{text-decoration:underline}
+.top5-list{display:flex;flex-direction:column;gap:10px}
+.top5-item{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;gap:16px;cursor:pointer;transition:.3s;position:relative;overflow:hidden}
+.top5-item::before{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:.3s}
+.top5-item:hover{border-color:rgba(139,92,246,.3);transform:translateX(4px)}
+.top5-item:hover::before{opacity:.04}
+.top5-rank{font-size:22px;font-weight:900;min-width:32px;text-align:center;position:relative}
+.r1{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.r2{color:#c4b5fd}
+.r3{color:#a5b4fc}
+.r45{color:var(--text3)}
+.top5-thumb{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;position:relative}
+.top5-info{flex:1;min-width:0;position:relative}
 .top5-name{font-size:15px;font-weight:700;margin-bottom:3px}
-.top5-meta{font-size:12px;color:var(--text2);margin-bottom:5px}
-.top5-artists{font-size:11px;color:#c4b5fd;font-weight:500}
-.top5-bar{height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:6px}
+.top5-loc{font-size:12px;color:var(--text2);margin-bottom:6px}
+.top5-artists-txt{font-size:11px;color:#c4b5fd;font-weight:500}
+.top5-bar{height:2px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:8px}
 .top5-fill{height:100%;background:var(--grad);border-radius:2px}
-.top5-score{text-align:right;flex-shrink:0}
-.top5-pct{font-size:22px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.top5-pct-label{font-size:11px;color:var(--text2);margin-top:2px}
-.genre-section{margin-bottom:40px}
-.genre-section h2{font-size:18px;font-weight:800;margin-bottom:16px}
-.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px}
-.sec-head h2{font-size:20px;font-weight:800}
-.sec-head a{font-size:13px;color:var(--p);cursor:pointer;font-weight:600}
-.sp-prompt{background:rgba(29,185,84,.08);border:1px solid rgba(29,185,84,.2);border-radius:12px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;max-width:1080px;margin:0 auto 24px;flex-wrap:wrap;padding-left:24px;padding-right:24px}
-.sp-prompt p{font-size:14px;color:var(--text2)}
-.sp-prompt strong{color:var(--text);display:block;margin-bottom:2px}
+.top5-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;position:relative}
+.top5-pct{font-size:24px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.top5-pct-sub{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
+.top5-save{background:none;border:none;font-size:18px;cursor:pointer;padding:4px;opacity:.6;transition:.2s}
+.top5-save:hover{opacity:1;transform:scale(1.2)}
+
+/* GENRE SECTIONS IN MATCHES */
+.genre-block{margin-bottom:48px}
+.genre-block h2{font-size:18px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+
+/* ============ DISCOVER ============ */
+.discover-wrap{max-width:1100px;margin:0 auto;padding:80px 24px 100px}
+.discover-head{margin-bottom:32px}
+.discover-head h1{font-size:30px;font-weight:800;margin-bottom:6px}
+.discover-head p{color:var(--text2);font-size:14px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.filt{padding:8px 18px;border-radius:50px;background:var(--card);border:1px solid var(--border);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:.2s}
+.filt:hover,.filt.on{background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.4);color:var(--text)}
+.fest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+
+/* FESTIVAL CARD */
+.fc{border-radius:var(--r);overflow:hidden;background:var(--card);border:1px solid var(--border);cursor:pointer;transition:.3s}
+.fc:hover{transform:translateY(-6px);border-color:rgba(139,92,246,.4);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.fc-img{height:160px;position:relative;background-size:cover;background-position:center}
+.fc-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.6) 100%)}
+.fc-save{position:absolute;top:12px;left:12px;z-index:1;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s}
+.fc-save:hover{background:rgba(139,92,246,.4);border-color:rgba(139,92,246,.5)}
+.fc-badge{position:absolute;top:12px;right:12px;z-index:1;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);padding:4px 10px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:.3px}
+.fc-body{padding:16px 20px 20px}
+.fc-name{font-size:17px;font-weight:700;margin-bottom:5px}
+.fc-meta{font-size:12px;color:var(--text2);margin-bottom:10px;display:flex;gap:12px}
+.fc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.tag{display:inline-block;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:600}
+.t-el{background:rgba(139,92,246,.15);color:#c4b5fd;border:1px solid rgba(139,92,246,.2)}
+.t-tc{background:rgba(99,102,241,.15);color:#a5b4fc;border:1px solid rgba(99,102,241,.2)}
+.t-in{background:rgba(20,184,166,.15);color:#5eead4;border:1px solid rgba(20,184,166,.2)}
+.t-po{background:rgba(236,72,153,.15);color:#f9a8d4;border:1px solid rgba(236,72,153,.2)}
+.t-ro{background:rgba(239,68,68,.15);color:#fca5a5;border:1px solid rgba(239,68,68,.2)}
+.t-da{background:rgba(6,182,212,.15);color:#67e8f9;border:1px solid rgba(6,182,212,.2)}
+.mbar{height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:8px}
+.mfill{height:100%;background:var(--grad);border-radius:2px;transition:width .8s ease}
+.mmeta{font-size:11px;color:var(--text2);margin-top:5px;display:flex;justify-content:space-between}
+
+/* ============ FESTIVAL MODAL ============ */
+.overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:.3s;display:flex;align-items:flex-end;justify-content:center}
+.overlay.on{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:26px 26px 0 0;width:100%;max-width:720px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--border2);border-bottom:none;transform:translateY(100%);transition:transform .4s cubic-bezier(.32,.72,0,1)}
+.overlay.on .modal{transform:translateY(0)}
+.modal-handle{width:40px;height:4px;background:var(--border2);border-radius:2px;margin:14px auto 0;flex-shrink:0}
+.modal-img{height:220px;position:relative;background-size:cover;background-position:center;flex-shrink:0}
+.modal-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,var(--surface) 0%,transparent 60%)}
+.modal-x{position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.6);backdrop-filter:blur(10px);color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(255,255,255,.15);transition:.2s}
+.modal-x:hover{background:rgba(236,72,153,.4)}
+.modal-score-badge{position:absolute;top:16px;left:16px;background:rgba(0,0,0,.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 18px;text-align:center}
+.modal-score-pct{font-size:28px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.modal-score-lbl{font-size:10px;color:var(--text2);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.modal-body{overflow-y:auto;flex:1;padding:0 28px 28px}
+.modal-title{font-size:26px;font-weight:900;letter-spacing:-.5px;margin-bottom:6px}
+.modal-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--text2);margin-bottom:20px}
+.modal-tabs{display:flex;gap:4px;margin-bottom:24px;background:var(--card);border-radius:12px;padding:4px}
+.modal-tab{flex:1;padding:9px;border-radius:9px;font-size:13px;font-weight:600;color:var(--text2);text-align:center;cursor:pointer;transition:.2s}
+.modal-tab.on{background:var(--card2);color:var(--text)}
+.modal-tab-content{display:none}
+.modal-tab-content.on{display:block}
+.lineup-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.lineup-artist{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:13px;font-weight:500;transition:.2s}
+.lineup-artist:hover{border-color:rgba(139,92,246,.3)}
+.lineup-artist.match{background:rgba(139,92,246,.12);border-color:rgba(139,92,246,.35);color:#c4b5fd;font-weight:600}
+.lineup-artist.match::before{content:'★ ';font-size:10px}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+
+/* AUTH */
+.auth-wrap{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 64px);padding:40px 20px}
+.auth-box{background:var(--surface);border:1px solid var(--border2);border-radius:24px;padding:40px;width:100%;max-width:420px}
+.auth-logo{display:flex;align-items:center;gap:10px;margin-bottom:32px}
+.auth-title{font-size:26px;font-weight:800;margin-bottom:7px}
+.auth-sub{color:var(--text2);font-size:14px;margin-bottom:26px}
+.divider{display:flex;align-items:center;gap:10px;color:var(--text3);font-size:12px;margin:20px 0}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.fg{margin-bottom:16px}
+.fl{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px;display:block}
+.fi{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:13px 16px;color:var(--text);font-size:14px;transition:.2s}
+.fi:focus{border-color:var(--p);box-shadow:0 0 0 3px rgba(139,92,246,.1)}
+.fi::placeholder{color:var(--text3)}
+.auth-sw{text-align:center;color:var(--text2);font-size:13px;margin-top:18px}
+.auth-sw a{color:var(--p);font-weight:600;cursor:pointer}
+
+/* SAVED */
+.empty-state{text-align:center;padding:80px 24px}
+.empty-state .ei{font-size:60px;margin-bottom:18px}
+.empty-state h3{font-size:20px;font-weight:700;margin-bottom:10px}
+.empty-state p{color:var(--text2);font-size:14px;margin-bottom:24px}
+
+/* PROFILE */
+.prof-hero{background:linear-gradient(180deg,rgba(139,92,246,.08) 0%,transparent 100%);padding:80px 24px 40px;text-align:center;max-width:700px;margin:0 auto}
+.prof-av{width:84px;height:84px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:30px;margin:0 auto 16px;border:3px solid rgba(139,92,246,.3);overflow:hidden}
+.prof-av img{width:100%;height:100%;object-fit:cover}
+.prof-name{font-size:26px;font-weight:800;margin-bottom:5px}
+.prof-email{color:var(--text2);font-size:14px}
+.prof-stats{display:flex;justify-content:center;gap:40px;margin-top:24px}
+.ps-n{font-size:24px;font-weight:800}
+.ps-l{font-size:12px;color:var(--text2);font-weight:500;margin-top:3px}
+.prof-body{max-width:700px;margin:0 auto;padding:0 24px 80px}
+.cb{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px;margin-bottom:14px}
+.cb h3{font-size:14px;font-weight:700;margin-bottom:18px}
+
+/* POLICY */
 .policy{max-width:720px;margin:0 auto;padding:80px 24px}
-.policy h1{font-size:32px;font-weight:800;margin-bottom:6px}
-.policy .upd{color:var(--text2);font-size:12px;margin-bottom:44px}
-.policy h2{font-size:18px;font-weight:700;margin:32px 0 12px}
-.policy p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:12px}
-.policy ul{color:var(--text2);font-size:14px;line-height:1.8;padding-left:18px;margin-bottom:12px}
+.policy h1{font-size:34px;font-weight:800;margin-bottom:8px}
+.policy .upd{color:var(--text2);font-size:12px;margin-bottom:48px}
+.policy h2{font-size:18px;font-weight:700;margin:36px 0 12px}
+.policy p,.policy li{color:var(--text2);font-size:14px;line-height:1.8}
+.policy ul{padding-left:18px;margin-bottom:12px}
 .policy a{color:var(--p)}
-footer{background:var(--surface);border-top:1px solid var(--border);padding:52px 24px 36px}
-.ft-in{max-width:1080px;margin:0 auto}
-.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:44px}
-.ft-brand p{color:var(--text2);font-size:13px;line-height:1.7;margin-top:14px;max-width:260px}
-.ft-col h4{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:14px;text-transform:uppercase;letter-spacing:1px}
-.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-.ft-col ul li a{color:var(--text3);font-size:13px;cursor:pointer;transition:.2s}
-.ft-col ul li a:hover{color:var(--text)}
-.ft-bot{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* FOOTER */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:64px 24px 40px}
+.ft{max-width:1100px;margin:0 auto}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.ft-brand p{color:var(--text2);font-size:13px;line-height:1.8;margin-top:16px;max-width:260px}
+.ft-col h4{font-size:11px;font-weight:700;color:var(--text2);margin-bottom:16px;text-transform:uppercase;letter-spacing:1.5px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-col li a{color:var(--text3);font-size:13px;cursor:pointer;transition:.2s}
+.ft-col li a:hover{color:var(--text)}
+.ft-bot{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .ft-bot p{color:var(--text3);font-size:12px}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--card2);border:1px solid var(--border);padding:10px 20px;border-radius:50px;font-size:13px;font-weight:500;z-index:999;transition:.3s;white-space:nowrap;box-shadow:0 8px 28px rgba(0,0,0,.4)}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(90px);background:var(--card2);border:1px solid var(--border2);padding:11px 22px;border-radius:50px;font-size:13px;font-weight:500;z-index:999;transition:.35s cubic-bezier(.32,.72,0,1);white-space:nowrap;box-shadow:0 12px 40px rgba(0,0,0,.5)}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .toast.ok{border-color:rgba(29,185,84,.4);color:#1DB954}
 .toast.err{border-color:rgba(236,72,153,.4);color:var(--pk)}
-.ck{position:fixed;bottom:0;left:0;right:0;z-index:400;background:var(--card);border-top:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.ck p{font-size:13px;color:var(--text2);max-width:580px;line-height:1.6}
+
+/* COOKIE */
+.ck{position:fixed;bottom:0;left:0;right:0;z-index:500;background:rgba(14,14,26,.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.ck p{font-size:13px;color:var(--text2);max-width:600px;line-height:1.6}
 .ck a{color:var(--p)}
-.ck-btns{display:flex;gap:8px;flex-shrink:0}
-@media(max-width:768px){#nav{padding:0 16px}.nav-mid{display:none}.ft-top{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.ft-top{grid-template-columns:1fr}.hero-btns{flex-direction:column;align-items:stretch}.hero-btns .btn{justify-content:center}}
+.ck-btns{display:flex;gap:10px;flex-shrink:0}
+
+/* CONNECT PROMPT */
+.sp-connect-bar{background:linear-gradient(135deg,rgba(29,185,84,.08),rgba(139,92,246,.08));border:1px solid rgba(29,185,84,.2);border-radius:14px;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+.sp-connect-bar strong{display:block;font-size:14px;margin-bottom:2px}
+.sp-connect-bar p{font-size:13px;color:var(--text2)}
+
+@media(max-width:768px){
+  #nav{padding:0 18px}
+  .nav-mid{display:none}
+  .ft-top{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr}
+  .steps::before{display:none}
+  .hero-match-score{position:relative;top:auto;right:auto;margin-bottom:16px;display:inline-flex;align-items:center;gap:12px;padding:10px 18px;border-radius:50px}
+  .hero-match-pct{font-size:32px}
+  .dna-stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+  .ft-top{grid-template-columns:1fr}
+  .hero-ctas{flex-direction:column;align-items:stretch}
+  .hero-ctas .btn{justify-content:center}
+}
 </style>
 </head>
 <body>
+
 <nav id="nav">
   <div class="logo" onclick="go('home')">
-    <div class="logo-mark">&#127914;</div>
+    <div class="logo-mark">🎪</div>
     <span class="logo-text">Festifys</span>
   </div>
   <div class="nav-mid">
@@ -203,479 +342,696 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:52px
     <button class="btn btn-grad btn-sm" onclick="go('signup')">Sign up</button>
   </div>
 </nav>
+
 <div class="toast" id="toast"></div>
 <div class="ck" id="ck">
-  <p>&#127850; We use cookies to personalize your festival matches. <a href="#" onclick="go('cookies');return false">Learn more</a></p>
+  <p>🍪 We use cookies to personalize your festival matches. <a href="#" onclick="go('cookies');return false">Learn more</a></p>
   <div class="ck-btns">
-    <button class="btn btn-outline btn-sm" onclick="ckReject()">Reject</button>
-    <button class="btn btn-grad btn-sm" onclick="ckAccept()">Accept All</button>
+    <button class="btn btn-outline btn-sm" onclick="ckR()">Reject</button>
+    <button class="btn btn-grad btn-sm" onclick="ckA()">Accept All</button>
   </div>
 </div>
 
-<!-- HOME -->
+<!-- ====== HOME ====== -->
 <div class="pg" id="pg-home">
 <div class="hero">
-<div class="hero-glow"></div><div class="hero-dots"></div>
-<div class="hero-inner">
-<div class="badge">&#10024; Powered by Spotify</div>
-<h1>Your <span class="grad-text">Festival</span><br>DNA Decoded</h1>
-<p>Connect Spotify and discover which festivals match your music taste. From Amsterdam to Glastonbury &#8212; find your tribe.</p>
-<div class="hero-btns">
-<button class="btn btn-sp" onclick="startSpotify()"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Connect with Spotify</button>
-<button class="btn btn-ghost" onclick="go('discover')">Browse Festivals</button>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-pill">✨ Powered by Spotify</div>
+    <h1>Your <span class="grad-text">Festival</span><br>DNA Decoded</h1>
+    <p class="hero-sub">Connect Spotify and discover which festivals match your taste. From Lowlands to Glastonbury — your perfect summer starts here.</p>
+    <div class="hero-ctas">
+      <button class="btn btn-sp" onclick="startSpotify()"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Connect with Spotify</button>
+      <button class="btn btn-dark" onclick="go('discover')">Browse Festivals</button>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-avatars"><div class="a">R</div><div class="a" style="background:linear-gradient(135deg,#0ea5e9,#8B5CF6)">S</div><div class="a" style="background:linear-gradient(135deg,#14b8a6,#EC4899)">M</div></div>
+      <span><strong>12,000+</strong> festival lovers already matched</span>
+    </div>
+  </div>
 </div>
-<div class="trust">Trusted by <strong>12,000+</strong> festival lovers</div>
-</div>
-</div>
+
 <section class="sec" style="background:var(--surface)">
-<div class="sec-in">
-<div class="sec-label">How it works</div>
-<h2 class="sec-title">Three steps to your <span class="grad-text">perfect festival</span></h2>
-<div class="steps">
-<div class="step"><div class="step-n">1</div><h3>Connect Spotify</h3><p>Link your account in one click. We analyze your top artists and genres automatically.</p></div>
-<div class="step"><div class="step-n">2</div><h3>Get Your Matches</h3><p>We compare your music profile against 35+ festival lineups and show you a personal match percentage.</p></div>
-<div class="step"><div class="step-n">3</div><h3>Save &amp; Plan</h3><p>Build your festival wishlist, compare dates and prices, and plan your summer.</p></div>
-</div>
-</div>
+  <div class="sec-in">
+    <div class="sec-eyebrow">How it works</div>
+    <h2 class="sec-title">Three steps to your <span class="grad-text">perfect festival</span></h2>
+    <div class="steps">
+      <div class="step-item"><div class="step-num">1</div><h3>Connect Spotify</h3><p>One click. We analyze your 50 top artists and your genre DNA automatically.</p></div>
+      <div class="step-item"><div class="step-num">2</div><h3>See Your Matches</h3><p>We compare your music against 35+ lineup and give you a real match score for each festival.</p></div>
+      <div class="step-item"><div class="step-num">3</div><h3>Plan Your Summer</h3><p>Save festivals, compare tickets and dates, discover your personal #1 match.</p></div>
+    </div>
+  </div>
 </section>
+
 <section class="sec">
-<div class="sec-in">
-<div class="sec-label">Features</div>
-<h2 class="sec-title">Everything to <span class="grad-text">plan your summer</span></h2>
-<div class="features">
-<div class="feat"><div class="feat-icon">&#127925;</div><h3>Spotify Match Engine</h3><p>Real match scores based on your actual top artists &#8212; not just genre guessing.</p></div>
-<div class="feat"><div class="feat-icon">&#128506;</div><h3>35+ Festivals</h3><p>Netherlands, Belgium, UK, Germany, Spain, Denmark, Hungary and more. Updated weekly.</p></div>
-<div class="feat"><div class="feat-icon">&#128278;</div><h3>Save &amp; Compare</h3><p>Build your festival wishlist and compare costs, dates and lineups.</p></div>
-<div class="feat"><div class="feat-icon">&#128276;</div><h3>Ticket Alerts</h3><p>Get notified the moment tickets drop for your matched festivals.</p></div>
-<div class="feat"><div class="feat-icon">&#128241;</div><h3>App Coming Soon</h3><p>iOS and Android apps launching soon. Sign up to get early access.</p></div>
-<div class="feat"><div class="feat-icon">&#127758;</div><h3>Worldwide</h3><p>From intimate forest festivals to 400,000-person mega events.</p></div>
-</div>
-</div>
+  <div class="sec-in">
+    <div class="sec-eyebrow">Features</div>
+    <h2 class="sec-title">Built for real <span class="grad-text">festival lovers</span></h2>
+    <div class="feat-grid">
+      <div class="feat-card"><div class="feat-icon">🎵</div><h3>Real Match Scores</h3><p>Based on your actual top artists — not guesswork. See exactly which of your favorites are playing.</p></div>
+      <div class="feat-card"><div class="feat-icon">🗺️</div><h3>35+ Festivals</h3><p>Netherlands, Belgium, UK, Germany, Spain and more. Lineups updated weekly.</p></div>
+      <div class="feat-card"><div class="feat-icon">🧬</div><h3>Your Music DNA</h3><p>See your top genres, top artists and top tracks from Spotify. Your full music profile in one place.</p></div>
+      <div class="feat-card"><div class="feat-icon">🔖</div><h3>Save & Compare</h3><p>Build your wishlist and compare festivals side by side on dates and price.</p></div>
+      <div class="feat-card"><div class="feat-icon">🎤</div><h3>Full Lineups</h3><p>Browse every artist playing at each festival. Your matched artists are highlighted.</p></div>
+      <div class="feat-card"><div class="feat-icon">📱</div><h3>App Coming Soon</h3><p>iOS and Android launching soon. Sign up for early access.</p></div>
+    </div>
+  </div>
 </section>
+
 <section class="sec" style="background:var(--surface)">
-<div class="sec-in">
-<div class="sec-label">Popular Festivals</div>
-<h2 class="sec-title">Highlights this summer</h2>
-<div class="fest-grid" id="preview-grid" style="padding:0;margin-top:40px"></div>
-<div style="text-align:center;margin-top:36px"><button class="btn btn-grad" onclick="go('discover')">Discover All Festivals &#8594;</button></div>
-</div>
+  <div class="sec-in">
+    <div class="sec-eyebrow">This summer</div>
+    <h2 class="sec-title">Popular festivals</h2>
+    <div class="prev-grid" id="preview-grid"></div>
+    <div style="text-align:center;margin-top:40px"><button class="btn btn-grad" onclick="go('discover')">See All Festivals →</button></div>
+  </div>
 </section>
+
 <section class="sec">
-<div class="sec-in" style="text-align:center;max-width:580px;margin:0 auto">
-<div class="sec-label">Ready?</div>
-<h2 class="sec-title">Find your festival<br><span class="grad-text">match today</span></h2>
-<p style="color:var(--text2);font-size:16px;line-height:1.7;margin:0 auto 32px">10 seconds. Connect Spotify, get your matches, plan your summer.</p>
-<button class="btn btn-sp" onclick="startSpotify()"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Get Started Free</button>
-</div>
+  <div class="sec-in" style="text-align:center;max-width:600px;margin:0 auto">
+    <div class="sec-eyebrow">Ready?</div>
+    <h2 class="sec-title">Find your #1 festival<br><span class="grad-text">match now</span></h2>
+    <p class="sec-sub" style="margin:0 auto 36px">Takes 10 seconds. Connect Spotify, see your personal matches, save your favourites.</p>
+    <button class="btn btn-sp" onclick="startSpotify()"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Get Started Free</button>
+  </div>
 </section>
+
 <footer>
-<div class="ft-in">
-<div class="ft-top">
-<div class="ft-brand"><div class="logo" style="cursor:default"><div class="logo-mark">&#127914;</div><span class="logo-text">Festifys</span></div><p>Your personal festival matchmaker, powered by Spotify. Find the festivals that fit your music DNA.</p></div>
-<div class="ft-col"><h4>Product</h4><ul><li><a onclick="go('discover')">Discover</a></li><li><a onclick="go('saved')">Saved Festivals</a></li><li><a>iOS App (soon)</a></li><li><a>Android App (soon)</a></li></ul></div>
-<div class="ft-col"><h4>Company</h4><ul><li><a>About Us</a></li><li><a>Contact</a></li><li><a>Press</a></li></ul></div>
-<div class="ft-col"><h4>Legal</h4><ul><li><a onclick="go('privacy')">Privacy Policy</a></li><li><a onclick="go('terms')">Terms of Service</a></li><li><a onclick="go('cookies')">Cookie Policy</a></li></ul></div>
-</div>
-<div class="ft-bot"><p>&#169; 2025 Festifys. All rights reserved.</p><p>Made with &#10084;&#65039; for festival lovers worldwide</p></div>
-</div>
+  <div class="ft">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="logo" style="cursor:default"><div class="logo-mark">🎪</div><span class="logo-text">Festifys</span></div>
+        <p>Your personal festival matchmaker, powered by Spotify. Find the festivals that fit your music DNA.</p>
+      </div>
+      <div class="ft-col"><h4>Product</h4><ul><li><a onclick="go('discover')">Discover</a></li><li><a onclick="go('saved')">Saved</a></li><li><a>iOS App (soon)</a></li><li><a>Android App (soon)</a></li></ul></div>
+      <div class="ft-col"><h4>Company</h4><ul><li><a>About</a></li><li><a>Contact</a></li><li><a>Press</a></li></ul></div>
+      <div class="ft-col"><h4>Legal</h4><ul><li><a onclick="go('privacy')">Privacy</a></li><li><a onclick="go('terms')">Terms</a></li><li><a onclick="go('cookies')">Cookies</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><p>© 2025 Festifys. All rights reserved.</p><p>Made with ❤️ for festival lovers worldwide</p></div>
+  </div>
 </footer>
 </div>
 
-<!-- MATCHES -->
+<!-- ====== MATCHES ====== -->
 <div class="pg" id="pg-matches">
-<div style="max-width:1080px;margin:0 auto;padding:80px 24px 16px"><div id="matches-header"></div></div>
-<div style="max-width:1080px;margin:0 auto;padding:0 24px 80px" id="matches-body"></div>
+  <div class="matches-wrap">
+    <div id="m-hero-match"></div>
+    <div id="m-dna"></div>
+    <div id="m-top5"></div>
+    <div id="m-genres"></div>
+  </div>
 </div>
 
-<!-- DISCOVER -->
+<!-- ====== DISCOVER ====== -->
 <div class="pg" id="pg-discover">
-<div class="page-head"><h1>Discover Festivals</h1><p id="disc-sub">Browse 35+ festivals worldwide</p></div>
-<div id="sp-bar"></div>
-<div class="filters">
-<button class="filt on" onclick="filt('all',this)">All</button>
-<button class="filt" onclick="filt('popular',this)">&#128293; Popular</button>
-<button class="filt" onclick="filt('netherlands',this)">&#127475;&#127473; Netherlands</button>
-<button class="filt" onclick="filt('europe',this)">&#127466;&#127482; Europe</button>
-<button class="filt" onclick="filt('international',this)">&#127758; Worldwide</button>
-<button class="filt" onclick="filt('electronic',this)">Electronic</button>
-<button class="filt" onclick="filt('techno',this)">Techno</button>
-<button class="filt" onclick="filt('indie',this)">Indie / Alt</button>
-<button class="filt" onclick="filt('pop',this)">Pop</button>
-<button class="filt" onclick="filt('rock',this)">Rock</button>
-<button class="filt" onclick="filt('dance',this)">Dance / EDM</button>
-</div>
-<div class="fest-grid" id="disc-grid"></div>
+  <div class="discover-wrap">
+    <div class="discover-head"><h1>Discover Festivals</h1><p id="disc-sub">Browse 35+ festivals worldwide</p></div>
+    <div id="sp-bar"></div>
+    <div class="filters">
+      <button class="filt on" onclick="flt('all',this)">All</button>
+      <button class="filt" onclick="flt('popular',this)">🔥 Popular</button>
+      <button class="filt" onclick="flt('netherlands',this)">🇳🇱 Netherlands</button>
+      <button class="filt" onclick="flt('europe',this)">🇪🇺 Europe</button>
+      <button class="filt" onclick="flt('international',this)">🌍 Worldwide</button>
+      <button class="filt" onclick="flt('electronic',this)">Electronic</button>
+      <button class="filt" onclick="flt('techno',this)">Techno</button>
+      <button class="filt" onclick="flt('indie',this)">Indie / Alt</button>
+      <button class="filt" onclick="flt('pop',this)">Pop</button>
+      <button class="filt" onclick="flt('rock',this)">Rock</button>
+      <button class="filt" onclick="flt('dance',this)">Dance / EDM</button>
+    </div>
+    <div class="fest-grid" id="disc-grid"></div>
+  </div>
 </div>
 
-<!-- SAVED -->
+<!-- ====== SAVED ====== -->
 <div class="pg" id="pg-saved">
-<div class="page-head"><h1>Saved Festivals</h1><p>Your personal festival wishlist</p></div>
-<div class="fest-grid" id="saved-grid"></div>
-<div class="empty" id="saved-empty" style="display:none">
-<div class="empty-ico">&#128278;</div><h3>No saved festivals yet</h3><p>Browse festivals and tap &#9825; to save them.</p>
-<button class="btn btn-grad" onclick="go('discover')">Discover Festivals</button>
-</div>
+  <div class="discover-wrap">
+    <div class="discover-head"><h1>Saved Festivals</h1><p>Your personal festival wishlist</p></div>
+    <div class="fest-grid" id="saved-grid"></div>
+    <div class="empty-state" id="saved-empty" style="display:none">
+      <div class="ei">🔖</div><h3>Nothing saved yet</h3><p>Browse festivals and tap ♡ to add them here.</p>
+      <button class="btn btn-grad" onclick="go('discover')">Discover Festivals</button>
+    </div>
+  </div>
 </div>
 
-<!-- PROFILE -->
+<!-- ====== PROFILE ====== -->
 <div class="pg" id="pg-profile">
-<div class="prof-hero">
-<div class="prof-av" id="pav">R</div>
-<div class="prof-name" id="pname">Rikki</div>
-<div class="prof-email" id="pemail"></div>
-<div class="prof-stats">
-<div><div class="stat-n" id="st-saved">0</div><div class="stat-l">Saved</div></div>
-<div><div class="stat-n" id="st-matches">0</div><div class="stat-l">Matches</div></div>
-</div>
-</div>
-<div class="prof-body">
-<div class="card-block">
-<h3>Profile</h3>
-<div class="fg"><label class="fl">Display Name</label><input type="text" class="fi" id="ed-name" placeholder="Your name"></div>
-<div class="fg"><label class="fl">Bio</label><input type="text" class="fi" id="ed-bio" placeholder="e.g. Techno lover, Lowlands veteran"></div>
-<button class="btn btn-grad btn-sm" onclick="saveProf()" style="margin-top:6px">Save Changes</button>
-</div>
-<div class="card-block">
-<h3>Spotify Connection</h3>
-<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
-<div><div style="font-size:14px;font-weight:600" id="sp-label">Not connected</div><div style="font-size:13px;color:var(--text2)" id="sp-sub">Connect to get personalized match scores</div></div>
-<button class="btn btn-sp btn-sm" onclick="startSpotify()" id="sp-btn">Connect Spotify</button>
-</div>
-</div>
-<div class="card-block"><h3>Account</h3><button class="btn btn-outline btn-sm" onclick="logout()" style="color:#ef4444;border-color:rgba(239,68,68,.3)">Sign Out</button></div>
-</div>
+  <div class="prof-hero">
+    <div class="prof-av" id="pav">R</div>
+    <div class="prof-name" id="pname">Rikki</div>
+    <div class="prof-email" id="pemail"></div>
+    <div class="prof-stats">
+      <div><div class="ps-n" id="st-saved">0</div><div class="ps-l">Saved</div></div>
+      <div><div class="ps-n" id="st-matches">0</div><div class="ps-l">Matches 50%+</div></div>
+    </div>
+  </div>
+  <div class="prof-body">
+    <div class="cb"><h3>Profile</h3>
+      <div class="fg"><label class="fl">Name</label><input type="text" class="fi" id="ed-name"></div>
+      <div class="fg"><label class="fl">Bio</label><input type="text" class="fi" id="ed-bio" placeholder="e.g. Techno lover, Lowlands veteran 🎪"></div>
+      <button class="btn btn-grad btn-sm" onclick="saveP()" style="margin-top:4px">Save Changes</button>
+    </div>
+    <div class="cb"><h3>Spotify</h3>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+        <div><div style="font-size:14px;font-weight:600" id="sp-lbl">Not connected</div><div style="font-size:13px;color:var(--text2)" id="sp-sub2">Connect to see your matches</div></div>
+        <button class="btn btn-sp btn-sm" onclick="startSpotify()" id="sp-btn">Connect Spotify</button>
+      </div>
+    </div>
+    <div class="cb"><h3>Account</h3>
+      <button class="btn btn-outline btn-sm" onclick="logout()" style="color:#ef4444;border-color:rgba(239,68,68,.3)">Sign Out</button>
+    </div>
+  </div>
 </div>
 
-<!-- LOGIN -->
+<!-- ====== AUTH ====== -->
 <div class="pg" id="pg-login">
-<div class="auth-wrap"><div class="auth-box">
-<div class="auth-logo"><div class="logo-mark">&#127914;</div><span class="logo-text" style="font-size:18px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Festifys</span></div>
-<div class="auth-title">Welcome back</div><div class="auth-sub">Sign in to your account</div>
-<button class="btn btn-sp" style="width:100%;justify-content:center" onclick="startSpotify()"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Continue with Spotify</button>
-<div class="divider">or</div>
-<div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="lin-email" placeholder="you@example.com"></div>
-<div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="lin-pw" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"></div>
-<button class="btn btn-grad" style="width:100%;justify-content:center;margin-top:6px" onclick="doLogin()">Sign In</button>
-<div class="auth-sw">No account? <a onclick="go('signup')">Sign up free</a></div>
-</div></div>
+  <div class="auth-wrap"><div class="auth-box">
+    <div class="auth-logo"><div class="logo-mark">🎪</div><span class="logo-text">Festifys</span></div>
+    <div class="auth-title">Welcome back</div><div class="auth-sub">Sign in to your account</div>
+    <button class="btn btn-sp" style="width:100%;justify-content:center" onclick="startSpotify()"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Continue with Spotify</button>
+    <div class="divider">or</div>
+    <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="li-em" placeholder="you@example.com"></div>
+    <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="li-pw" placeholder="••••••••"></div>
+    <button class="btn btn-grad" style="width:100%;justify-content:center;margin-top:6px" onclick="doLogin()">Sign In</button>
+    <div class="auth-sw">No account? <a onclick="go('signup')">Sign up free</a></div>
+  </div></div>
 </div>
-
-<!-- SIGNUP -->
 <div class="pg" id="pg-signup">
-<div class="auth-wrap"><div class="auth-box">
-<div class="auth-logo"><div class="logo-mark">&#127914;</div><span class="logo-text" style="font-size:18px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Festifys</span></div>
-<div class="auth-title">Create account</div><div class="auth-sub">Join 12,000+ festival lovers</div>
-<button class="btn btn-sp" style="width:100%;justify-content:center" onclick="startSpotify()"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Sign up with Spotify</button>
-<div class="divider">or</div>
-<div class="fg"><label class="fl">Name</label><input type="text" class="fi" id="sup-name" placeholder="Your name"></div>
-<div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="sup-email" placeholder="you@example.com"></div>
-<div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="sup-pw" placeholder="Min. 8 characters"></div>
-<button class="btn btn-grad" style="width:100%;justify-content:center;margin-top:6px" onclick="doSignup()">Create Account</button>
-<div class="auth-sw" style="font-size:12px;color:var(--text3);margin-top:10px">By signing up you agree to our <a onclick="go('terms')" style="color:var(--p)">Terms</a> and <a onclick="go('privacy')" style="color:var(--p)">Privacy Policy</a></div>
-<div class="auth-sw">Have an account? <a onclick="go('login')">Sign in</a></div>
-</div></div>
+  <div class="auth-wrap"><div class="auth-box">
+    <div class="auth-logo"><div class="logo-mark">🎪</div><span class="logo-text">Festifys</span></div>
+    <div class="auth-title">Create account</div><div class="auth-sub">Join 12,000+ festival lovers</div>
+    <button class="btn btn-sp" style="width:100%;justify-content:center" onclick="startSpotify()"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Sign up with Spotify</button>
+    <div class="divider">or</div>
+    <div class="fg"><label class="fl">Name</label><input type="text" class="fi" id="su-nm" placeholder="Your name"></div>
+    <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="su-em" placeholder="you@example.com"></div>
+    <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="su-pw" placeholder="Min. 8 characters"></div>
+    <button class="btn btn-grad" style="width:100%;justify-content:center;margin-top:6px" onclick="doSignup()">Create Account</button>
+    <div class="auth-sw" style="font-size:12px;color:var(--text3);margin-top:10px">By signing up you agree to our <a onclick="go('terms')" style="color:var(--p)">Terms</a> and <a onclick="go('privacy')" style="color:var(--p)">Privacy</a></div>
+    <div class="auth-sw">Have an account? <a onclick="go('login')">Sign in</a></div>
+  </div></div>
 </div>
 
-<!-- PRIVACY -->
+<!-- ====== LEGAL ====== -->
 <div class="pg" id="pg-privacy"><div class="policy">
-<h1>Privacy Policy</h1><div class="upd">Last updated: June 1, 2025</div>
-<h2>1. Who We Are</h2><p>Festifys is operated by a company registered with the Dutch Chamber of Commerce (KvK) under number <strong>75835096</strong>, located at Ariananozemanstraat 32, 1065TS Amsterdam. Contact: <a href="mailto:privacy@festifys.nl">privacy@festifys.nl</a></p>
-<h2>2. Data We Collect</h2><ul><li>Account data: name, email, password (hashed)</li><li>Spotify data: top artists, genres (read-only)</li><li>Usage data: pages visited, festivals saved</li></ul>
-<h2>3. How We Use Your Data</h2><ul><li>To calculate your festival match scores</li><li>To send ticket alerts (if opted in)</li><li>To improve our matching algorithm</li></ul>
-<h2>4. Legal Basis (GDPR)</h2><p>We process your data based on your consent and performance of our contract with you.</p>
-<h2>5. Your Rights</h2><p>Access, correct, delete, and port your data. Email <a href="mailto:privacy@festifys.nl">privacy@festifys.nl</a></p>
-<h2>6. Contact</h2><p>KvK 75835096 | Ariananozemanstraat 32, 1065TS Amsterdam</p>
-<br><button class="btn btn-ghost btn-sm" onclick="history.back()">&#8592; Back</button>
+  <h1>Privacy Policy</h1><div class="upd">Last updated: June 1, 2025</div>
+  <h2>1. Who We Are</h2><p>Festifys is operated by a company registered with the Dutch KvK under number <strong>75835096</strong>, Ariananozemanstraat 32, 1065TS Amsterdam. Contact: <a href="mailto:privacy@festifys.nl">privacy@festifys.nl</a></p>
+  <h2>2. Data We Collect</h2><ul><li>Account data: name, email, password (hashed)</li><li>Spotify data: top artists, top tracks, genres (read-only)</li><li>Usage data: festivals saved, pages visited</li></ul>
+  <h2>3. How We Use It</h2><ul><li>Calculate your festival match scores</li><li>Show your Music DNA profile</li><li>Send ticket alerts (if opted in)</li></ul>
+  <h2>4. Your Rights (GDPR)</h2><p>Access, correct, delete and port your data. Email <a href="mailto:privacy@festifys.nl">privacy@festifys.nl</a></p>
+  <h2>5. Contact</h2><p>KvK 75835096 | Ariananozemanstraat 32, 1065TS Amsterdam</p>
+  <br><button class="btn btn-dark btn-sm" onclick="history.back()">← Back</button>
 </div></div>
-
-<!-- TERMS -->
 <div class="pg" id="pg-terms"><div class="policy">
-<h1>Terms of Service</h1><div class="upd">Last updated: June 1, 2025</div>
-<h2>1. Acceptance</h2><p>By using Festifys, you agree to these Terms.</p>
-<h2>2. Service</h2><p>Festifys matches users with music festivals based on Spotify listening data.</p>
-<h2>3. Account</h2><p>You must be at least 13 years old. You are responsible for your account security.</p>
-<h2>4. Acceptable Use</h2><ul><li>No unlawful use</li><li>No harassment of other users</li><li>No scraping or reverse engineering</li></ul>
-<h2>5. Governing Law</h2><p>Dutch law applies. Disputes before Amsterdam courts.</p>
-<h2>6. Contact</h2><p>KvK 75835096 | Ariananozemanstraat 32, 1065TS Amsterdam</p>
-<br><button class="btn btn-ghost btn-sm" onclick="history.back()">&#8592; Back</button>
+  <h1>Terms of Service</h1><div class="upd">Last updated: June 1, 2025</div>
+  <h2>1. Acceptance</h2><p>By using Festifys you agree to these Terms.</p>
+  <h2>2. Service</h2><p>Festifys matches users with festivals based on Spotify data.</p>
+  <h2>3. Account</h2><p>You must be at least 13 years old.</p>
+  <h2>4. Acceptable Use</h2><ul><li>No unlawful use</li><li>No scraping or reverse engineering</li></ul>
+  <h2>5. Governing Law</h2><p>Dutch law. Disputes before Amsterdam courts. KvK 75835096.</p>
+  <br><button class="btn btn-dark btn-sm" onclick="history.back()">← Back</button>
 </div></div>
-
-<!-- COOKIES -->
 <div class="pg" id="pg-cookies"><div class="policy">
-<h1>Cookie Policy</h1><div class="upd">Last updated: June 1, 2025</div>
-<h2>Essential Cookies</h2><ul><li>festifys_session &#8212; keeps you logged in</li><li>pkce_verifier &#8212; Spotify OAuth security</li><li>cookie_consent &#8212; your preference</li></ul>
-<h2>Analytics Cookies</h2><p>Anonymized usage data to improve the app. Only with your consent.</p>
-<h2>Contact</h2><p>KvK 75835096 | Ariananozemanstraat 32, 1065TS Amsterdam</p>
-<button class="btn btn-ghost btn-sm" onclick="ckReset()" style="margin:8px 0 20px">Reset preferences</button>
-<br><button class="btn btn-ghost btn-sm" onclick="history.back()">&#8592; Back</button>
+  <h1>Cookie Policy</h1><div class="upd">Last updated: June 1, 2025</div>
+  <h2>Essential</h2><ul><li>festifys_session — keeps you logged in</li><li>pkce_verifier — Spotify OAuth security</li></ul>
+  <h2>Analytics</h2><p>Anonymized data with your consent only.</p>
+  <button class="btn btn-dark btn-sm" onclick="ckReset()" style="margin:12px 0">Reset preferences</button>
+  <h2>Contact</h2><p>KvK 75835096 | Ariananozemanstraat 32, 1065TS Amsterdam</p>
+  <br><button class="btn btn-dark btn-sm" onclick="history.back()">← Back</button>
 </div></div>
 
-<!-- MODAL -->
+<!-- ====== FESTIVAL MODAL ====== -->
 <div class="overlay" id="overlay" onclick="closeM(event)">
-<div class="modal">
-<div class="modal-handle"></div>
-<button class="modal-x" onclick="closeModal()">&#10005;</button>
-<div class="modal-banner" id="m-banner"></div>
-<div class="modal-title" id="m-title"></div>
-<div class="modal-meta" id="m-meta"></div>
-<div id="m-body"></div>
+  <div class="modal" id="the-modal">
+    <div class="modal-handle"></div>
+    <div class="modal-img" id="m-img">
+      <div class="modal-img-overlay"></div>
+      <button class="modal-x" onclick="closeModal()">✕</button>
+      <div class="modal-score-badge" id="m-score-badge" style="display:none">
+        <div class="modal-score-pct" id="m-score-pct"></div>
+        <div class="modal-score-lbl">match</div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-title" id="m-title"></div>
+      <div class="modal-meta" id="m-meta"></div>
+      <div class="modal-tabs">
+        <div class="modal-tab on" onclick="switchTab('overview',this)">Overview</div>
+        <div class="modal-tab" onclick="switchTab('lineup',this)">Lineup</div>
+        <div class="modal-tab" onclick="switchTab('info',this)">Info</div>
+      </div>
+      <div class="modal-tab-content on" id="tab-overview"></div>
+      <div class="modal-tab-content" id="tab-lineup"></div>
+      <div class="modal-tab-content" id="tab-info"></div>
+    </div>
+  </div>
 </div>
-</div>
+
 <script>
-const FESTIVALS=[
-{id:"lowlands",name:"Lowlands",dates:"Aug 14-17, 2025",loc:"Biddinghuizen, NL",country:"netherlands",genre:["indie","electronic","pop","alternative"],popular:true,color:"linear-gradient(135deg,#6366f1,#8B5CF6)",emoji:"\u{1F30A}",url:"https://lowlands.nl",price:"\u20AC269",cap:"55,000",artists:["Arctic Monkeys","Billie Eilish","Foals","Jungle","FKA Twigs","Caribou","Peggy Gou","LCD Soundsystem","James Blake","Slowdive","Bicep","Four Tet","Jon Hopkins","Caroline Polachek","Mitski"],desc:"The most eclectic festival in the Netherlands."},
-{id:"pinkpop",name:"Pinkpop",dates:"Jun 6-8, 2025",loc:"Landgraaf, NL",country:"netherlands",genre:["pop","rock","indie"],popular:true,color:"linear-gradient(135deg,#EC4899,#f97316)",emoji:"\u{1F338}",url:"https://pinkpop.nl",price:"\u20AC199",cap:"60,000",artists:["Coldplay","Harry Styles","Dua Lipa","Muse","The Killers","Nothing But Thieves","Florence + The Machine","Two Door Cinema Club"],desc:"One of the world's longest-running pop festivals."},
-{id:"awakenings",name:"Awakenings",dates:"Jun 28-29, 2025",loc:"Spaarnwoude, NL",country:"netherlands",genre:["techno","electronic"],popular:true,color:"linear-gradient(135deg,#1a1a2e,#6366f1)",emoji:"\u26A1",url:"https://awakenings.com",price:"\u20AC79",cap:"25,000",artists:["Charlotte de Witte","Amelie Lens","Sven Vath","Adam Beyer","Enrico Sangiuliano","I Hate Models","Paula Temple","Reinier Zonneveld"],desc:"The world's premier techno festival outside Amsterdam."},
-{id:"dgtl",name:"DGTL Amsterdam",dates:"Apr 18-20, 2025",loc:"Amsterdam, NL",country:"netherlands",genre:["electronic","techno"],popular:true,color:"linear-gradient(135deg,#0f172a,#EC4899)",emoji:"\u{1F50A}",url:"https://dgtl.nl",price:"\u20AC69",cap:"15,000",artists:["Aphex Twin","Floating Points","Objekt","Blawan","Call Super","Len Faki","SPFDJ","Surgeon"],desc:"A circular festival on Amsterdam's NDSM wharf."},
-{id:"bestkeptsecret",name:"Best Kept Secret",dates:"Jun 5-7, 2025",loc:"Hilvarenbeek, NL",country:"netherlands",genre:["indie","alternative","electronic"],popular:true,color:"linear-gradient(135deg,#14b8a6,#8B5CF6)",emoji:"\u{1F33F}",url:"https://bestkeeper.nl",price:"\u20AC169",cap:"30,000",artists:["Arcade Fire","Nick Cave & The Bad Seeds","PJ Harvey","Angel Olsen","Courtney Barnett","The National","Big Thief","Bon Iver","Phoebe Bridgers"],desc:"A boutique forest festival focused on discovery."},
-{id:"mysteryland",name:"Mysteryland",dates:"Aug 22-24, 2025",loc:"Haarlemmermeer, NL",country:"netherlands",genre:["electronic","dance"],popular:true,color:"linear-gradient(135deg,#7c3aed,#EC4899)",emoji:"\u{1F52E}",url:"https://mysteryland.com",price:"\u20AC149",cap:"40,000",artists:["Martin Garrix","Tiesto","David Guetta","Armin van Buuren","Richie Hawtin","Solomun","Tale Of Us"],desc:"The world's oldest dance festival, founded in 1993."},
-{id:"dekmantel",name:"Dekmantel",dates:"Jul 30 - Aug 3, 2025",loc:"Amsterdam, NL",country:"netherlands",genre:["electronic","techno"],popular:false,color:"linear-gradient(135deg,#374151,#6366f1)",emoji:"\u{1F3AD}",url:"https://dekmantel.com",price:"\u20AC89",cap:"10,000",artists:["DJ Harvey","Surgeon","Legowelt","Hunee","Antal","Palms Trax","Eris Drew","Octo Octa"],desc:"Amsterdam's most respected electronic music festival."},
-{id:"defqon",name:"Defqon.1",dates:"Jun 26-29, 2025",loc:"Biddinghuizen, NL",country:"netherlands",genre:["electronic","dance","hardstyle"],popular:true,color:"linear-gradient(135deg,#dc2626,#7c3aed)",emoji:"\u{1F534}",url:"https://defqon1.nl",price:"\u20AC139",cap:"70,000",artists:["Headhunterz","Hardwell","Brennan Heart","Wildstylez","Coone","Noisecontrollers"],desc:"World record holder for largest hardstyle festival."},
-{id:"solarweekend",name:"Solar Weekend",dates:"Sep 5-7, 2025",loc:"Roermond, NL",country:"netherlands",genre:["electronic","dance","techno"],popular:false,color:"linear-gradient(135deg,#f59e0b,#dc2626)",emoji:"\u2600\uFE0F",url:"https://solarweekend.nl",price:"\u20AC79",cap:"20,000",artists:["Solomun","Tale Of Us","Dixon","Ame","Peggy Gou","Mind Against"],desc:"A premier electronic dance festival in the south of NL."},
-{id:"paaspop",name:"Paaspop",dates:"Apr 17-20, 2025",loc:"Schijndel, NL",country:"netherlands",genre:["pop","rock","indie"],popular:false,color:"linear-gradient(135deg,#EC4899,#8B5CF6)",emoji:"\u{1F423}",url:"https://paaspop.nl",price:"\u20AC99",cap:"30,000",artists:["Within Temptation","Di-Rect","De Staat","Eefje de Visser","Chef Special"],desc:"The Netherlands' biggest Easter festival."},
-{id:"tomorrowland",name:"Tomorrowland",dates:"Jul 18-27, 2025",loc:"Boom, Belgium",country:"europe",genre:["electronic","dance","pop"],popular:true,color:"linear-gradient(135deg,#f59e0b,#EC4899)",emoji:"\u{1F3F0}",url:"https://tomorrowland.com",price:"\u20AC299",cap:"400,000",artists:["Martin Garrix","Tiesto","David Guetta","Hardwell","Afrojack","Skrillex","Marshmello","ILLENIUM","Alesso","DJ Snake","Zedd","Armin van Buuren"],desc:"The world's most famous electronic music festival."},
-{id:"rockwerchter",name:"Rock Werchter",dates:"Jul 3-6, 2025",loc:"Werchter, Belgium",country:"europe",genre:["rock","pop","indie"],popular:true,color:"linear-gradient(135deg,#dc2626,#374151)",emoji:"\u{1F3B8}",url:"https://rockwerchter.be",price:"\u20AC299",cap:"90,000",artists:["Pearl Jam","The Killers","Florence + The Machine","The Prodigy","Massive Attack","Fontaines D.C.","Lorde","Idles"],desc:"Belgium's biggest rock festival."},
-{id:"pukkelpop",name:"Pukkelpop",dates:"Aug 14-17, 2025",loc:"Hasselt, Belgium",country:"europe",genre:["rock","electronic","indie","pop"],popular:true,color:"linear-gradient(135deg,#7c3aed,#f97316)",emoji:"\u{1F3AA}",url:"https://pukkelpop.be",price:"\u20AC169",cap:"68,000",artists:["Billie Eilish","LCD Soundsystem","Bicep","Caroline Polachek","Wet Leg","Black Country New Road"],desc:"One of Europe's most eclectic festivals with 8 stages."},
-{id:"glastonbury",name:"Glastonbury",dates:"Jun 25-29, 2025",loc:"Pilton, UK",country:"europe",genre:["rock","pop","indie","electronic"],popular:true,color:"linear-gradient(135deg,#16a34a,#14b8a6)",emoji:"\u{1F3D4}\uFE0F",url:"https://glastonbury.co.uk",price:"\u00A3355",cap:"200,000",artists:["The Rolling Stones","Dua Lipa","Coldplay","Arctic Monkeys","Billie Eilish","SZA","Lana Del Rey","Kendrick Lamar","Tyler the Creator"],desc:"The iconic British festival that defines popular culture."},
-{id:"readingleeds",name:"Reading & Leeds",dates:"Aug 21-24, 2025",loc:"Reading & Leeds, UK",country:"europe",genre:["rock","indie","pop","hiphop"],popular:true,color:"linear-gradient(135deg,#dc2626,#f97316)",emoji:"\u{1F1EC}\u{1F1E7}",url:"https://readingfestival.co.uk",price:"\u00A3280",cap:"105,000",artists:["Post Malone","Liam Gallagher","Olivia Rodrigo","Foo Fighters","Bring Me The Horizon","Stormzy"],desc:"The UK's top festival for rock, pop and hip-hop."},
-{id:"creamfields",name:"Creamfields",dates:"Aug 21-24, 2025",loc:"Daresbury, UK",country:"europe",genre:["electronic","dance","techno"],popular:false,color:"linear-gradient(135deg,#0ea5e9,#8B5CF6)",emoji:"\u{1F3A2}",url:"https://creamfields.com",price:"\u00A3225",cap:"70,000",artists:["Calvin Harris","Armin van Buuren","Tiesto","Martin Garrix","Eric Prydz","Peggy Gou","Charlotte de Witte"],desc:"The UK's biggest electronic dance festival."},
-{id:"melt",name:"Melt Festival",dates:"Jul 18-20, 2025",loc:"Ferropolis, Germany",country:"europe",genre:["electronic","indie","alternative"],popular:false,color:"linear-gradient(135deg,#374151,#EC4899)",emoji:"\u{1F3ED}",url:"https://meltfestival.de",price:"\u20AC149",cap:"25,000",artists:["Bicep","Four Tet","Floating Points","Caroline Polachek","Jon Hopkins","Kelly Lee Owens"],desc:"A unique festival set among giant mining machines in Germany."},
-{id:"hurricane",name:"Hurricane Festival",dates:"Jun 20-22, 2025",loc:"Scheessel, Germany",country:"europe",genre:["rock","indie","pop","electronic"],popular:false,color:"linear-gradient(135deg,#0ea5e9,#dc2626)",emoji:"\u{1F32A}\uFE0F",url:"https://hurricane.de",price:"\u20AC189",cap:"75,000",artists:["Coldplay","Twenty One Pilots","Shawn Mendes","Nothing But Thieves","Idles","Wet Leg"],desc:"Northern Germany's biggest open air festival."},
-{id:"primavera",name:"Primavera Sound",dates:"May 28-Jun 1, 2025",loc:"Barcelona, Spain",country:"europe",genre:["indie","alternative","electronic"],popular:true,color:"linear-gradient(135deg,#0ea5e9,#8B5CF6)",emoji:"\u{1F33A}",url:"https://primaverasound.com",price:"\u20AC295",cap:"60,000",artists:["Charli XCX","Pulp","Vampire Weekend","Portishead","Eels","Slowdive","Kelela","Perfume Genius","Yo La Tengo"],desc:"The acclaimed Barcelona festival known for bold programming."},
-{id:"sonar",name:"Sonar Festival",dates:"Jun 19-21, 2025",loc:"Barcelona, Spain",country:"europe",genre:["electronic","techno","experimental"],popular:false,color:"linear-gradient(135deg,#dc2626,#0f172a)",emoji:"\u{1F4E1}",url:"https://sonar.es",price:"\u20AC225",cap:"120,000",artists:["Aphex Twin","Richie Hawtin","Nina Kraviz","Objekt","Peggy Gou","HAAi"],desc:"International festival of advanced music and new media art."},
-{id:"roskilde",name:"Roskilde Festival",dates:"Jun 28 - Jul 5, 2025",loc:"Roskilde, Denmark",country:"europe",genre:["rock","electronic","indie","hiphop"],popular:true,color:"linear-gradient(135deg,#dc2626,#f97316)",emoji:"\u{1F3A1}",url:"https://roskilde-festival.dk",price:"DKK 2,500",cap:"130,000",artists:["Kendrick Lamar","Nine Inch Nails","The Prodigy","Mitski","James Blake","Massive Attack","Aphex Twin","Fontaines D.C.","AURORA"],desc:"Scandinavia's largest festival, run entirely by volunteers."},
-{id:"wayoutwest",name:"Way Out West",dates:"Aug 7-9, 2025",loc:"Gothenburg, Sweden",country:"europe",genre:["indie","electronic","hiphop","pop"],popular:false,color:"linear-gradient(135deg,#16a34a,#8B5CF6)",emoji:"\u{1F332}",url:"https://wayoutwest.se",price:"SEK 3,200",cap:"30,000",artists:["Lorde","Tyler the Creator","Charli XCX","Kelela","Floating Points","Bon Iver","FKA Twigs"],desc:"A sustainably run festival in the heart of Gothenburg."},
-{id:"sziget",name:"Sziget Festival",dates:"Aug 6-11, 2025",loc:"Budapest, Hungary",country:"europe",genre:["pop","rock","indie","electronic"],popular:true,color:"linear-gradient(135deg,#f97316,#8B5CF6)",emoji:"\u{1F3DD}\uFE0F",url:"https://szigetfestival.com",price:"\u20AC340",cap:"100,000",artists:["Dua Lipa","Calvin Harris","Kygo","The Lumineers","Macklemore","Tove Lo","Jungle"],desc:"One of Europe's largest multi-genre festivals in Budapest."},
-{id:"exit",name:"EXIT Festival",dates:"Jul 10-13, 2025",loc:"Novi Sad, Serbia",country:"europe",genre:["electronic","techno","rock","dance"],popular:false,color:"linear-gradient(135deg,#dc2626,#0f172a)",emoji:"\u{1F3F0}",url:"https://exitfest.org",price:"\u20AC120",cap:"55,000",artists:["Eric Prydz","Charlotte de Witte","Amelie Lens","The Prodigy","Nina Kraviz"],desc:"A festival in an 18th century fortress overlooking the Danube."},
-{id:"oya",name:"Oya Festival",dates:"Aug 5-9, 2025",loc:"Oslo, Norway",country:"europe",genre:["indie","alternative","electronic","hiphop"],popular:false,color:"linear-gradient(135deg,#16a34a,#0ea5e9)",emoji:"\u{1F1F3}\u{1F1F4}",url:"https://oyafestivalen.no",price:"NOK 3,500",cap:"18,000",artists:["Kendrick Lamar","FKA Twigs","Fontaines D.C.","Big Thief","Caroline Polachek","AURORA"],desc:"Norway's most prestigious music festival in Oslo."},
-{id:"coachella",name:"Coachella",dates:"Apr 11-20, 2025",loc:"California, USA",country:"international",genre:["pop","rock","electronic","hiphop"],popular:true,color:"linear-gradient(135deg,#f97316,#EC4899)",emoji:"\u{1F335}",url:"https://coachella.com",price:"$599",cap:"125,000",artists:["Lady Gaga","Green Day","Post Malone","Travis Scott","Charli XCX","Sabrina Carpenter","Doechii","Clairo","Fred again.."],desc:"The world's most famous arts and music festival in California."},
+// ============ FESTIVALS DATA ============
+const F=[
+  {id:"lowlands",n:"Lowlands",d:"Aug 14–17, 2025",loc:"Biddinghuizen, NL",country:"netherlands",genre:["indie","electronic","pop","alternative"],pop:true,bg:"linear-gradient(135deg,#312e81,#6d28d9,#8B5CF6)",img:"https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80",url:"https://lowlands.nl",price:"€269",cap:"55,000",artists:["Arctic Monkeys","Billie Eilish","Foals","Jungle","FKA Twigs","Caribou","Peggy Gou","LCD Soundsystem","James Blake","Slowdive","Bicep","Four Tet","Jon Hopkins","Caroline Polachek","Mitski","Floating Points","Maribou State","Bonobo","Kaytranada","Blood Orange"],desc:"The most eclectic festival in the Netherlands — music, film, comedy and theatre across 11 stages."},
+  {id:"pinkpop",n:"Pinkpop",d:"Jun 6–8, 2025",loc:"Landgraaf, NL",country:"netherlands",genre:["pop","rock","indie"],pop:true,bg:"linear-gradient(135deg,#be185d,#ec4899,#f97316)",img:"https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",url:"https://pinkpop.nl",price:"€199",cap:"60,000",artists:["Coldplay","Harry Styles","Dua Lipa","Muse","The Killers","Nothing But Thieves","Florence + The Machine","Two Door Cinema Club","Architects","Bring Me The Horizon","Nothing","The Wombats","Inhaler"],desc:"One of the world's longest-running rock and pop festivals since 1970."},
+  {id:"awakenings",n:"Awakenings",d:"Jun 28–29, 2025",loc:"Spaarnwoude, NL",country:"netherlands",genre:["techno","electronic"],pop:true,bg:"linear-gradient(135deg,#0f172a,#1e1b4b,#4338ca)",img:"https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80",url:"https://awakenings.com",price:"€79",cap:"25,000",artists:["Charlotte de Witte","Amelie Lens","Sven Väth","Adam Beyer","Enrico Sangiuliano","I Hate Models","Paula Temple","Reinier Zonneveld","Dense & Pika","Valentino Kanzyani","SPFDJ","Alignment","Rebekah"],desc:"The world's premier techno festival, set in an industrial setting outside Amsterdam."},
+  {id:"dgtl",n:"DGTL Amsterdam",d:"Apr 18–20, 2025",loc:"Amsterdam, NL",country:"netherlands",genre:["electronic","techno"],pop:true,bg:"linear-gradient(135deg,#0f172a,#7c3aed,#EC4899)",img:"https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=800&q=80",url:"https://dgtl.nl",price:"€69",cap:"15,000",artists:["Aphex Twin","Floating Points","Objekt","Blawan","Call Super","Len Faki","SPFDJ","Answer Code Request","Dj Stingray","Surgeon","Phase Fatale","Truncate"],desc:"A circular festival with sustainability at its core, set on Amsterdam's NDSM wharf."},
+  {id:"bestkeptsecret",n:"Best Kept Secret",d:"Jun 5–7, 2025",loc:"Hilvarenbeek, NL",country:"netherlands",genre:["indie","alternative","electronic"],pop:true,bg:"linear-gradient(135deg,#064e3b,#0d9488,#8B5CF6)",img:"https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80",url:"https://bestkeeper.nl",price:"€169",cap:"30,000",artists:["Arcade Fire","Nick Cave & The Bad Seeds","PJ Harvey","Angel Olsen","Courtney Barnett","The National","Big Thief","Bon Iver","Phoebe Bridgers","Sufjan Stevens","Julia Jacklin","Aldous Harding","Hand Habits"],desc:"A boutique forest festival focused on curation and discovery."},
+  {id:"mysteryland",n:"Mysteryland",d:"Aug 22–24, 2025",loc:"Haarlemmermeer, NL",country:"netherlands",genre:["electronic","dance"],pop:true,bg:"linear-gradient(135deg,#4c1d95,#7c3aed,#EC4899)",img:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80",url:"https://mysteryland.com",price:"€149",cap:"40,000",artists:["Martin Garrix","Tiësto","David Guetta","Armin van Buuren","Richie Hawtin","Solomun","Tale Of Us","Rezz","Mau P","Innellea","Mind Against","Monolink"],desc:"The world's oldest dance festival, founded in 1993 in the Netherlands."},
+  {id:"defqon",n:"Defqon.1",d:"Jun 26–29, 2025",loc:"Biddinghuizen, NL",country:"netherlands",genre:["electronic","dance","hardstyle"],pop:true,bg:"linear-gradient(135deg,#7f1d1d,#dc2626,#7c3aed)",img:"https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800&q=80",url:"https://defqon1.nl",price:"€139",cap:"70,000",artists:["Headhunterz","Hardwell","Brennan Heart","Wildstylez","Coone","Noisecontrollers","Sub Zero Project","Gunz For Hire","Psyko Punkz"],desc:"World record holder for the largest hardstyle festival."},
+  {id:"dekmantel",n:"Dekmantel",d:"Jul 30 – Aug 3, 2025",loc:"Amsterdam, NL",country:"netherlands",genre:["electronic","techno"],pop:false,bg:"linear-gradient(135deg,#111827,#374151,#4338ca)",img:"https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&q=80",url:"https://dekmantel.com",price:"€89",cap:"10,000",artists:["DJ Harvey","Surgeon","Legowelt","Hunee","Antal","Palms Trax","Eris Drew","Octo Octa","San Proper","Red Axes","Or:la","La Mverte"],desc:"Amsterdam's most respected electronic music festival with a strong community identity."},
+  {id:"solarweekend",n:"Solar Weekend",d:"Sep 5–7, 2025",loc:"Roermond, NL",country:"netherlands",genre:["electronic","dance","techno"],pop:false,bg:"linear-gradient(135deg,#78350f,#d97706,#dc2626)",img:"https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=800&q=80",url:"https://solarweekend.nl",price:"€79",cap:"20,000",artists:["Solomun","Tale Of Us","Dixon","Âme","Peggy Gou","Mind Against","Innellea","RÜFÜS DU SOL"],desc:"A premier electronic dance festival in the south of the Netherlands."},
+  {id:"tomorrowland",n:"Tomorrowland",d:"Jul 18–27, 2025",loc:"Boom, Belgium",country:"europe",genre:["electronic","dance","pop"],pop:true,bg:"linear-gradient(135deg,#78350f,#f59e0b,#EC4899)",img:"https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80",url:"https://tomorrowland.com",price:"€299",cap:"400,000",artists:["Martin Garrix","Tiësto","David Guetta","Hardwell","Afrojack","Skrillex","Marshmello","ILLENIUM","Alesso","DJ Snake","Zedd","Armin van Buuren","Calvin Harris","Eric Prydz","Diplo"],desc:"The world's most famous electronic music festival in Belgium."},
+  {id:"rockwerchter",n:"Rock Werchter",d:"Jul 3–6, 2025",loc:"Werchter, Belgium",country:"europe",genre:["rock","pop","indie"],pop:true,bg:"linear-gradient(135deg,#7f1d1d,#dc2626,#374151)",img:"https://images.unsplash.com/photo-1501386761578-eaa54b492430?w=800&q=80",url:"https://rockwerchter.be",price:"€299",cap:"90,000",artists:["Pearl Jam","The Killers","Florence + The Machine","The Prodigy","Massive Attack","Fontaines D.C.","Lorde","Idles","AURORA","Wet Leg"],desc:"Belgium's biggest rock festival, consistently voted one of Europe's finest."},
+  {id:"glastonbury",n:"Glastonbury",d:"Jun 25–29, 2025",loc:"Pilton, UK",country:"europe",genre:["rock","pop","indie","electronic"],pop:true,bg:"linear-gradient(135deg,#14532d,#16a34a,#0d9488)",img:"https://images.unsplash.com/photo-1468359601543-843bfaef291a?w=800&q=80",url:"https://glastonbury.co.uk",price:"£355",cap:"200,000",artists:["The Rolling Stones","Dua Lipa","Coldplay","Arctic Monkeys","Billie Eilish","SZA","Lana Del Rey","Kendrick Lamar","Tyler the Creator","Olivia Rodrigo","Burna Boy","Lizzo"],desc:"The iconic British festival that defines popular culture — since 1970."},
+  {id:"primavera",n:"Primavera Sound",d:"May 28–Jun 1, 2025",loc:"Barcelona, Spain",country:"europe",genre:["indie","alternative","electronic"],pop:true,bg:"linear-gradient(135deg,#0c4a6e,#0ea5e9,#8B5CF6)",img:"https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=800&q=80",url:"https://primaverasound.com",price:"€295",cap:"60,000",artists:["Charli XCX","Pulp","Vampire Weekend","Portishead","Eels","Slowdive","Kelela","Perfume Genius","Yo La Tengo","Arooj Aftab","Caroline Polachek","Alvvays"],desc:"The acclaimed Barcelona festival known for its bold and eclectic programming."},
+  {id:"roskilde",n:"Roskilde Festival",d:"Jun 28 – Jul 5, 2025",loc:"Roskilde, Denmark",country:"europe",genre:["rock","electronic","indie","hiphop"],pop:true,bg:"linear-gradient(135deg,#7f1d1d,#dc2626,#f97316)",img:"https://images.unsplash.com/photo-1567942712661-82b9b407abbf?w=800&q=80",url:"https://roskilde-festival.dk",price:"DKK 2,500",cap:"130,000",artists:["Kendrick Lamar","Nine Inch Nails","The Prodigy","Mitski","James Blake","Massive Attack","Aphex Twin","Fontaines D.C.","AURORA","A$AP Rocky","Weyes Blood"],desc:"Scandinavia's largest music festival — entirely run by volunteers, non-profit."},
+  {id:"sziget",n:"Sziget Festival",d:"Aug 6–11, 2025",loc:"Budapest, Hungary",country:"europe",genre:["pop","rock","indie","electronic"],pop:true,bg:"linear-gradient(135deg,#78350f,#f97316,#8B5CF6)",img:"https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=800&q=80",url:"https://szigetfestival.com",price:"€340",cap:"100,000",artists:["Dua Lipa","Calvin Harris","Kygo","The Lumineers","Macklemore","Tove Lo","Jungle","Years & Years","Bastille","Mumford & Sons"],desc:"One of Europe's largest multi-genre festivals on an island in Budapest."},
+  {id:"coachella",n:"Coachella",d:"Apr 11–20, 2025",loc:"California, USA",country:"international",genre:["pop","rock","electronic","hiphop"],pop:true,bg:"linear-gradient(135deg,#78350f,#f97316,#EC4899)",img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",url:"https://coachella.com",price:"$599",cap:"125,000",artists:["Lady Gaga","Green Day","Post Malone","Travis Scott","Charli XCX","Sabrina Carpenter","Doechii","Clairo","Fred again..","Gracie Abrams","Jessie Ware","Glass Animals"],desc:"The world's most famous arts and music festival in the California desert."},
 ];
 
 const GTAG={electronic:"el",techno:"tc",indie:"in",alternative:"in",pop:"po",rock:"ro",dance:"da",hardstyle:"da",hiphop:"el",experimental:"tc"};
 const GCLS={el:"t-el",tc:"t-tc",in:"t-in",po:"t-po",ro:"t-ro",da:"t-da"};
-let user=JSON.parse(localStorage.getItem("fy_user")||"null");
-let spData=JSON.parse(localStorage.getItem("fy_spotify")||"null");
-let saved=JSON.parse(localStorage.getItem("fy_saved")||"[]");
-let activeFilt="all";
-let currentPage="";
+const GENRE_COLORS=[
+  {bg:"rgba(139,92,246,.15)",color:"#c4b5fd",border:"rgba(139,92,246,.25)"},
+  {bg:"rgba(236,72,153,.15)",color:"#f9a8d4",border:"rgba(236,72,153,.25)"},
+  {bg:"rgba(20,184,166,.15)",color:"#5eead4",border:"rgba(20,184,166,.25)"},
+  {bg:"rgba(234,179,8,.15)",color:"#fde047",border:"rgba(234,179,8,.25)"},
+  {bg:"rgba(6,182,212,.15)",color:"#67e8f9",border:"rgba(6,182,212,.25)"},
+];
 
-const SP_CLIENT="c6deb55f193a4dcb81325b838b995515";
-const SP_REDIRECT="https://index2-beta-rust.vercel.app/";
-const SP_SCOPE="user-top-read user-read-private user-read-email";
+// ============ STATE ============
+let usr=JSON.parse(localStorage.getItem("fy_user")||"null");
+let spD=JSON.parse(localStorage.getItem("fy_spotify")||"null");
+let sv=JSON.parse(localStorage.getItem("fy_saved")||"[]");
+let aflt="all";
+let cp="";
 
-async function genV(){const a=new Uint8Array(32);crypto.getRandomValues(a);return btoa(String.fromCharCode(...a)).replace(/\+/g,"-").replace(/\//g,"_").replace(/=/g,"");}
-async function genC(v){const d=new TextEncoder().encode(v);const h=await crypto.subtle.digest("SHA-256",d);return btoa(String.fromCharCode(...new Uint8Array(h))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=/g,"");}
+// ============ SPOTIFY ============
+const SPC="c6deb55f193a4dcb81325b838b995515";
+const SPR="https://index2-beta-rust.vercel.app/";
+const SPS="user-top-read user-read-private user-read-email";
+
+async function gV(){const a=new Uint8Array(32);crypto.getRandomValues(a);return btoa(String.fromCharCode(...a)).replace(/\+/g,"-").replace(/\//g,"_").replace(/=/g,"");}
+async function gCh(v){const d=new TextEncoder().encode(v);const h=await crypto.subtle.digest("SHA-256",d);return btoa(String.fromCharCode(...new Uint8Array(h))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=/g,"");}
 
 async function startSpotify(){
-  const v=await genV();const c=await genC(v);const s=Math.random().toString(36).slice(2);
+  const v=await gV();const c=await gCh(v);const s=Math.random().toString(36).slice(2);
   localStorage.setItem("fy_pkce",v);localStorage.setItem("fy_state",s);
-  const p=new URLSearchParams({client_id:SP_CLIENT,response_type:"code",redirect_uri:SP_REDIRECT,code_challenge_method:"S256",code_challenge:c,state:s,scope:SP_SCOPE});
+  const p=new URLSearchParams({client_id:SPC,response_type:"code",redirect_uri:SPR,code_challenge_method:"S256",code_challenge:c,state:s,scope:SPS});
   window.location.href="https://accounts.spotify.com/authorize?"+p;
 }
 
-async function handleCallback(){
+async function handleCB(){
   const p=new URLSearchParams(window.location.search);
   const code=p.get("code");if(!code)return;
   window.history.replaceState({},"","/");
   const v=localStorage.getItem("fy_pkce");
   if(!v){toast("Session expired, try again","err");return;}
-  toast("Connecting Spotify...");
+  toast("🎵 Connecting Spotify...");
   try{
-    const r=await fetch("https://accounts.spotify.com/api/token",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams({grant_type:"authorization_code",code,redirect_uri:SP_REDIRECT,client_id:SP_CLIENT,code_verifier:v})});
+    const r=await fetch("https://accounts.spotify.com/api/token",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams({grant_type:"authorization_code",code,redirect_uri:SPR,client_id:SPC,code_verifier:v})});
     const t=await r.json();
     localStorage.removeItem("fy_pkce");
     if(t.error){toast("Spotify: "+t.error_description,"err");return;}
     if(!t.access_token){toast("No token received","err");return;}
-    const [prof,top]=await Promise.all([
-      fetch("https://api.spotify.com/v1/me",{headers:{Authorization:"Bearer "+t.access_token}}).then(r=>r.json()),
-      fetch("https://api.spotify.com/v1/me/top/artists?limit=50&time_range=medium_term",{headers:{Authorization:"Bearer "+t.access_token}}).then(r=>r.json())
+    const h={"Authorization":"Bearer "+t.access_token};
+    const [prof,topA,topT]=await Promise.all([
+      fetch("https://api.spotify.com/v1/me",{headers:h}).then(r=>r.json()),
+      fetch("https://api.spotify.com/v1/me/top/artists?limit=50&time_range=medium_term",{headers:h}).then(r=>r.json()),
+      fetch("https://api.spotify.com/v1/me/top/tracks?limit=20&time_range=medium_term",{headers:h}).then(r=>r.json())
     ]);
-    spData={name:prof.display_name,email:prof.email,img:prof.images?.[0]?.url,artists:(top.items||[]).map(a=>a.name),genres:[...new Set((top.items||[]).flatMap(a=>a.genres||[]).filter(Boolean))]};
-    localStorage.setItem("fy_spotify",JSON.stringify(spData));
-    if(!user){user={name:prof.display_name,email:prof.email,bio:""};localStorage.setItem("fy_user",JSON.stringify(user));}
-    updateNav();go("matches");toast("Spotify connected! Here are your matches","ok");
+    spD={
+      name:prof.display_name,email:prof.email,img:prof.images?.[0]?.url,
+      artists:(topA.items||[]).map(a=>a.name),
+      artistsFull:(topA.items||[]).map(a=>({name:a.name,img:a.images?.[0]?.url,genres:a.genres||[]})),
+      genres:[...new Set((topA.items||[]).flatMap(a=>a.genres||[]).filter(Boolean))],
+      tracks:(topT.items||[]).map(t=>({name:t.name,artist:t.artists?.[0]?.name,img:t.album?.images?.[1]?.url}))
+    };
+    localStorage.setItem("fy_spotify",JSON.stringify(spD));
+    if(!usr){usr={name:prof.display_name,email:prof.email,bio:""};localStorage.setItem("fy_user",JSON.stringify(usr));}
+    updateNav();go("matches");toast("🎵 Spotify connected! Here are your matches","ok");
   }catch(e){toast("Error: "+e.message,"err");}
 }
 
-function score(f){
-  if(!spData?.artists)return null;
-  const my=spData.artists.map(a=>a.toLowerCase());
+// ============ MATCH ============
+function sc(f){
+  if(!spD?.artists)return null;
+  const my=spD.artists.map(a=>a.toLowerCase());
   const fa=f.artists.map(a=>a.toLowerCase());
   const hit=fa.filter(a=>my.some(m=>m.includes(a)||a.includes(m)));
-  const gs=f.genre.some(g=>(spData.genres||[]).filter(Boolean).some(sg=>sg&&sg.includes(g)||g&&g.includes(sg)))?12:0;
+  const gs=f.genre.some(g=>(spD.genres||[]).filter(Boolean).some(sg=>sg&&(sg.includes(g)||g.includes(sg))))?12:0;
   return Math.min(99,Math.round(hit.length/Math.max(fa.length,1)*87)+gs);
 }
-function hitArtists(f){
-  if(!spData?.artists)return[];
-  const my=spData.artists.map(a=>a.toLowerCase());
+function hitA(f){
+  if(!spD?.artists)return[];
+  const my=spD.artists.map(a=>a.toLowerCase());
   return f.artists.filter(a=>my.some(m=>m.includes(a.toLowerCase())||a.toLowerCase().includes(m)));
 }
 
+// ============ ROUTING ============
 function go(page){
   document.querySelectorAll(".pg").forEach(p=>p.classList.remove("on"));
   const el=document.getElementById("pg-"+page);if(!el)return;
-  el.classList.add("on");currentPage=page;window.scrollTo(0,0);
+  el.classList.add("on");cp=page;window.scrollTo(0,0);
   document.querySelectorAll(".nav-link").forEach(l=>l.classList.remove("on"));
   const nm={matches:"nl-matches",discover:"nl-discover",saved:"nl-saved"};
   if(nm[page])document.getElementById(nm[page])?.classList.add("on");
-  if(page==="matches")renderMatches();
-  if(page==="discover")renderDiscover();
-  if(page==="saved")renderSaved();
-  if(page==="profile")renderProfile();
-  if(page==="home")renderPreview();
+  if(page==="matches")rMatches();
+  if(page==="discover")rDiscover();
+  if(page==="saved")rSaved();
+  if(page==="profile")rProfile();
+  if(page==="home")rPreview();
 }
 
-function fc(f){
-  const s=score(f);const sv=saved.includes(f.id);
+// ============ FESTIVAL CARD ============
+function fCard(f){
+  const s=sc(f);const isSv=sv.includes(f.id);
   const tags=f.genre.slice(0,2).map(g=>{const k=GTAG[g]||"el";return'<span class="tag '+GCLS[k]+'">'+g+"</span>";}).join(" ");
-  const bar=s!==null?'<div class="mbar"><div class="mfill" style="width:'+s+'%"></div></div><div class="mmeta"><span>'+hitArtists(f).slice(0,2).join(", ")||"No direct matches"+'</span><span style="font-weight:700;color:'+( s>60?"#c4b5fd":s>30?"#fbbf24":"var(--text3)")+'">'+ s+"%</span></div>":"";
-  const mb=s!==null?'<div class="mb" style="color:'+( s>60?"#c4b5fd":s>30?"#fbbf24":"var(--text2)")+'">'+ s+"%</div>":"";
+  const bar=s!==null?'<div class="mbar"><div class="mfill" style="width:'+s+'%"></div></div><div class="mmeta"><span style="color:#c4b5fd;font-weight:500">'+hitA(f).slice(0,2).join(" · ")||"No direct matches"+'</span><span style="font-weight:700;color:'+(s>60?"#c4b5fd":s>30?"#fbbf24":"var(--text3)")+'">'+s+"%</span></div>":"";
+  const badge=s!==null?'<div class="fc-badge" style="color:'+(s>60?"#c4b5fd":s>30?"#fbbf24":"var(--text2)")+'">'+s+"% match</div>":"";
   return '<div class="fc" onclick="openF(\''+f.id+'\')">'+
-    '<div class="fc-img" style="background:'+f.color+'">'+
-    '<span style="position:relative;z-index:1">'+f.emoji+"</span>"+
-    mb+'<button class="fc-save" onclick="toggleSave(event,\''+f.id+'\')" style="color:'+( sv?"#EC4899":"#fff")+'">'+( sv?"\u2665":"\u2661")+"</button>"+
-    "</div>"+
+    '<div class="fc-img" style="background-image:url('+f.img+');background-color:'+f.bg.split(",")[0].replace("linear-gradient(135deg,","")+'">'+
+      '<div class="fc-img-overlay"></div>'+
+      badge+
+      '<button class="fc-save" onclick="toggleSv(event,\''+f.id+'\')" style="color:'+(isSv?"#EC4899":"rgba(255,255,255,.8)")+'">'+(isSv?"♥":"♡")+'</button>'+
+    '</div>'+
     '<div class="fc-body">'+
-    '<div class="fc-name">'+f.name+"</div>"+
-    '<div class="fc-meta">\u{1F4C5} '+f.dates+' &nbsp; \u{1F4CD} '+f.loc.split(",")[0]+"</div>"+
-    '<div style="display:flex;gap:6px;flex-wrap:wrap">'+tags+"</div>"+
-    bar+"</div></div>";
+      '<div class="fc-name">'+f.n+'</div>'+
+      '<div class="fc-meta"><span>📅 '+f.d+'</span><span>📍 '+f.loc.split(",")[0]+'</span></div>'+
+      '<div class="fc-tags">'+tags+'</div>'+
+      bar+
+    '</div>'+
+  '</div>';
 }
 
-function renderDiscover(){
-  const grid=document.getElementById("disc-grid");const sub=document.getElementById("disc-sub");if(!grid)return;
-  let list=[...FESTIVALS];
-  if(activeFilt!=="all"){
-    if(activeFilt==="popular")list=list.filter(f=>f.popular);
-    else if(activeFilt==="netherlands")list=list.filter(f=>f.country==="netherlands");
-    else if(activeFilt==="europe")list=list.filter(f=>f.country==="europe"||f.country==="netherlands");
-    else if(activeFilt==="international")list=list.filter(f=>f.country==="international");
-    else list=list.filter(f=>f.genre.includes(activeFilt));
+// ============ DISCOVER ============
+function rDiscover(){
+  const grid=document.getElementById("disc-grid");
+  const sub=document.getElementById("disc-sub");
+  if(!grid)return;
+  let list=[...F];
+  if(aflt!=="all"){
+    if(aflt==="popular")list=list.filter(f=>f.pop);
+    else if(aflt==="netherlands")list=list.filter(f=>f.country==="netherlands");
+    else if(aflt==="europe")list=list.filter(f=>f.country==="europe"||f.country==="netherlands");
+    else if(aflt==="international")list=list.filter(f=>f.country==="international");
+    else list=list.filter(f=>f.genre.includes(aflt));
   }
-  if(spData){list.sort((a,b)=>(score(b)||0)-(score(a)||0));if(sub)sub.textContent=list.length+" festivals sorted by your Spotify match";}
-  else{if(sub)sub.textContent="Browse "+list.length+" festivals worldwide";const bar=document.getElementById("sp-bar");if(bar)bar.innerHTML='<div class="sp-prompt"><div><strong>Get personalized matches</strong><p>Connect Spotify to see which festivals match your taste.</p></div><button class="btn btn-sp btn-sm" onclick="startSpotify()">Connect Spotify</button></div>';}
-  grid.innerHTML=list.map(f=>fc(f)).join("");
+  if(spD){list.sort((a,b)=>(sc(b)||0)-(sc(a)||0));if(sub)sub.textContent=list.length+" festivals sorted by your Spotify match";}
+  else{
+    if(sub)sub.textContent="Browse "+list.length+" festivals worldwide";
+    const bar=document.getElementById("sp-bar");
+    if(bar)bar.innerHTML='<div class="sp-connect-bar"><div><strong>Get personalized matches</strong><p>Connect Spotify to see which festivals match your music taste.</p></div><button class="btn btn-sp btn-sm" onclick="startSpotify()">Connect Spotify</button></div>';
+  }
+  grid.innerHTML=list.map(f=>fCard(f)).join("");
 }
 
-function filt(f,btn){activeFilt=f;document.querySelectorAll(".filt").forEach(b=>b.classList.remove("on"));btn.classList.add("on");renderDiscover();}
+function flt(f,btn){aflt=f;document.querySelectorAll(".filt").forEach(b=>b.classList.remove("on"));btn.classList.add("on");rDiscover();}
 
-function renderPreview(){const g=document.getElementById("preview-grid");if(!g)return;g.innerHTML=FESTIVALS.filter(f=>f.popular).slice(0,6).map(f=>fc(f)).join("");}
+function rPreview(){
+  const g=document.getElementById("preview-grid");
+  if(!g)return;
+  g.innerHTML=F.filter(f=>f.pop).slice(0,6).map(f=>fCard(f)).join("");
+}
 
-function renderSaved(){
-  const grid=document.getElementById("saved-grid");const empty=document.getElementById("saved-empty");if(!grid)return;
-  const list=FESTIVALS.filter(f=>saved.includes(f.id));
+// ============ SAVED ============
+function rSaved(){
+  const grid=document.getElementById("saved-grid");
+  const empty=document.getElementById("saved-empty");
+  if(!grid)return;
+  const list=F.filter(f=>sv.includes(f.id));
   if(!list.length){grid.innerHTML="";empty.style.display="block";return;}
-  empty.style.display="none";grid.innerHTML=list.map(f=>fc(f)).join("");
+  empty.style.display="none";
+  grid.innerHTML=list.map(f=>fCard(f)).join("");
 }
 
-function toggleSave(e,id){
+function toggleSv(e,id){
   e.stopPropagation();
-  if(saved.includes(id)){saved=saved.filter(x=>x!==id);toast("Removed from saved");}
-  else{saved.push(id);toast("Festival saved!","ok");}
-  localStorage.setItem("fy_saved",JSON.stringify(saved));
-  if(currentPage==="discover")renderDiscover();
-  if(currentPage==="saved")renderSaved();
-  if(currentPage==="home")renderPreview();
-  if(currentPage==="matches")renderMatches();
+  if(sv.includes(id)){sv=sv.filter(x=>x!==id);toast("Removed from saved");}
+  else{sv.push(id);toast("❤️ Festival saved!","ok");}
+  localStorage.setItem("fy_saved",JSON.stringify(sv));
+  if(cp==="discover")rDiscover();
+  if(cp==="saved")rSaved();
+  if(cp==="home")rPreview();
+  if(cp==="matches")rMatches();
 }
 
-function renderMatches(){
-  if(!spData)return;
-  const hdr=document.getElementById("matches-header");const body=document.getElementById("matches-body");if(!hdr||!body)return;
-  const topGenres=[...new Set((spData.genres||[]).filter(Boolean))].slice(0,5);
-  const avImg=spData.img?'<img src="'+spData.img+'" onerror="this.style.display=\'none\'">':"";
-  hdr.innerHTML='<div class="match-hero"><div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap"><div class="av" style="width:56px;height:56px;font-size:20px">'+avImg+(spData.name?.[0]?.toUpperCase()||"F")+'</div><div><div style="font-size:22px;font-weight:800">Hey '+(( spData.name||"").split(" ")[0])+"! \u{1F44B} Here are your festival matches</div><div style=\'font-size:14px;color:var(--text2);margin-top:3px\'>Based on your "+spData.artists.length+" top Spotify artists</div></div></div>"+( topGenres.length?'<div style="font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">YOUR TOP GENRES</div><div style="display:flex;gap:8px;flex-wrap:wrap">'+topGenres.map(g=>'<span class="tag t-el" style="font-size:12px;padding:5px 12px">'+g+"</span>").join("")+"</div>":"")+"</div>";
-  const sorted=[...FESTIVALS].sort((a,b)=>(score(b)||0)-(score(a)||0));
+// ============ MATCHES PAGE ============
+function rMatches(){
+  if(!spD)return;
+  const sorted=[...F].sort((a,b)=>(sc(b)||0)-(sc(a)||0));
+  const top1=sorted[0];
   const top5=sorted.slice(0,5);
-  const rk=["\u{1F947}","\u{1F948}","\u{1F949}","4","5"];
-  const rc=["rank-1","rank-2","rank-3","rank-rest","rank-rest"];
-  let t5='<div class="sec-head"><h2>\u{1F3C6} Your Top 5 Matches</h2><a onclick="go(\'discover\')">See all festivals \u2192</a></div><div class="top5-grid">';
-  top5.forEach((f,i)=>{
-    const s=score(f)||0;const hit=hitArtists(f);const sv=saved.includes(f.id);
-    t5+='<div class="top5-card" onclick="openF(\''+f.id+'\')"><div class="top5-rank '+rc[i]+'">'+rk[i]+'</div><div class="top5-img" style="background:'+f.color+'">'+f.emoji+'</div><div class="top5-info"><div class="top5-name">'+f.name+'</div><div class="top5-meta">\u{1F4C5} '+f.dates+' \u{1F4CD} '+f.loc+'</div>'+( hit.length?'<div class="top5-artists">\u2713 '+hit.slice(0,3).join(" \u00B7 ")+'</div>':"")+ '<div class="top5-bar"><div class="top5-fill" style="width:'+s+'%"></div></div></div><div class="top5-score"><div class="top5-pct">'+s+'%</div><div class="top5-pct-label">match</div><button style="background:none;border:none;font-size:18px;margin-top:8px;cursor:pointer;color:'+( sv?"#EC4899":"var(--text3)")+'" onclick="toggleSave(event,\''+f.id+'\')">'+( sv?"\u2665":"\u2661")+"</button></div></div>";
-  });
-  t5+="</div>";
-  const genres=[{key:"popular",label:"Most Popular",emoji:"\u{1F525}"},{key:"electronic",label:"Electronic",emoji:"\u{1F3DB}\uFE0F"},{key:"techno",label:"Techno",emoji:"\u26A1"},{key:"indie",label:"Indie / Alternative",emoji:"\u{1F3B8}"},{key:"pop",label:"Pop",emoji:"\u2B50"},{key:"rock",label:"Rock / Metal",emoji:"\u{1F918}"},{key:"dance",label:"Dance / EDM",emoji:"\u{1F483}"}];
-  let ghtml="";
-  genres.forEach(g=>{
-    const list=g.key==="popular"?sorted.filter(f=>f.popular):sorted.filter(f=>f.genre.includes(g.key));
+
+  // HERO #1 MATCH
+  const s1=sc(top1)||0;
+  const hit1=hitA(top1);
+  const heroEl=document.getElementById("m-hero-match");
+  if(heroEl)heroEl.innerHTML=
+    '<div class="hero-match">'+
+      '<div class="hero-match-bg" style="background-image:url('+top1.img+');background-color:'+top1.bg.split(",")[1]+'"></div>'+
+      '<div class="hero-match-overlay"></div>'+
+      '<div class="hero-match-score">'+
+        '<div class="hero-match-pct">'+s1+'%</div>'+
+        '<div class="hero-match-pct-label">Your match</div>'+
+      '</div>'+
+      '<div class="hero-match-content">'+
+        '<div class="hero-match-badge">🏆 Your #1 Festival Match</div>'+
+        '<div class="hero-match-name">'+top1.n+'</div>'+
+        '<div class="hero-match-meta">'+
+          '<span>📅 '+top1.d+'</span>'+
+          '<span>📍 '+top1.loc+'</span>'+
+          '<span>🎫 '+top1.price+'</span>'+
+        '</div>'+
+        '<div class="hero-match-artists">'+
+          top1.artists.slice(0,8).map(a=>'<span class="hero-match-artist'+(hit1.includes(a)?' yours':'')+'">'+a+'</span>').join("")+
+        '</div>'+
+        '<div class="hero-match-actions">'+
+          '<button class="btn btn-grad" onclick="openF(\''+top1.id+'\')">View Festival & Lineup</button>'+
+          '<button class="btn btn-dark" onclick="window.open(\''+top1.url+'\',\'_blank\')">🎫 Get Tickets</button>'+
+          '<button onclick="toggleSv(event,\''+top1.id+'\')" class="btn btn-dark" style="color:'+(sv.includes(top1.id)?"#EC4899":"var(--text)")+'">'+(sv.includes(top1.id)?"♥ Saved":"♡ Save")+'</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+
+  // DNA SECTION
+  const genres=(spD.genres||[]).filter(Boolean).slice(0,8);
+  const topArtists=spD.artists?.slice(0,12)||[];
+  const topTracks=spD.tracks?.slice(0,10)||[];
+  const dnaEl=document.getElementById("m-dna");
+  if(dnaEl)dnaEl.innerHTML=
+    '<div class="dna-section">'+
+      '<div class="dna-header">'+
+        '<div class="dna-av">'+(spD.img?'<img src="'+spD.img+'">':(spD.name?.[0]?.toUpperCase()||"♪"))+'</div>'+
+        '<div>'+
+          '<div class="dna-name">'+spD.name+'\'s Music DNA</div>'+
+          '<div class="dna-sub">Based on your Spotify listening history</div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="dna-stats">'+
+        '<div class="dna-stat"><div class="dna-stat-val">'+spD.artists.length+'</div><div class="dna-stat-label">Top Artists</div></div>'+
+        '<div class="dna-stat"><div class="dna-stat-val">'+sorted.filter(f=>(sc(f)||0)>50).length+'</div><div class="dna-stat-label">Strong Matches</div></div>'+
+        '<div class="dna-stat"><div class="dna-stat-val">'+sv.length+'</div><div class="dna-stat-label">Saved</div></div>'+
+        '<div class="dna-stat"><div class="dna-stat-val">'+genres.length+'</div><div class="dna-stat-label">Top Genres</div></div>'+
+      '</div>'+
+      (genres.length?
+        '<div style="font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Your Top Genres</div>'+
+        '<div class="dna-genres">'+genres.map((g,i)=>{const c=GENRE_COLORS[i%GENRE_COLORS.length];return'<span class="dna-genre" style="background:'+c.bg+';color:'+c.color+';border-color:'+c.border+'">'+g+'</span>';}).join("")+'</div>':"")+'<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px">'+
+        '<div>'+
+          '<div style="font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Your Top Artists</div>'+
+          '<div class="dna-artists-grid">'+topArtists.slice(0,8).map((a,i)=>'<div class="dna-artist"><div class="dna-artist-rank">'+( i+1)+'</div>'+a+'</div>').join("")+'</div>'+
+        '</div>'+
+        '<div>'+
+          '<div style="font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Your Top Tracks</div>'+
+          '<div style="display:flex;flex-direction:column;gap:6px">'+topTracks.map((t,i)=>'<div class="dna-track"><div class="dna-track-num">'+(i+1)+'</div><div class="dna-track-info"><div class="dna-track-name">'+t.name+'</div><div class="dna-track-artist">'+t.artist+'</div></div></div>').join("")+'</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+
+  // TOP 5
+  const rk=["🥇","🥈","🥉","4","5"];
+  const rc=["r1","r2","r3","r45","r45"];
+  const t5El=document.getElementById("m-top5");
+  if(t5El)t5El.innerHTML=
+    '<div class="top5-section">'+
+      '<div class="section-header"><h2>🏆 Your Top 5 Matches</h2><a onclick="go(\'discover\')">See all →</a></div>'+
+      '<div class="top5-list">'+top5.map((f,i)=>{
+        const s=sc(f)||0;const hit=hitA(f);const isSaved=sv.includes(f.id);
+        return '<div class="top5-item" onclick="openF(\''+f.id+'\')">'+
+          '<div class="top5-rank '+rc[i]+'">'+rk[i]+'</div>'+
+          '<div class="top5-thumb" style="background-image:url('+f.img+');background-size:cover;background-position:center;border-radius:10px"></div>'+
+          '<div class="top5-info">'+
+            '<div class="top5-name">'+f.n+'</div>'+
+            '<div class="top5-loc">📍 '+f.loc+'  ·  📅 '+f.d+'</div>'+
+            (hit.length?'<div class="top5-artists-txt">✓ '+hit.slice(0,3).join(" · ")+'</div>':'<div style="font-size:11px;color:var(--text3)">Genre match</div>')+
+            '<div class="top5-bar"><div class="top5-fill" style="width:'+s+'%"></div></div>'+
+          '</div>'+
+          '<div class="top5-right">'+
+            '<div class="top5-pct">'+s+'%</div>'+
+            '<div class="top5-pct-sub">match</div>'+
+            '<button class="top5-save" style="color:'+(isSaved?"#EC4899":"var(--text3)")+'" onclick="toggleSv(event,\''+f.id+'\')">'+(isSaved?"♥":"♡")+'</button>'+
+          '</div>'+
+        '</div>';
+      }).join("")+'</div>'+
+    '</div>';
+
+  // GENRE SECTIONS
+  const genreSections=[
+    {key:"electronic",label:"Electronic",emoji:"🎛️"},
+    {key:"techno",label:"Techno",emoji:"⚡"},
+    {key:"indie",label:"Indie / Alternative",emoji:"🎸"},
+    {key:"pop",label:"Pop",emoji:"🌟"},
+    {key:"rock",label:"Rock",emoji:"🤘"},
+    {key:"dance",label:"Dance / EDM",emoji:"💃"},
+  ];
+  let gHtml='<div class="genre-block"><div class="section-header"><h2>🎵 By Genre</h2></div>';
+  genreSections.forEach(g=>{
+    const list=sorted.filter(f=>f.genre.includes(g.key));
     if(!list.length)return;
-    ghtml+='<div class="genre-section"><h2>'+g.emoji+" "+g.label+'</h2><div class="fest-grid" style="padding:0;margin:0">'+list.slice(0,4).map(f=>fc(f)).join("")+"</div></div>";
+    gHtml+='<h2 style="font-size:16px;font-weight:700;margin:28px 0 14px;color:var(--text2)">'+g.emoji+" "+g.label+'</h2>'+
+      '<div class="fest-grid" style="margin-bottom:8px">'+list.slice(0,4).map(f=>fCard(f)).join("")+'</div>';
   });
-  body.innerHTML=t5+(ghtml?'<div style="border-top:1px solid var(--border);padding-top:36px;margin-top:8px"><div class="sec-head"><h2>\u{1F3B5} By Genre</h2></div>'+ghtml+"</div>":"");
+  gHtml+='</div>';
+  const gEl=document.getElementById("m-genres");
+  if(gEl)gEl.innerHTML=gHtml;
 }
 
+// ============ FESTIVAL MODAL ============
+let curF=null;
 function openF(id){
-  const f=FESTIVALS.find(x=>x.id===id);if(!f)return;
-  const s=score(f);const hit=hitArtists(f);const sv=saved.includes(f.id);
-  document.getElementById("m-banner").style.cssText="background:"+f.color+";border-radius:12px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;font-size:72px;height:180px";
-  document.getElementById("m-banner").textContent=f.emoji;
-  document.getElementById("m-title").textContent=f.name;
-  document.getElementById("m-meta").innerHTML="<span>\u{1F4C5} "+f.dates+"</span><span>\u{1F4CD} "+f.loc+"</span><span>\u{1F3AB} "+f.price+"</span><span>\u{1F465} "+f.cap+"</span>";
-  const mb=s!==null?'<div style="background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.25);border-radius:12px;padding:14px;margin-bottom:18px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span style="font-weight:700;font-size:14px">Your Match Score</span><span style="font-size:20px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+ s+'%</span></div><div class="mbar" style="height:5px"><div class="mfill" style="width:'+s+'%"></div></div>'+( hit.length?'<div style="font-size:12px;color:var(--text2);margin-top:8px">Your artists: <strong style="color:#c4b5fd">'+ hit.join(", ")+"</strong></div>":"")+"</div>":"";
-  document.getElementById("m-body").innerHTML=mb+'<p style="color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:18px">'+f.desc+'</p><div style="font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Lineup</div><div class="lineup">'+f.artists.map(a=>'<span class="chip'+(hit.includes(a)?" hit":"")+'">'+ a+"</span>").join("")+'</div><div class="modal-acts"><button class="btn btn-sp btn-sm" onclick="window.open(\''+f.url+'\',\'_blank\')">\u{1F3AB} Get Tickets</button><button class="btn btn-ghost btn-sm" id="m-save" onclick="toggleSaveModal(\''+f.id+'\')">'+( sv?"\u2665 Saved":"\u2661 Save")+"</button></div>";
-  document.getElementById("overlay").classList.add("on");document.body.style.overflow="hidden";
+  const f=F.find(x=>x.id===id);if(!f)return;
+  curF=f;
+  const s=sc(f);const hit=hitA(f);const isSv2=sv.includes(f.id);
+  // Image
+  const mi=document.getElementById("m-img");
+  mi.style.cssText="height:220px;position:relative;background-image:url("+f.img+");background-size:cover;background-position:center;flex-shrink:0";
+  // Score badge
+  const sb=document.getElementById("m-score-badge");
+  if(s!==null){sb.style.display="block";document.getElementById("m-score-pct").textContent=s+"%";}
+  else sb.style.display="none";
+  // Title & meta
+  document.getElementById("m-title").textContent=f.n;
+  document.getElementById("m-meta").innerHTML="<span>📅 "+f.d+"</span><span>📍 "+f.loc+"</span><span>🎫 "+f.price+"</span><span>👥 "+f.cap+"</span>";
+  // Tabs
+  // Overview tab
+  const matchBlock=s!==null?'<div style="background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(236,72,153,.05));border:1px solid rgba(139,92,246,.2);border-radius:14px;padding:18px;margin-bottom:18px">'+
+    '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">'+
+      '<span style="font-weight:700">Your Match Score</span>'+
+      '<span style="font-size:28px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+s+'%</span>'+
+    '</div>'+
+    '<div class="mbar" style="height:5px"><div class="mfill" style="width:'+s+'%"></div></div>'+
+    (hit.length?'<div style="font-size:13px;color:var(--text2);margin-top:10px">Your artists playing: <strong style="color:#c4b5fd">'+hit.join(", ")+'</strong></div>':'')+
+  '</div>':"";
+  document.getElementById("tab-overview").innerHTML=
+    matchBlock+
+    '<p style="color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:20px">'+f.desc+'</p>'+
+    '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">'+f.genre.map(g=>{const k=GTAG[g]||"el";return'<span class="tag '+GCLS[k]+'">'+g+'</span>';}).join("")+'</div>'+
+    '<div class="modal-actions">'+
+      '<button class="btn btn-sp btn-sm" onclick="window.open(\''+f.url+'\',\'_blank\')">🎫 Get Tickets</button>'+
+      '<button class="btn btn-dark btn-sm" id="ov-save" onclick="toggleSvModal(\''+f.id+'\')">'+( isSv2?"♥ Saved":"♡ Save")+'</button>'+
+    '</div>';
+  // Lineup tab
+  document.getElementById("tab-lineup").innerHTML=
+    (s!==null&&hit.length?'<div style="font-size:12px;color:#c4b5fd;font-weight:600;margin-bottom:14px">★ = your artist</div>':"")+
+    '<div class="lineup-grid">'+f.artists.map(a=>'<div class="lineup-artist'+(hit.includes(a)?" match":"")+'">'+a+'</div>').join("")+'</div>';
+  // Info tab
+  document.getElementById("tab-info").innerHTML=
+    '<div style="display:grid;gap:12px">'+
+      '<div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Date</div><div style="font-weight:600">'+f.d+'</div></div>'+
+      '<div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Location</div><div style="font-weight:600">'+f.loc+'</div></div>'+
+      '<div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Ticket Price</div><div style="font-weight:600">'+f.price+'</div></div>'+
+      '<div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Capacity</div><div style="font-weight:600">'+f.cap+'</div></div>'+
+      '<div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Genre</div><div style="font-weight:600">'+f.genre.join(", ")+'</div></div>'+
+    '</div>'+
+    '<div class="modal-actions" style="margin-top:20px"><button class="btn btn-sp btn-sm" onclick="window.open(\''+f.url+'\',\'_blank\')">🎫 Get Tickets</button></div>';
+  // Reset to overview tab
+  document.querySelectorAll(".modal-tab").forEach((t,i)=>t.classList.toggle("on",i===0));
+  document.querySelectorAll(".modal-tab-content").forEach((t,i)=>t.classList.toggle("on",i===0));
+  document.getElementById("overlay").classList.add("on");
+  document.body.style.overflow="hidden";
 }
-function toggleSaveModal(id){toggleSave({stopPropagation:()=>{}},id);const btn=document.getElementById("m-save");if(btn)btn.textContent=saved.includes(id)?"\u2665 Saved":"\u2661 Save";}
+function switchTab(name,btn){
+  document.querySelectorAll(".modal-tab").forEach(t=>t.classList.remove("on"));
+  document.querySelectorAll(".modal-tab-content").forEach(t=>t.classList.remove("on"));
+  btn.classList.add("on");
+  document.getElementById("tab-"+name).classList.add("on");
+}
+function toggleSvModal(id){
+  toggleSv({stopPropagation:()=>{}},id);
+  const btn=document.getElementById("ov-save");
+  if(btn)btn.textContent=sv.includes(id)?"♥ Saved":"♡ Save";
+}
 function closeM(e){if(e.target.id==="overlay")closeModal();}
 function closeModal(){document.getElementById("overlay").classList.remove("on");document.body.style.overflow="";}
 
+// ============ AUTH ============
 function doLogin(){
-  const email=document.getElementById("lin-email").value;const pw=document.getElementById("lin-pw").value;
-  if(!email||!pw){toast("Fill in all fields","err");return;}
+  const em=document.getElementById("li-em").value;const pw=document.getElementById("li-pw").value;
+  if(!em||!pw){toast("Fill in all fields","err");return;}
   const users=JSON.parse(localStorage.getItem("fy_users")||"[]");
-  const u=users.find(x=>x.email===email&&x.pw===pw);
+  const u=users.find(x=>x.email===em&&x.pw===pw);
   if(!u){toast("Wrong email or password","err");return;}
-  user={name:u.name,email:u.email,bio:u.bio||""};localStorage.setItem("fy_user",JSON.stringify(user));
+  usr={name:u.name,email:u.email,bio:u.bio||""};localStorage.setItem("fy_user",JSON.stringify(usr));
   updateNav();go("discover");toast("Welcome back, "+u.name+"!","ok");
 }
 function doSignup(){
-  const name=document.getElementById("sup-name").value;const email=document.getElementById("sup-email").value;const pw=document.getElementById("sup-pw").value;
-  if(!name||!email||!pw){toast("Fill in all fields","err");return;}
+  const nm=document.getElementById("su-nm").value;const em=document.getElementById("su-em").value;const pw=document.getElementById("su-pw").value;
+  if(!nm||!em||!pw){toast("Fill in all fields","err");return;}
   if(pw.length<8){toast("Password min. 8 characters","err");return;}
   const users=JSON.parse(localStorage.getItem("fy_users")||"[]");
-  if(users.find(x=>x.email===email)){toast("Email already exists","err");return;}
-  users.push({name,email,pw,bio:""});localStorage.setItem("fy_users",JSON.stringify(users));
-  user={name,email,bio:""};localStorage.setItem("fy_user",JSON.stringify(user));
+  if(users.find(x=>x.email===em)){toast("Email already exists","err");return;}
+  users.push({name:nm,email:em,pw,bio:""});localStorage.setItem("fy_users",JSON.stringify(users));
+  usr={name:nm,email:em,bio:""};localStorage.setItem("fy_user",JSON.stringify(usr));
   updateNav();go("discover");toast("Account created! Connect Spotify for matches","ok");
 }
-function logout(){user=null;spData=null;localStorage.removeItem("fy_user");localStorage.removeItem("fy_spotify");updateNav();go("home");toast("Signed out");}
+function logout(){usr=null;spD=null;localStorage.removeItem("fy_user");localStorage.removeItem("fy_spotify");updateNav();go("home");toast("Signed out");}
 
 function updateNav(){
   const nr=document.getElementById("nav-right");const mn=document.getElementById("nl-matches");
-  if(user){nr.innerHTML='<div class="av" id="nav-av" onclick="go(\'profile\')" style="width:34px;height:34px;font-size:13px;font-weight:700">'+( spData&&spData.img?'<img src="'+spData.img+'">':(user.name?.[0]?.toUpperCase()||"U"))+"</div>";}
-  else{nr.innerHTML='<button class="btn btn-ghost btn-sm" onclick="go(\'login\')">Log in</button><button class="btn btn-grad btn-sm" onclick="go(\'signup\')">Sign up</button>';}
-  if(mn)mn.style.display=spData?"block":"none";
+  if(usr){
+    const img=spD?.img?'<img src="'+spD.img+'">':(usr.name?.[0]?.toUpperCase()||"U");
+    nr.innerHTML='<div class="av" onclick="go(\'profile\')">'+img+'</div>';
+  }else{
+    nr.innerHTML='<button class="btn btn-ghost btn-sm" onclick="go(\'login\')">Log in</button><button class="btn btn-grad btn-sm" onclick="go(\'signup\')">Sign up</button>';
+  }
+  if(mn)mn.style.display=spD?"block":"none";
 }
 
-function renderProfile(){
-  if(!user){go("login");return;}
-  document.getElementById("pav").textContent=user.name?.[0]?.toUpperCase()||"U";
-  if(spData&&spData.img){const av=document.getElementById("pav");av.innerHTML='<img src="'+spData.img+'">';av.style.padding="0";}
-  document.getElementById("pname").textContent=user.name;
-  document.getElementById("pemail").textContent=user.email;
-  document.getElementById("ed-name").value=user.name||"";
-  document.getElementById("ed-bio").value=user.bio||"";
-  document.getElementById("st-saved").textContent=saved.length;
-  document.getElementById("st-matches").textContent=spData?FESTIVALS.filter(f=>(score(f)||0)>50).length:0;
-  const lbl=document.getElementById("sp-label");const sub=document.getElementById("sp-sub");const btn=document.getElementById("sp-btn");
-  if(spData){lbl.textContent="Connected as "+(spData.name||"Spotify User");sub.textContent=(spData.artists?.length||0)+" top artists analyzed";btn.textContent="Reconnect";}
+function rProfile(){
+  if(!usr){go("login");return;}
+  const pa=document.getElementById("pav");
+  if(spD?.img){pa.innerHTML='<img src="'+spD.img+'">';pa.style.padding="0";}
+  else pa.textContent=usr.name?.[0]?.toUpperCase()||"U";
+  document.getElementById("pname").textContent=usr.name;
+  document.getElementById("pemail").textContent=usr.email;
+  document.getElementById("ed-name").value=usr.name||"";
+  document.getElementById("ed-bio").value=usr.bio||"";
+  document.getElementById("st-saved").textContent=sv.length;
+  document.getElementById("st-matches").textContent=spD?F.filter(f=>(sc(f)||0)>50).length:0;
+  const lbl=document.getElementById("sp-lbl");const sub=document.getElementById("sp-sub2");const btn=document.getElementById("sp-btn");
+  if(spD){lbl.textContent="Connected as "+(spD.name||"Spotify User");sub.textContent=(spD.artists?.length||0)+" top artists analyzed";btn.textContent="Reconnect";}
 }
-function saveProf(){user.name=document.getElementById("ed-name").value;user.bio=document.getElementById("ed-bio").value;localStorage.setItem("fy_user",JSON.stringify(user));updateNav();renderProfile();toast("Saved!","ok");}
+function saveP(){usr.name=document.getElementById("ed-name").value;usr.bio=document.getElementById("ed-bio").value;localStorage.setItem("fy_user",JSON.stringify(usr));updateNav();rProfile();toast("Saved!","ok");}
 
-function ckAccept(){localStorage.setItem("fy_ck","1");document.getElementById("ck").style.display="none";}
-function ckReject(){localStorage.setItem("fy_ck","0");document.getElementById("ck").style.display="none";}
+// ============ COOKIES ============
+function ckA(){localStorage.setItem("fy_ck","1");document.getElementById("ck").style.display="none";}
+function ckR(){localStorage.setItem("fy_ck","0");document.getElementById("ck").style.display="none";}
 function ckReset(){localStorage.removeItem("fy_ck");document.getElementById("ck").style.display="flex";toast("Cookie preferences reset");}
 
+// ============ TOAST ============
 function toast(msg,type=""){const t=document.getElementById("toast");t.textContent=msg;t.className="toast show"+(type?" "+type:"");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),3000);}
 
+// ============ INIT ============
 async function init(){
   if(localStorage.getItem("fy_ck"))document.getElementById("ck").style.display="none";
   updateNav();
-  await handleCallback();
+  await handleCB();
   const hash=window.location.hash.slice(1);
   const valid=["home","matches","discover","saved","profile","login","signup","privacy","terms","cookies"];
-  if(valid.includes(hash)){go(hash);}else if(spData){go("matches");}else{go("home");}
+  if(valid.includes(hash))go(hash);
+  else if(spD)go("matches");
+  else go("home");
 }
 window.addEventListener("hashchange",()=>{const h=window.location.hash.slice(1);if(h)go(h);});
 document.addEventListener("DOMContentLoaded",init);
