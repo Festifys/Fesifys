@@ -122,7 +122,7 @@ a{color:inherit;text-decoration:none}button{cursor:pointer;font-family:inherit;b
 .fest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
 .fc{border-radius:var(--r);overflow:hidden;background:var(--card);border:1px solid var(--border);cursor:pointer;transition:.3s}
 .fc:hover{transform:translateY(-6px);border-color:rgba(139,92,246,.4);box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.fc-img{height:160px;position:relative;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;font-size:52px}
+.fc-img{height:160px;position:relative;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;font-size:52px;background-color:#141426}
 .fc-img-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.55) 100%)}
 .fc-save{position:absolute;top:12px;left:12px;z-index:1;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.1);font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s}
 .fc-badge{position:absolute;top:12px;right:12px;z-index:1;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);padding:4px 10px;border-radius:50px;font-size:11px;font-weight:700}
@@ -212,7 +212,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:64px
 .ck{position:fixed;bottom:0;left:0;right:0;z-index:500;background:rgba(14,14,26,.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .ck p{font-size:13px;color:var(--text2);max-width:600px;line-height:1.6}.ck a{color:var(--p)}
 .ck-btns{display:flex;gap:10px;flex-shrink:0}
-.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .news-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:.3s}
 .news-card:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.3)}
 .news-card-top{height:6px}
@@ -526,20 +526,20 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:64px
 <script>
 const F=[
 {id:"lowlands",cc:"NL",n:"Lowlands",d:"Aug 14-17, 2025",loc:"Biddinghuizen, NL",country:"netherlands",genre:["indie","electronic","pop","alternative","hiphop"],pop:true,bg:"linear-gradient(135deg,#312e81,#8B5CF6)",img:"https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80",url:"https://lowlands.nl",price:"€269",cap:"55,000",artists:["Arctic Monkeys","Billie Eilish","Foals","Jungle","FKA Twigs","Caribou","Peggy Gou","LCD Soundsystem","James Blake","Slowdive","Bicep","Four Tet","Jon Hopkins","Caroline Polachek","Mitski","Floating Points","Maribou State","Bonobo","Kaytranada","Blood Orange","Burna Boy","J Hus","Skepta","Little Simz"],desc:"The most eclectic festival in the Netherlands — music, film, comedy and theatre across 11 stages."},
-{id:"pinkpop",cc:"NL",n:"Pinkpop",d:"Jun 6-8, 2025",loc:"Landgraaf, NL",country:"netherlands",genre:["pop","rock","indie","hiphop"],pop:true,bg:"linear-gradient(135deg,#be185d,#f97316)",img:"https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",url:"https://pinkpop.nl",price:"€199",cap:"60,000",artists:["Coldplay","Harry Styles","Dua Lipa","Muse","The Killers","Nothing But Thieves","Florence + The Machine","Two Door Cinema Club","Burna Boy","Stormzy"],desc:"One of the world's longest-running rock and pop festivals since 1970."},
-{id:"awakenings",cc:"NL",n:"Awakenings",d:"Jun 28-29, 2025",loc:"Spaarnwoude, NL",country:"netherlands",genre:["techno","electronic"],pop:true,bg:"linear-gradient(135deg,#0f172a,#4338ca)",img:"https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80",url:"https://awakenings.com",price:"€79",cap:"25,000",artists:["Charlotte de Witte","Amelie Lens","Sven Vath","Adam Beyer","Enrico Sangiuliano","I Hate Models","Paula Temple","Reinier Zonneveld","Dense & Pika","SPFDJ","Alignment","Rebekah"],desc:"The world's premier techno festival, set in an industrial setting outside Amsterdam."},
-{id:"dgtl",cc:"NL",n:"DGTL Amsterdam",d:"Apr 18-20, 2025",loc:"Amsterdam, NL",country:"netherlands",genre:["electronic","techno"],pop:true,bg:"linear-gradient(135deg,#0f172a,#7c3aed)",img:"https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=800&q=80",url:"https://dgtl.nl",price:"€69",cap:"15,000",artists:["Aphex Twin","Floating Points","Objekt","Blawan","Call Super","Len Faki","SPFDJ","Surgeon","Phase Fatale","Truncate"],desc:"A circular festival with sustainability at its core, set on Amsterdam's NDSM wharf."},
-{id:"bestkeptsecret",cc:"NL",n:"Best Kept Secret",d:"Jun 5-7, 2025",loc:"Hilvarenbeek, NL",country:"netherlands",genre:["indie","alternative","electronic"],pop:true,bg:"linear-gradient(135deg,#064e3b,#8B5CF6)",img:"https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80",url:"https://bestkeeper.nl",price:"€169",cap:"30,000",artists:["Arcade Fire","Nick Cave & The Bad Seeds","PJ Harvey","Angel Olsen","Courtney Barnett","The National","Big Thief","Bon Iver","Phoebe Bridgers","Sufjan Stevens","Julia Jacklin","Aldous Harding"],desc:"A boutique forest festival focused on curation and discovery."},
+{id:"pinkpop",cc:"NL",n:"Pinkpop",d:"Jun 6-8, 2025",loc:"Landgraaf, NL",country:"netherlands",genre:["pop","rock","indie","hiphop"],pop:true,bg:"linear-gradient(135deg,#be185d,#f97316)",img:"https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=800&q=80",url:"https://pinkpop.nl",price:"€199",cap:"60,000",artists:["Coldplay","Harry Styles","Dua Lipa","Muse","The Killers","Nothing But Thieves","Florence + The Machine","Two Door Cinema Club","Burna Boy","Stormzy"],desc:"One of the world's longest-running rock and pop festivals since 1970."},
+{id:"awakenings",cc:"NL",n:"Awakenings",d:"Jun 28-29, 2025",loc:"Spaarnwoude, NL",country:"netherlands",genre:["techno","electronic"],pop:true,bg:"linear-gradient(135deg,#0f172a,#4338ca)",img:"https://images.unsplash.com/photo-1571816119607-5d3e860a5b89?w=800&q=80",url:"https://awakenings.com",price:"€79",cap:"25,000",artists:["Charlotte de Witte","Amelie Lens","Sven Vath","Adam Beyer","Enrico Sangiuliano","I Hate Models","Paula Temple","Reinier Zonneveld","Dense & Pika","SPFDJ","Alignment","Rebekah"],desc:"The world's premier techno festival, set in an industrial setting outside Amsterdam."},
+{id:"dgtl",cc:"NL",n:"DGTL Amsterdam",d:"Apr 18-20, 2025",loc:"Amsterdam, NL",country:"netherlands",genre:["electronic","techno"],pop:true,bg:"linear-gradient(135deg,#0f172a,#7c3aed)",img:"https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80",url:"https://dgtl.nl",price:"€69",cap:"15,000",artists:["Aphex Twin","Floating Points","Objekt","Blawan","Call Super","Len Faki","SPFDJ","Surgeon","Phase Fatale","Truncate"],desc:"A circular festival with sustainability at its core, set on Amsterdam's NDSM wharf."},
+{id:"bestkeptsecret",cc:"NL",n:"Best Kept Secret",d:"Jun 5-7, 2025",loc:"Hilvarenbeek, NL",country:"netherlands",genre:["indie","alternative","electronic"],pop:true,bg:"linear-gradient(135deg,#064e3b,#8B5CF6)",img:"https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=800&q=80",url:"https://bestkeeper.nl",price:"€169",cap:"30,000",artists:["Arcade Fire","Nick Cave & The Bad Seeds","PJ Harvey","Angel Olsen","Courtney Barnett","The National","Big Thief","Bon Iver","Phoebe Bridgers","Sufjan Stevens","Julia Jacklin","Aldous Harding"],desc:"A boutique forest festival focused on curation and discovery."},
 {id:"mysteryland",cc:"NL",n:"Mysteryland",d:"Aug 22-24, 2025",loc:"Haarlemmermeer, NL",country:"netherlands",genre:["electronic","dance"],pop:true,bg:"linear-gradient(135deg,#4c1d95,#EC4899)",img:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80",url:"https://mysteryland.com",price:"€149",cap:"40,000",artists:["Martin Garrix","Tiesto","David Guetta","Armin van Buuren","Richie Hawtin","Solomun","Tale Of Us","Rezz","Mau P","Innellea"],desc:"The world's oldest dance festival, founded in 1993."},
 {id:"defqon",cc:"NL",n:"Defqon.1",d:"Jun 26-29, 2025",loc:"Biddinghuizen, NL",country:"netherlands",genre:["electronic","dance","hardstyle"],pop:false,bg:"linear-gradient(135deg,#7f1d1d,#7c3aed)",img:"https://images.unsplash.com/photo-1506157786151-b8491531f063?w=800&q=80",url:"https://defqon1.nl",price:"€139",cap:"70,000",artists:["Headhunterz","Hardwell","Brennan Heart","Wildstylez","Coone","Noisecontrollers","Sub Zero Project"],desc:"World record holder for the largest hardstyle festival."},
-{id:"dekmantel",cc:"NL",n:"Dekmantel",d:"Jul 30 - Aug 3, 2025",loc:"Amsterdam, NL",country:"netherlands",genre:["electronic","techno"],pop:false,bg:"linear-gradient(135deg,#111827,#4338ca)",img:"https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&q=80",url:"https://dekmantel.com",price:"€89",cap:"10,000",artists:["DJ Harvey","Surgeon","Legowelt","Hunee","Antal","Palms Trax","Eris Drew","Octo Octa","San Proper"],desc:"Amsterdam's most respected electronic music festival."},
-{id:"tomorrowland",cc:"BE",n:"Tomorrowland",d:"Jul 18-27, 2025",loc:"Boom, Belgium",country:"europe",genre:["electronic","dance","pop"],pop:true,bg:"linear-gradient(135deg,#78350f,#EC4899)",img:"https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80",url:"https://tomorrowland.com",price:"€299",cap:"400,000",artists:["Martin Garrix","Tiesto","David Guetta","Hardwell","Afrojack","Skrillex","Marshmello","ILLENIUM","Alesso","DJ Snake","Zedd","Armin van Buuren","Calvin Harris"],desc:"The world's most famous electronic music festival in Belgium."},
-{id:"rockwerchter",cc:"BE",n:"Rock Werchter",d:"Jul 3-6, 2025",loc:"Werchter, Belgium",country:"europe",genre:["rock","pop","indie"],pop:true,bg:"linear-gradient(135deg,#7f1d1d,#374151)",img:"https://images.unsplash.com/photo-1501386761578-eaa54b492430?w=800&q=80",url:"https://rockwerchter.be",price:"€299",cap:"90,000",artists:["Pearl Jam","The Killers","Florence + The Machine","The Prodigy","Massive Attack","Fontaines D.C.","Lorde","Idles","AURORA"],desc:"Belgium's biggest rock festival, consistently voted one of Europe's finest."},
-{id:"glastonbury",cc:"GB",n:"Glastonbury",d:"Jun 25-29, 2025",loc:"Pilton, UK",country:"europe",genre:["rock","pop","indie","electronic","hiphop"],pop:true,bg:"linear-gradient(135deg,#14532d,#0d9488)",img:"https://images.unsplash.com/photo-1468359601543-843bfaef291a?w=800&q=80",url:"https://glastonbury.co.uk",price:"£355",cap:"200,000",artists:["The Rolling Stones","Dua Lipa","Coldplay","Arctic Monkeys","Billie Eilish","SZA","Lana Del Rey","Kendrick Lamar","Tyler the Creator","Olivia Rodrigo"],desc:"The iconic British festival that defines popular culture since 1970."},
-{id:"primavera",cc:"ES",n:"Primavera Sound",d:"May 28 - Jun 1, 2025",loc:"Barcelona, Spain",country:"europe",genre:["indie","alternative","electronic"],pop:true,bg:"linear-gradient(135deg,#0c4a6e,#8B5CF6)",img:"https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=800&q=80",url:"https://primaverasound.com",price:"€295",cap:"60,000",artists:["Charli XCX","Pulp","Vampire Weekend","Portishead","Eels","Slowdive","Kelela","Perfume Genius","Caroline Polachek","Alvvays"],desc:"The acclaimed Barcelona festival known for its bold and eclectic programming."},
-{id:"roskilde",cc:"DK",n:"Roskilde Festival",d:"Jun 28 - Jul 5, 2025",loc:"Roskilde, Denmark",country:"europe",genre:["rock","electronic","indie","hiphop","pop"],pop:true,bg:"linear-gradient(135deg,#7f1d1d,#f97316)",img:"https://images.unsplash.com/photo-1567942712661-82b9b407abbf?w=800&q=80",url:"https://roskilde-festival.dk",price:"DKK 2,500",cap:"130,000",artists:["Kendrick Lamar","Nine Inch Nails","The Prodigy","Mitski","James Blake","Massive Attack","Aphex Twin","Fontaines D.C.","AURORA","A$AP Rocky","Burna Boy","Tyler the Creator","21 Savage"],desc:"Scandinavia's largest festival, entirely run by volunteers."},
-{id:"sziget",cc:"HU",n:"Sziget Festival",d:"Aug 6-11, 2025",loc:"Budapest, Hungary",country:"europe",genre:["pop","rock","indie","electronic","hiphop"],pop:true,bg:"linear-gradient(135deg,#78350f,#8B5CF6)",img:"https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=800&q=80",url:"https://szigetfestival.com",price:"€340",cap:"100,000",artists:["Dua Lipa","Calvin Harris","Kygo","The Lumineers","Macklemore","Tove Lo","Jungle","Burna Boy","Stormzy","Wizkid"],desc:"One of Europe's largest multi-genre festivals on an island in Budapest."},
-{id:"coachella",cc:"US",n:"Coachella",d:"Apr 11-20, 2025",loc:"California, USA",country:"international",genre:["pop","rock","electronic","hiphop","dance"],pop:true,bg:"linear-gradient(135deg,#78350f,#EC4899)",img:"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",url:"https://coachella.com",price:"$599",cap:"125,000",artists:["Lady Gaga","Green Day","Post Malone","Travis Scott","Charli XCX","Sabrina Carpenter","Doechii","Clairo","Fred again..","Gracie Abrams","50 Cent","Gunna","Burna Boy","J. Cole","Lil Baby","Hef","Stormzy","Central Cee","Dave","Skepta"],desc:"The world's most famous arts and music festival in the California desert."},
+{id:"dekmantel",cc:"NL",n:"Dekmantel",d:"Jul 30 - Aug 3, 2025",loc:"Amsterdam, NL",country:"netherlands",genre:["electronic","techno"],pop:false,bg:"linear-gradient(135deg,#111827,#4338ca)",img:"https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=800&q=80",url:"https://dekmantel.com",price:"€89",cap:"10,000",artists:["DJ Harvey","Surgeon","Legowelt","Hunee","Antal","Palms Trax","Eris Drew","Octo Octa","San Proper"],desc:"Amsterdam's most respected electronic music festival."},
+{id:"tomorrowland",cc:"BE",n:"Tomorrowland",d:"Jul 18-27, 2025",loc:"Boom, Belgium",country:"europe",genre:["electronic","dance","pop"],pop:true,bg:"linear-gradient(135deg,#78350f,#EC4899)",img:"https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80",url:"https://tomorrowland.com",price:"€299",cap:"400,000",artists:["Martin Garrix","Tiesto","David Guetta","Hardwell","Afrojack","Skrillex","Marshmello","ILLENIUM","Alesso","DJ Snake","Zedd","Armin van Buuren","Calvin Harris"],desc:"The world's most famous electronic music festival in Belgium."},
+{id:"rockwerchter",cc:"BE",n:"Rock Werchter",d:"Jul 3-6, 2025",loc:"Werchter, Belgium",country:"europe",genre:["rock","pop","indie"],pop:true,bg:"linear-gradient(135deg,#7f1d1d,#374151)",img:"https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80",url:"https://rockwerchter.be",price:"€299",cap:"90,000",artists:["Pearl Jam","The Killers","Florence + The Machine","The Prodigy","Massive Attack","Fontaines D.C.","Lorde","Idles","AURORA"],desc:"Belgium's biggest rock festival, consistently voted one of Europe's finest."},
+{id:"glastonbury",cc:"GB",n:"Glastonbury",d:"Jun 25-29, 2025",loc:"Pilton, UK",country:"europe",genre:["rock","pop","indie","electronic","hiphop"],pop:true,bg:"linear-gradient(135deg,#14532d,#0d9488)",img:"https://images.unsplash.com/photo-1501386761578-eaa54b492430?w=800&q=80",url:"https://glastonbury.co.uk",price:"£355",cap:"200,000",artists:["The Rolling Stones","Dua Lipa","Coldplay","Arctic Monkeys","Billie Eilish","SZA","Lana Del Rey","Kendrick Lamar","Tyler the Creator","Olivia Rodrigo"],desc:"The iconic British festival that defines popular culture since 1970."},
+{id:"primavera",cc:"ES",n:"Primavera Sound",d:"May 28 - Jun 1, 2025",loc:"Barcelona, Spain",country:"europe",genre:["indie","alternative","electronic"],pop:true,bg:"linear-gradient(135deg,#0c4a6e,#8B5CF6)",img:"https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=800&q=80",url:"https://primaverasound.com",price:"€295",cap:"60,000",artists:["Charli XCX","Pulp","Vampire Weekend","Portishead","Eels","Slowdive","Kelela","Perfume Genius","Caroline Polachek","Alvvays"],desc:"The acclaimed Barcelona festival known for its bold and eclectic programming."},
+{id:"roskilde",cc:"DK",n:"Roskilde Festival",d:"Jun 28 - Jul 5, 2025",loc:"Roskilde, Denmark",country:"europe",genre:["rock","electronic","indie","hiphop","pop"],pop:true,bg:"linear-gradient(135deg,#7f1d1d,#f97316)",img:"https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&q=80",url:"https://roskilde-festival.dk",price:"DKK 2,500",cap:"130,000",artists:["Kendrick Lamar","Nine Inch Nails","The Prodigy","Mitski","James Blake","Massive Attack","Aphex Twin","Fontaines D.C.","AURORA","A$AP Rocky","Burna Boy","Tyler the Creator","21 Savage"],desc:"Scandinavia's largest festival, entirely run by volunteers."},
+{id:"sziget",cc:"HU",n:"Sziget Festival",d:"Aug 6-11, 2025",loc:"Budapest, Hungary",country:"europe",genre:["pop","rock","indie","electronic","hiphop"],pop:true,bg:"linear-gradient(135deg,#78350f,#8B5CF6)",img:"https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80",url:"https://szigetfestival.com",price:"€340",cap:"100,000",artists:["Dua Lipa","Calvin Harris","Kygo","The Lumineers","Macklemore","Tove Lo","Jungle","Burna Boy","Stormzy","Wizkid"],desc:"One of Europe's largest multi-genre festivals on an island in Budapest."},
+{id:"coachella",cc:"US",n:"Coachella",d:"Apr 11-20, 2025",loc:"California, USA",country:"international",genre:["pop","rock","electronic","hiphop","dance"],pop:true,bg:"linear-gradient(135deg,#78350f,#EC4899)",img:"https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80",url:"https://coachella.com",price:"$599",cap:"125,000",artists:["Lady Gaga","Green Day","Post Malone","Travis Scott","Charli XCX","Sabrina Carpenter","Doechii","Clairo","Fred again..","Gracie Abrams","50 Cent","Gunna","Burna Boy","J. Cole","Lil Baby","Hef","Stormzy","Central Cee","Dave","Skepta"],desc:"The world's most famous arts and music festival in the California desert."},
 ];
 const GTAG={electronic:"el",techno:"tc",indie:"in",alternative:"in",pop:"po",rock:"ro",dance:"da",hardstyle:"da",hiphop:"el"};
 const GCLS={el:"t-el",tc:"t-tc",in:"t-in",po:"t-po",ro:"t-ro",da:"t-da"};
@@ -672,9 +672,8 @@ async function detectCountry(){
       // Map country to region
       const euCountries=["NL","BE","DE","FR","GB","ES","DK","SE","NO","HU","RS","PL","IT","PT","AT","CH","FI","IE"];
       const inEu=euCountries.includes(userCC);
-      if(userCC==="NL"){nearBtn.innerHTML="&#127475;&#127473; Jouw land (NL)";nearBtn.style.display="inline-flex";}
-      else if(inEu){nearBtn.innerHTML="&#127466;&#127482; Jouw land ("+d.country_name+")";nearBtn.style.display="inline-flex";}
-      else{nearBtn.innerHTML="&#128205; "+d.country_name;nearBtn.style.display="inline-flex";}
+      const cN={"NL":"Nederland","BE":"Belgie","DE":"Duitsland","FR":"Frankrijk","GB":"Engeland","ES":"Spanje","IT":"Italie","DK":"Denemarken","SE":"Zweden","NO":"Noorwegen","HU":"Hongarije","RS":"Servie","PL":"Polen","PT":"Portugal","US":"Amerika","AU":"Australie","BR":"Brazilie","MX":"Mexico","TR":"Turkije","GR":"Griekenland","AT":"Oostenrijk","CH":"Zwitserland","FI":"Finland","IE":"Ierland","RO":"Roemenie","CZ":"Tsjechie"};
+      nearBtn.innerHTML=cN[userCC]||d.country_name||userCC;nearBtn.style.display="inline-flex";
       nearBtn.setAttribute("data-cc",userCC);
       nearBtn.setAttribute("data-eu",inEu?"1":"0");
       // Also set the match page near button
@@ -728,6 +727,146 @@ function inferGenres(artists){
   rules.forEach(r=>{if(lower.some(a=>r.words.some(w=>a.includes(w))))detected.push(r.genre);});
   return detected;
 }
+
+var STAGES={
+  lowlands:{
+    "Arctic Monkeys":{stage:"Alpha Stage",time:"Sun 22:00"},
+    "Billie Eilish":{stage:"Alpha Stage",time:"Sat 21:30"},
+    "Foals":{stage:"Beta Stage",time:"Fri 21:00"},
+    "Jungle":{stage:"Gamma Stage",time:"Sat 19:00"},
+    "FKA Twigs":{stage:"Beta Stage",time:"Sat 20:00"},
+    "Caribou":{stage:"Bravo Stage",time:"Fri 20:30"},
+    "Peggy Gou":{stage:"Heineken Stage",time:"Sat 23:00"},
+    "LCD Soundsystem":{stage:"Alpha Stage",time:"Fri 22:00"},
+    "James Blake":{stage:"Beta Stage",time:"Sun 20:00"},
+    "Slowdive":{stage:"Gamma Stage",time:"Fri 19:30"},
+    "Bicep":{stage:"Heineken Stage",time:"Sat 00:00"},
+    "Four Tet":{stage:"Bravo Stage",time:"Sun 23:00"},
+    "Jon Hopkins":{stage:"Bravo Stage",time:"Sat 21:30"},
+    "Caroline Polachek":{stage:"Beta Stage",time:"Sun 19:30"},
+    "Mitski":{stage:"Gamma Stage",time:"Sun 18:00"},
+    "Floating Points":{stage:"Bravo Stage",time:"Fri 21:30"},
+    "Maribou State":{stage:"Gamma Stage",time:"Sat 20:30"},
+    "Bonobo":{stage:"Beta Stage",time:"Fri 22:00"},
+    "Kaytranada":{stage:"Heineken Stage",time:"Fri 23:30"},
+    "Blood Orange":{stage:"Gamma Stage",time:"Sat 18:00"}
+  },
+  pinkpop:{
+    "Coldplay":{stage:"Main Stage",time:"Sun 21:30"},
+    "Harry Styles":{stage:"Main Stage",time:"Sat 21:30"},
+    "Dua Lipa":{stage:"Main Stage",time:"Fri 21:30"},
+    "Muse":{stage:"Main Stage",time:"Sun 19:30"},
+    "The Killers":{stage:"Main Stage",time:"Sat 19:30"},
+    "Nothing But Thieves":{stage:"Side Stage",time:"Fri 18:00"},
+    "Florence + The Machine":{stage:"Side Stage",time:"Sat 18:00"},
+    "Two Door Cinema Club":{stage:"Side Stage",time:"Fri 16:30"},
+    "Burna Boy":{stage:"Side Stage",time:"Sun 19:00"},
+    "Stormzy":{stage:"Main Stage",time:"Fri 20:00"}
+  },
+  awakenings:{
+    "Charlotte de Witte":{stage:"Gashouder",time:"Sat 02:00"},
+    "Amelie Lens":{stage:"Gashouder",time:"Sun 01:00"},
+    "Sven Vath":{stage:"Outdoor",time:"Sat 20:00"},
+    "Adam Beyer":{stage:"Outdoor",time:"Sun 20:00"},
+    "Enrico Sangiuliano":{stage:"Gashouder",time:"Sat 23:00"},
+    "I Hate Models":{stage:"Gashouder",time:"Sat 00:00"},
+    "Paula Temple":{stage:"Outdoor",time:"Sat 22:00"},
+    "Reinier Zonneveld":{stage:"Outdoor",time:"Sun 22:00"},
+    "SPFDJ":{stage:"Gashouder",time:"Sun 23:00"},
+    "Alignment":{stage:"Outdoor",time:"Sat 18:00"},
+    "Rebekah":{stage:"Gashouder",time:"Sun 00:00"}
+  },
+  roskilde:{
+    "Kendrick Lamar":{stage:"Orange Stage",time:"Sat 22:00"},
+    "Nine Inch Nails":{stage:"Orange Stage",time:"Fri 21:00"},
+    "The Prodigy":{stage:"Orange Stage",time:"Thu 22:00"},
+    "Mitski":{stage:"Arena",time:"Fri 20:00"},
+    "James Blake":{stage:"Arena",time:"Sat 20:00"},
+    "Massive Attack":{stage:"Orange Stage",time:"Wed 22:00"},
+    "Aphex Twin":{stage:"Pavilion",time:"Thu 23:00"},
+    "Fontaines D.C.":{stage:"Arena",time:"Thu 19:00"},
+    "AURORA":{stage:"Arena",time:"Wed 20:00"},
+    "Burna Boy":{stage:"Orange Stage",time:"Sun 21:00"},
+    "Tyler the Creator":{stage:"Orange Stage",time:"Sat 20:00"},
+    "21 Savage":{stage:"Pavilion",time:"Fri 22:00"},
+    "A$AP Rocky":{stage:"Orange Stage",time:"Sun 19:30"}
+  },
+  coachella:{
+    "Lady Gaga":{stage:"Coachella Stage",time:"Sat 22:00"},
+    "Green Day":{stage:"Coachella Stage",time:"Fri 21:30"},
+    "Post Malone":{stage:"Coachella Stage",time:"Sun 21:30"},
+    "Travis Scott":{stage:"Sahara",time:"Sat 21:00"},
+    "Charli XCX":{stage:"Outdoor Theatre",time:"Fri 20:00"},
+    "Sabrina Carpenter":{stage:"Coachella Stage",time:"Fri 20:30"},
+    "50 Cent":{stage:"Sahara",time:"Sun 20:00"},
+    "Gunna":{stage:"Sahara",time:"Sat 19:00"},
+    "Burna Boy":{stage:"Outdoor Theatre",time:"Sun 19:30"},
+    "J. Cole":{stage:"Coachella Stage",time:"Sat 20:00"},
+    "Doechii":{stage:"Sahara",time:"Fri 18:00"},
+    "Clairo":{stage:"Outdoor Theatre",time:"Fri 17:00"},
+    "Fred again..":{stage:"Sahara",time:"Sat 23:00"},
+    "Stormzy":{stage:"Outdoor Theatre",time:"Sun 18:00"},
+    "Central Cee":{stage:"Sahara",time:"Fri 19:00"}
+  },
+  glastonbury:{
+    "The Rolling Stones":{stage:"Pyramid",time:"Sun 21:30"},
+    "Dua Lipa":{stage:"Pyramid",time:"Fri 21:30"},
+    "Coldplay":{stage:"Pyramid",time:"Sat 21:30"},
+    "Arctic Monkeys":{stage:"Pyramid",time:"Sun 20:00"},
+    "Billie Eilish":{stage:"Other Stage",time:"Sat 20:00"},
+    "SZA":{stage:"West Holts",time:"Fri 20:00"},
+    "Lana Del Rey":{stage:"Pyramid",time:"Fri 20:00"},
+    "Kendrick Lamar":{stage:"Pyramid",time:"Sat 20:00"},
+    "Tyler the Creator":{stage:"Other Stage",time:"Fri 21:00"},
+    "Olivia Rodrigo":{stage:"Other Stage",time:"Sun 20:00"},
+    "Burna Boy":{stage:"West Holts",time:"Sat 21:00"}
+  },
+  tomorrowland:{
+    "Martin Garrix":{stage:"Main Stage",time:"Sat 21:00"},
+    "Tiesto":{stage:"Main Stage",time:"Fri 22:00"},
+    "David Guetta":{stage:"Main Stage",time:"Sun 21:00"},
+    "Hardwell":{stage:"Main Stage",time:"Sat 19:00"},
+    "Afrojack":{stage:"Freedom Stage",time:"Sat 22:00"},
+    "Skrillex":{stage:"Mainstage",time:"Fri 20:00"},
+    "Marshmello":{stage:"Freedom Stage",time:"Sun 20:00"},
+    "Alesso":{stage:"Atmosphere",time:"Fri 19:00"},
+    "DJ Snake":{stage:"Atmosphere",time:"Sat 20:00"},
+    "Calvin Harris":{stage:"Main Stage",time:"Sun 20:00"}
+  },
+  bestkeptsecret:{
+    "Arcade Fire":{stage:"Main Stage",time:"Sun 21:30"},
+    "Nick Cave & The Bad Seeds":{stage:"Main Stage",time:"Sat 21:30"},
+    "PJ Harvey":{stage:"Main Stage",time:"Fri 21:00"},
+    "Angel Olsen":{stage:"Forest Stage",time:"Sat 20:00"},
+    "Courtney Barnett":{stage:"Barn Stage",time:"Fri 20:00"},
+    "The National":{stage:"Main Stage",time:"Fri 22:00"},
+    "Big Thief":{stage:"Forest Stage",time:"Sun 19:00"},
+    "Bon Iver":{stage:"Main Stage",time:"Sat 20:00"},
+    "Phoebe Bridgers":{stage:"Barn Stage",time:"Sat 18:00"},
+    "Sufjan Stevens":{stage:"Forest Stage",time:"Fri 18:00"}
+  }
+};
+function getArtistInfo(festId,artistName){return (STAGES[festId]&&STAGES[festId][artistName])||{stage:null,time:null};}
+function buildNewsHtml(items){
+  if(!items||!items.length)return "";
+  var tagColors={Lineup:"#8B5CF6",Tickets:"#f59e0b",News:"#4338ca",Review:"#EC4899"};
+  var h='<div style="margin:20px 0 0"><div style="font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">Festival News</div>';
+  items.forEach(function(n){
+    var tc=tagColors[n.tag]||"#8B5CF6";
+    h+='<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px">'
+      +'<div style="height:4px;background:'+tc+'"></div>'
+      +'<div style="padding:14px 16px">'
+        +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'
+          +'<span style="background:'+tc+'22;color:'+tc+';border:1px solid '+tc+'44;padding:2px 10px;border-radius:50px;font-size:11px;font-weight:700">'+n.tag+'</span>'
+          +'<span style="font-size:11px;color:var(--text3)">'+n.time+'</span>'
+        +'</div>'
+        +'<div style="font-size:14px;font-weight:700;line-height:1.4;margin-bottom:5px;color:var(--text)">'+n.title+'</div>'
+        +'<div style="font-size:12px;color:var(--text2);line-height:1.6">'+n.desc+'</div>'
+      +'</div>'
+    +'</div>';
+  });
+  return h+'</div>';
+}
 function getFestivalNews(id){
   const news={
     lowlands:[{tag:"Lineup",time:"2d ago",title:"Final headliners confirmed for Lowlands 2025",desc:"The complete lineup across all 11 stages has been revealed."},{tag:"Tickets",time:"1w ago",title:"Last tickets available — act fast",desc:"Only a handful of weekend passes remain for Lowlands 2025."}],
@@ -758,7 +897,18 @@ function openF(id){
   document.getElementById("m-title").textContent=f.n;
   document.getElementById("m-meta").innerHTML='<span>&#128197; '+f.d+'</span><span>&#128205; '+f.loc+'</span><span>&#127243; '+f.price+'</span><span>&#128101; '+f.cap+'</span>';
   const mb=s!==null?'<div style="background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(236,72,153,.05));border:1px solid rgba(139,92,246,.2);border-radius:14px;padding:18px;margin-bottom:18px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span style="font-weight:700">Your Match Score</span><span style="font-size:28px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+s+'%</span></div><div class="mbar" style="height:5px"><div class="mfill" style="width:'+s+'%"></div></div>'+(hit.length?'<div style="font-size:13px;color:var(--text2);margin-top:10px">Your artists: <strong style="color:#c4b5fd">'+hit.join(", ")+'</strong></div>':'')+' </div>':"";
-  document.getElementById("tab-overview").innerHTML=mb+'<p style="color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:20px">'+f.desc+'</p><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">'+f.genre.map(g=>{const k=GTAG[g]||"el";return'<span class="tag '+GCLS[k]+'">'+g+'</span>';}).join("")+'</div><div class="modal-acts"><button class="btn btn-sp btn-sm" onclick="window.open(\''+f.url+'\',\'_blank\')">&#127243; Get Tickets</button><button class="btn btn-dark btn-sm" id="ov-save" onclick="toggleSvM(\''+f.id+'\')">'+(isSv2?"&#9829; Saved":"&#9825; Save")+'</button></div>';
+  const fNews=getFestivalNews(f.id);
+  const newsHtml=buildNewsHtml(fNews);
+  const genreTags=f.genre.map(function(g){var k=GTAG[g]||"el";return'<span class="tag '+GCLS[k]+'">'+g+'</span>';}).join("");
+  document.getElementById("tab-overview").innerHTML=mb
+    +'<p style="color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:20px">'+f.desc+'</p>'
+    +'<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">'+genreTags+'</div>'
+    +newsHtml
+    +'<div class="modal-acts">'
+      +'<button class="btn btn-sp btn-sm" id="ov-ticket">&#127243; Get Tickets</button>'
+      +'<button class="btn btn-dark btn-sm" id="ov-save" onclick="toggleSvM(this.dataset.id)" data-id="'+f.id+'">'+(isSv2?"&#9829; Saved":"&#9825; Save")+'</button>'
+    +'</div>';
+  document.getElementById("ov-ticket").onclick=function(){window.open(f.url,"_blank");};
   document.getElementById("tab-lineup").innerHTML=(s!==null&&hit.length?'<div style="font-size:12px;color:#c4b5fd;font-weight:600;margin-bottom:14px">&#9733; = your artist on Spotify</div>':'')+'<div class="lineup-grid">'+f.artists.map(a=>'<div class="la'+(hit.includes(a)?" hit":"")+'">'+a+'</div>').join("")+'</div>';
   document.getElementById("tab-info").innerHTML='<div style="display:grid;gap:10px"><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Date</div><div style="font-weight:600">'+f.d+'</div></div><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Location</div><div style="font-weight:600">'+f.loc+'</div></div><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Price</div><div style="font-weight:600">'+f.price+'</div></div><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Capacity</div><div style="font-weight:600">'+f.cap+'</div></div></div><div class="modal-acts" style="margin-top:20px"><button class="btn btn-sp btn-sm" onclick="window.open(\''+f.url+'\',\'_blank\')">&#127243; Get Tickets</button></div>';
   document.querySelectorAll(".modal-tab").forEach((t,i)=>t.classList.toggle("on",i===0));
@@ -770,19 +920,49 @@ function toggleSvM(id){toggleSv({stopPropagation:()=>{}},id);const btn=document.
 function closeM(e){if(e.target.id==="overlay")closeModal();}
 function closeModal(){document.getElementById("overlay").classList.remove("on");document.body.style.overflow="";}
 function rNews(){
-  const grid=document.getElementById("news-grid");if(!grid)return;
-  const items=[
-    {title:"Lowlands 2025 announces final headliners",source:"Festivalinfo",time:"2h ago",tag:"Lineup",color:"#8B5CF6",url:"https://lowlands.nl",desc:"The final headliners for Lowlands 2025 have been confirmed, completing an impressive lineup across all 11 stages."},
-    {title:"Tomorrowland tickets sold out in 40 minutes",source:"DancingAstronaut",time:"5h ago",tag:"Tickets",color:"#f59e0b",url:"https://tomorrowland.com",desc:"Weekend 1 tickets for the world's biggest dance festival disappeared within minutes of going on sale."},
-    {title:"Glastonbury 2025: full lineup confirmed",source:"NME",time:"1d ago",tag:"Lineup",color:"#16a34a",url:"https://glastonbury.co.uk",desc:"Glastonbury Festival has revealed its complete lineup for 2025, featuring headliners across all stages."},
-    {title:"Awakenings announces special outdoor stage",source:"Resident Advisor",time:"1d ago",tag:"News",color:"#4338ca",url:"https://awakenings.com",desc:"Awakenings Festival will debut a new outdoor stage experience for 2025, expanding the festival grounds."},
-    {title:"Primavera Sound adds 30 new artists",source:"Pitchfork",time:"2d ago",tag:"Lineup",color:"#0ea5e9",url:"https://primaverasound.com",desc:"The Barcelona festival continues adding talent to its already stacked 2025 lineup with 30 surprise additions."},
-    {title:"Coachella 2025 setlist highlights",source:"Billboard",time:"2d ago",tag:"Review",color:"#EC4899",url:"https://coachella.com",desc:"A full roundup of the most memorable performances from Coachella Weekend 1, 2025."},
-    {title:"Best Kept Secret reveals forest stage lineup",source:"Festivalinfo",time:"3d ago",tag:"Lineup",color:"#0d9488",url:"https://bestkeeper.nl",desc:"The intimate Hilvarenbeek festival unveils its coveted forest stage programming for 2025."},
-    {title:"Rock Werchter sells out for 12th year running",source:"VRT",time:"3d ago",tag:"Tickets",color:"#dc2626",url:"https://rockwerchter.be",desc:"Belgium's biggest rock festival has sold out its full 4-day passes within hours of going on sale."},
-    {title:"Sziget 2025: full island experience revealed",source:"Resident Advisor",time:"4d ago",tag:"News",color:"#f97316",url:"https://szigetfestival.com",desc:"Budapest's island festival announces new experiences, stages and sustainability initiatives for 2025."},
+  var grid=document.getElementById("news-grid");if(!grid)return;
+  var items=[
+    {tag:"Lineup",tc:"#8B5CF6",festival:"Lowlands",title:"Lowlands 2025 reveals final headliners",desc:"Arctic Monkeys and Billie Eilish top the bill across all 11 stages.",img:"https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80",src:"Festivalinfo",time:"2h ago",feat:true,url:"https://lowlands.nl"},
+    {tag:"Tickets",tc:"#f59e0b",festival:"Tomorrowland",title:"Tomorrowland Weekend 1 sold out in 38 minutes",desc:"Weekend 2 passes still available for the world's biggest dance festival.",img:"https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80",src:"DancingAstronaut",time:"5h ago",feat:false,url:"https://tomorrowland.com"},
+    {tag:"Lineup",tc:"#16a34a",festival:"Glastonbury",title:"Glastonbury 2025: every stage confirmed",desc:"Coldplay headlines Saturday night at the Pyramid Stage.",img:"https://images.unsplash.com/photo-1501386761578-eaa54b492430?w=600&q=80",src:"NME",time:"1d ago",feat:false,url:"https://glastonbury.co.uk"},
+    {tag:"News",tc:"#4338ca",festival:"Awakenings",title:"Awakenings adds new industrial outdoor stage",desc:"Capacity increased to 30,000 for the premier techno festival.",img:"https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80",src:"Resident Advisor",time:"1d ago",feat:false,url:"https://awakenings.com"},
+    {tag:"Lineup",tc:"#0ea5e9",festival:"Primavera Sound",title:"Primavera Sound adds 30 surprise artists",desc:"Several world exclusives among the Barcelona festival additions.",img:"https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=600&q=80",src:"Pitchfork",time:"2d ago",feat:false,url:"https://primaverasound.com"},
+    {tag:"Review",tc:"#EC4899",festival:"Coachella",title:"Coachella 2025: every unmissable moment",desc:"Lady Gaga's surprise set was the most talked-about performance of the weekend.",img:"https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=600&q=80",src:"Billboard",time:"2d ago",feat:false,url:"https://coachella.com"},
+    {tag:"Lineup",tc:"#0d9488",festival:"Best Kept Secret",title:"BKS forest stage: intimate 2025 lineup",desc:"Several artists playing their only European date at Hilvarenbeek.",img:"https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=600&q=80",src:"Festivalinfo",time:"3d ago",feat:false,url:"https://bestkeeper.nl"},
+    {tag:"Tickets",tc:"#dc2626",festival:"Rock Werchter",title:"Rock Werchter sells out — 12th year running",desc:"Day tickets still available for individual days at Belgium's rock festival.",img:"https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&q=80",src:"VRT",time:"3d ago",feat:false,url:"https://rockwerchter.be"},
+    {tag:"News",tc:"#f97316",festival:"Roskilde",title:"Roskilde adds first dedicated hip-hop stage",desc:"New urban music stage with rap, trap and afrobeats headliners.",img:"https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=600&q=80",src:"Roskilde Official",time:"5d ago",feat:false,url:"https://roskilde-festival.dk"},
+    {tag:"News",tc:"#7c3aed",festival:"Mysteryland",title:"Mysteryland turns 32 with anniversary stage",desc:"Legendary acts from the festival's history return for a special stage.",img:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&q=80",src:"Festivalinfo",time:"1w ago",feat:false,url:"https://mysteryland.com"},
   ];
-  grid.innerHTML=items.map(item=>'<div class="news-card" onclick="window.open(\''+item.url+'\',\'_blank\')"><div class="news-card-top" style="background:'+item.color+'"></div><div class="news-card-body"><span class="news-tag" style="background:'+item.color+'22;color:'+item.color+';border:1px solid '+item.color+'44">'+item.tag+'</span><div class="news-title">'+item.title+'</div><div class="news-desc">'+item.desc+'</div><div class="news-footer"><span>'+item.source+'</span><span>'+item.time+'</span></div></div></div>').join("");
+  grid.innerHTML="";
+  items.forEach(function(item,idx){
+    var div=document.createElement("div");
+    if(item.feat){
+      div.style.cssText="grid-column:1/-1;border-radius:20px;overflow:hidden;position:relative;min-height:300px;cursor:pointer;margin-bottom:8px;background:var(--card)";
+      div.innerHTML='<div style="position:absolute;inset:0;background-image:url('+item.img+');background-size:cover;background-position:center"></div>'
+        +'<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.4) 60%,transparent 100%)"></div>'
+        +'<div style="position:absolute;bottom:0;left:0;right:0;padding:32px">'
+          +'<span style="background:'+item.tc+';color:#fff;padding:4px 12px;border-radius:50px;font-size:11px;font-weight:700;display:inline-block;margin-bottom:12px">'+item.tag+'</span>'
+          +'<div style="font-size:clamp(18px,3vw,26px);font-weight:800;line-height:1.3;margin-bottom:8px">'+item.title+'</div>'
+          +'<div style="font-size:14px;color:rgba(255,255,255,.7);margin-bottom:12px">'+item.desc+'</div>'
+          +'<div style="font-size:12px;color:rgba(255,255,255,.4)">'+item.festival+' &nbsp;·&nbsp; '+item.src+' &nbsp;·&nbsp; '+item.time+'</div>'
+        +'</div>';
+    }else{
+      div.className="news-card";
+      div.innerHTML='<div style="height:160px;position:relative;overflow:hidden;background:var(--card2)">'
+          +'<img src="'+item.img+'" style="width:100%;height:100%;object-fit:cover" loading="lazy" onerror="this.style.display=\'none\'">'
+          +'<div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(0,0,0,.5))"></div>'
+          +'<span style="position:absolute;top:12px;left:12px;background:'+item.tc+';color:#fff;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700">'+item.tag+'</span>'
+        +'</div>'
+        +'<div class="news-card-body">'
+          +'<div style="font-size:10px;color:var(--text3);font-weight:700;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase">'+item.festival+'</div>'
+          +'<div class="news-title">'+item.title+'</div>'
+          +'<div class="news-desc">'+item.desc+'</div>'
+          +'<div class="news-footer"><span>'+item.src+'</span><span>'+item.time+'</span></div>'
+        +'</div>';
+    }
+    div.addEventListener("click",function(){window.open(item.url,"_blank");});
+    grid.appendChild(div);
+  });
 }
 function doLogin(){const em=document.getElementById("li-em").value;const pw=document.getElementById("li-pw").value;if(!em||!pw){toast("Fill in all fields","err");return;}const users=JSON.parse(localStorage.getItem("fy_users")||"[]");const u=users.find(x=>x.email===em&&x.pw===pw);if(!u){toast("Wrong email or password","err");return;}usr={name:u.name,email:u.email,bio:u.bio||""};localStorage.setItem("fy_user",JSON.stringify(usr));updateNav();go("discover");toast("Welcome back, "+u.name+"!","ok");}
 function doSignup(){const nm=document.getElementById("su-nm").value;const em=document.getElementById("su-em").value;const pw=document.getElementById("su-pw").value;if(!nm||!em||!pw){toast("Fill in all fields","err");return;}if(pw.length<8){toast("Password min. 8 characters","err");return;}const users=JSON.parse(localStorage.getItem("fy_users")||"[]");if(users.find(x=>x.email===em)){toast("Email already exists","err");return;}users.push({name:nm,email:em,pw,bio:""});localStorage.setItem("fy_users",JSON.stringify(users));usr={name:nm,email:em,bio:""};localStorage.setItem("fy_user",JSON.stringify(usr));updateNav();go("discover");toast("Account created! Connect Spotify for matches","ok");}
