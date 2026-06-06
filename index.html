@@ -490,7 +490,7 @@ async function handleCallback(){
       fetch("https://api.spotify.com/v1/me",{headers:{Authorization:"Bearer "+t.access_token}}).then(r=>r.json()),
       fetch("https://api.spotify.com/v1/me/top/artists?limit=50&time_range=medium_term",{headers:{Authorization:"Bearer "+t.access_token}}).then(r=>r.json())
     ]);
-    spData={name:prof.display_name,email:prof.email,img:prof.images?.[0]?.url,artists:(top.items||[]).map(a=>a.name),genres:[...new Set((top.items||[]).flatMap(a=>a.genres))]};
+    spData={name:prof.display_name,email:prof.email,img:prof.images?.[0]?.url,artists:(top.items||[]).map(a=>a.name),genres:[...new Set((top.items||[]).flatMap(a=>a.genres||[]).filter(Boolean))]};
     localStorage.setItem("fy_spotify",JSON.stringify(spData));
     if(!user){user={name:prof.display_name,email:prof.email,bio:""};localStorage.setItem("fy_user",JSON.stringify(user));}
     updateNav();go("matches");toast("Spotify connected! Here are your matches","ok");
@@ -502,7 +502,7 @@ function score(f){
   const my=spData.artists.map(a=>a.toLowerCase());
   const fa=f.artists.map(a=>a.toLowerCase());
   const hit=fa.filter(a=>my.some(m=>m.includes(a)||a.includes(m)));
-  const gs=f.genre.some(g=>spData.genres?.some(sg=>sg.includes(g)||g.includes(sg)))?12:0;
+  const gs=f.genre.some(g=>(spData.genres||[]).filter(Boolean).some(sg=>sg&&sg.includes(g)||g&&g.includes(sg)))?12:0;
   return Math.min(99,Math.round(hit.length/Math.max(fa.length,1)*87)+gs);
 }
 function hitArtists(f){
@@ -582,7 +582,7 @@ function toggleSave(e,id){
 function renderMatches(){
   if(!spData)return;
   const hdr=document.getElementById("matches-header");const body=document.getElementById("matches-body");if(!hdr||!body)return;
-  const topGenres=[...new Set(spData.genres||[])].slice(0,5);
+  const topGenres=[...new Set((spData.genres||[]).filter(Boolean))].slice(0,5);
   const avImg=spData.img?'<img src="'+spData.img+'" onerror="this.style.display=\'none\'">':"";
   hdr.innerHTML='<div class="match-hero"><div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap"><div class="av" style="width:56px;height:56px;font-size:20px">'+avImg+(spData.name?.[0]?.toUpperCase()||"F")+'</div><div><div style="font-size:22px;font-weight:800">Hey '+(( spData.name||"").split(" ")[0])+"! \u{1F44B} Here are your festival matches</div><div style=\'font-size:14px;color:var(--text2);margin-top:3px\'>Based on your "+spData.artists.length+" top Spotify artists</div></div></div>"+( topGenres.length?'<div style="font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">YOUR TOP GENRES</div><div style="display:flex;gap:8px;flex-wrap:wrap">'+topGenres.map(g=>'<span class="tag t-el" style="font-size:12px;padding:5px 12px">'+g+"</span>").join("")+"</div>":"")+"</div>";
   const sorted=[...FESTIVALS].sort((a,b)=>(score(b)||0)-(score(a)||0));
