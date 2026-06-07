@@ -152,7 +152,7 @@ a{color:inherit;text-decoration:none}button{cursor:pointer;font-family:inherit;b
 .modal-score{position:absolute;top:16px;left:16px;background:rgba(0,0,0,.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:10px 18px;text-align:center}
 .modal-score-pct{font-size:28px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
 .modal-score-lbl{font-size:10px;color:var(--text2);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
-.modal-body{overflow-y:auto;flex:1;padding:0 28px 28px}
+.modal-body{overflow-y:auto;flex:1;padding:0 28px 32px;min-height:300px}
 .modal-title{font-size:26px;font-weight:900;letter-spacing:-.5px;margin-bottom:6px}
 .modal-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--text2);margin-bottom:20px}
 .modal-tabs{display:flex;gap:4px;margin-bottom:24px;background:var(--card);border-radius:12px;padding:4px}
@@ -898,7 +898,8 @@ function openF(id){
   document.getElementById("m-meta").innerHTML='<span>&#128197; '+f.d+'</span><span>&#128205; '+f.loc+'</span><span>&#127243; '+f.price+'</span><span>&#128101; '+f.cap+'</span>';
   const mb=s!==null?'<div style="background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(236,72,153,.05));border:1px solid rgba(139,92,246,.2);border-radius:14px;padding:18px;margin-bottom:18px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span style="font-weight:700">Your Match Score</span><span style="font-size:28px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+s+'%</span></div><div class="mbar" style="height:5px"><div class="mfill" style="width:'+s+'%"></div></div>'+(hit.length?'<div style="font-size:13px;color:var(--text2);margin-top:10px">Your artists: <strong style="color:#c4b5fd">'+hit.join(", ")+'</strong></div>':'')+' </div>':"";
   const fNews=getFestivalNews(f.id);
-  const newsHtml=buildNewsHtml(fNews);
+  const tc2={Lineup:"#8B5CF6",Tickets:"#f59e0b",News:"#4338ca",Review:"#EC4899"};
+  const newsHtml=fNews.length?('<div style="margin:14px 0 0"><div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">Latest News</div>'+fNews.map(function(n){var c=tc2[n.tag]||"#8B5CF6";return'<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--card);border-radius:10px;border-left:3px solid '+c+';margin-bottom:6px"><span style="font-size:10px;font-weight:700;color:'+c+';min-width:48px">'+n.tag+'</span><span style="font-size:12px;font-weight:600;flex:1;line-height:1.3">'+n.title+'</span><span style="font-size:10px;color:var(--text3);white-space:nowrap">'+n.time+'</span></div>';}).join("")+'</div>'):'';
   const genreTags=f.genre.map(function(g){var k=GTAG[g]||"el";return'<span class="tag '+GCLS[k]+'">'+g+'</span>';}).join("");
   document.getElementById("tab-overview").innerHTML=mb
     +'<p style="color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:20px">'+f.desc+'</p>'
@@ -929,7 +930,22 @@ function openF(id){
     if(info.time){var t=document.createElement("div");t.style.cssText="font-size:10px;font-weight:600;color:var(--text2);background:var(--card2);padding:1px 6px;border-radius:50px;display:inline-block;margin-bottom:2px";t.textContent=info.time;info2.appendChild(t);}
     if(info.stage){var st=document.createElement("div");st.style.cssText="font-size:9px;color:var(--text3);font-weight:500";st.textContent=info.stage;info2.appendChild(st);}
     card.appendChild(imgBox);card.appendChild(info2);grid.appendChild(card);
-    fetch("https://itunes.apple.com/search?term="+encodeURIComponent(a)+"&entity=musicArtist&limit=1").then(function(r){return r.json();}).then(function(d){if(d.results&&d.results[0]&&d.results[0].artworkUrl100){var img=new Image();img.src=d.results[0].artworkUrl100.replace("100x100","300x300");img.style.cssText="width:100%;height:100%;object-fit:cover;position:absolute;inset:0";img.onload=function(){imgBox.innerHTML="";imgBox.appendChild(img);};imgBox.appendChild(img);}}).catch(function(){});
+    (function(box,name){
+      fetch("https://itunes.apple.com/search?term="+encodeURIComponent(name)+"&entity=musicArtist&limit=1")
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if(d.results&&d.results[0]){
+          var art=d.results[0].artworkUrl100;
+          if(art){
+            var url=art.replace("100x100","600x600");
+            box.style.backgroundImage="url("+url+")";
+            box.style.backgroundSize="cover";
+            box.style.backgroundPosition="center";
+            box.innerHTML="";
+          }
+        }
+      }).catch(function(){});
+    })(imgBox,a);
   })
   document.getElementById("tab-info").innerHTML='<div style="display:grid;gap:10px"><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Date</div><div style="font-weight:600">'+f.d+'</div></div><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Location</div><div style="font-weight:600">'+f.loc+'</div></div><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Price</div><div style="font-weight:600">'+f.price+'</div></div><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Capacity</div><div style="font-weight:600">'+f.cap+'</div></div></div><div class="modal-acts" style="margin-top:20px"><button class="btn btn-sp btn-sm" onclick="window.open(\''+f.url+'\',\'_blank\')">&#127243; Get Tickets</button></div>';
   document.querySelectorAll(".modal-tab").forEach((t,i)=>t.classList.toggle("on",i===0));
