@@ -512,6 +512,38 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:64px
   <br><button class="btn btn-dark btn-sm" onclick="history.back()">&larr; Back</button>
 </div></div>
 
+
+<!-- SHARE MODAL -->
+<div class="overlay" id="share-overlay" onclick="closeShare(event)" style="z-index:400">
+  <div class="modal" style="max-width:480px;border-radius:26px">
+    <div class="modal-handle"></div>
+    <div style="padding:8px 28px 28px">
+      <h2 style="font-size:22px;font-weight:800;margin-bottom:6px">Share Your Festival DNA</h2>
+      <p style="color:var(--text2);font-size:14px;margin-bottom:24px">Share your top matches with friends</p>
+      <div id="share-card" style="background:linear-gradient(135deg,#8B5CF6,#EC4899);border-radius:18px;padding:28px;text-align:center;margin-bottom:20px">
+        <div style="font-size:28px;margin-bottom:8px">🎪</div>
+        <div style="font-size:20px;font-weight:900;color:#fff;margin-bottom:4px">Festifys</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.8);margin-bottom:16px">My Festival DNA</div>
+        <div id="share-top3" style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px"></div>
+        <div style="font-size:12px;color:rgba(255,255,255,.7)">festifys.nl · Find your festival match</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+        <button onclick="shareToIG()" style="background:#E1306C;color:#fff;border:none;border-radius:12px;padding:14px;font-weight:700;font-size:13px;cursor:pointer;transition:.2s" onmouseenter="this.style.filter='brightness(1.1)'" onmouseleave="this.style.filter=''">
+          Instagram
+        </button>
+        <button onclick="shareToTT()" style="background:#000;color:#fff;border:none;border-radius:12px;padding:14px;font-weight:700;font-size:13px;cursor:pointer;transition:.2s" onmouseenter="this.style.filter='brightness(1.3)'" onmouseleave="this.style.filter=''">
+          TikTok
+        </button>
+        <button onclick="shareToFB()" style="background:#1877F2;color:#fff;border:none;border-radius:12px;padding:14px;font-weight:700;font-size:13px;cursor:pointer;transition:.2s" onmouseenter="this.style.filter='brightness(1.1)'" onmouseleave="this.style.filter=''">
+          Facebook
+        </button>
+      </div>
+      <button onclick="copyShareLink()" style="width:100%;margin-top:10px;background:var(--card2);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:12px;font-weight:600;font-size:13px;cursor:pointer">
+        &#128279; Copy Link
+      </button>
+    </div>
+  </div>
+</div>
 <!-- FESTIVAL MODAL -->
 <div class="overlay" id="overlay" onclick="closeM(event)">
   <div class="modal">
@@ -718,7 +750,88 @@ function rMatches(){
   if(hEl)hEl.innerHTML='<div class="hero-match"><div class="hero-match-bg" style="background-image:url(\''+top1.img+'\')"></div><div class="hero-match-overlay"></div><div class="hero-match-score"><div class="hero-match-pct">'+s1+'%</div><div class="hero-match-pct-label">Your match</div></div><div class="hero-match-content"><div class="hero-match-badge">&#127942; Your #1 Festival Match</div><div class="hero-match-name">'+top1.n+'</div><div class="hero-match-meta"><span>&#128197; '+top1.d+'</span><span>&#128205; '+top1.loc+'</span><span>&#127243; '+top1.price+'</span></div><div class="hero-match-artists">'+top1.artists.slice(0,8).map(a=>'<span class="hero-match-artist'+(hit1.includes(a)?" yours":"")+'">'+ a+'</span>').join("")+'</div><div class="hero-match-actions"><button class="btn btn-grad" onclick="openF(\''+top1.id+'\')">View Festival & Lineup</button><button class="btn btn-dark" onclick="window.open(\''+top1.url+'\',\'_blank\')">&#127243; Get Tickets</button><button class="btn btn-dark" onclick="toggleSv(event,\''+top1.id+'\')" style="color:'+(sv.includes(top1.id)?"#EC4899":"var(--text)")+'">'+(sv.includes(top1.id)?"&#9829; Saved":"&#9825; Save")+'</button></div></div></div>';
   const genres=(spD.genres||[]).filter(Boolean).slice(0,8);
   const dEl=document.getElementById("m-dna");
-  if(dEl)dEl.innerHTML='<div class="dna-section"><div class="dna-header"><div class="dna-av">'+(spD.img?'<img src="'+spD.img+'">':(spD.name?.[0]?.toUpperCase()||"F"))+'</div><div><div class="dna-name">'+spD.name+'\'s Music DNA</div><div class="dna-sub">Based on your Spotify listening history</div></div></div><div class="dna-stats"><div class="dna-stat"><div class="dna-stat-val">'+spD.artists.length+'</div><div class="dna-stat-label">Top Artists</div></div><div class="dna-stat"><div class="dna-stat-val">'+sorted.filter(f=>(sc(f)||0)>30).length+'</div><div class="dna-stat-label">Festival Matches</div></div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px"><div style="background:var(--card2);border-radius:14px;padding:20px;text-align:center"><div style="font-size:36px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+(inferGenres(spD.artists||[]).length||genres.length||"?")+'</div><div style="font-size:11px;color:var(--text2);font-weight:600;margin-top:8px;text-transform:uppercase;letter-spacing:.5px">Detected Genres</div></div><div style="background:var(--card2);border-radius:14px;padding:20px;text-align:center"><div style="font-size:36px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+sv.length+'</div><div style="font-size:11px;color:var(--text2);font-weight:600;margin-top:8px;text-transform:uppercase;letter-spacing:.5px">Festivals Saved</div></div></div></div><div style="display:none></div>'+(()=>{const inferredGenres=genres.length?genres:inferGenres(spD.artists||[]);return inferredGenres.length?'<div style="font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">YOUR TOP GENRES</div><div class="dna-genres">'+inferredGenres.slice(0,8).map((g,i)=>{const c=GC[i%GC.length];return'<span class="dna-genre" style="background:'+c.bg+';color:'+c.c+';border-color:'+c.b+'">'+g+'</span>';}).join("")+'</div>':'';})()+'<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px"><div><div style="font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">TOP ARTISTS</div><div class="dna-artists-grid">'+( spD.artists||[]).slice(0,8).map((a,i)=>'<div class="dna-artist"><div class="dna-artist-rank">'+(i+1)+'</div>'+a+'</div>').join("")+'</div></div><div><div style="font-size:11px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">TOP TRACKS</div><div style="display:flex;flex-direction:column;gap:6px">'+(spD.tracks||[]).slice(0,10).map((t,i)=>'<a href="'+(t.id?"https://open.spotify.com/track/"+t.id:"#")+'" target="_blank" style="text-decoration:none"><div class="dna-track" style="cursor:pointer"><div class="dna-track-num">'+(i+1)+'</div><div style="flex:1;min-width:0"><div class="dna-track-name">'+t.name+'</div><div class="dna-track-artist">'+t.artist+'</div></div><div style="font-size:18px;opacity:.5;flex-shrink:0">&#9654;</div></div></a>').join("")+'</div></div></div></div>';
+  if(dEl){
+    dEl.innerHTML="";
+    // Header
+    var hdr=document.createElement("div");
+    hdr.style.cssText="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px";
+    var av=document.createElement("div");av.className="dna-header";
+    var avImg=document.createElement("div");avImg.className="dna-av";
+    avImg.innerHTML=spD.img?'<img src="'+spD.img+'">':( spD.name?.[0]?.toUpperCase()||"F");
+    var avTxt=document.createElement("div");
+    avTxt.innerHTML='<div class="dna-name">'+spD.name+"'s Music DNA</div>"+'<div class="dna-sub">Based on your Spotify listening activity</div>';
+    av.appendChild(avImg);av.appendChild(avTxt);hdr.appendChild(av);
+    var rescanBtn=document.createElement("button");
+    rescanBtn.className="btn btn-sp btn-sm";rescanBtn.innerHTML="&#8635; Rescan";
+    rescanBtn.onclick=function(){rescanSpotify();};hdr.appendChild(rescanBtn);
+    var shareBtn=document.createElement("button");
+    shareBtn.className="btn btn-dark btn-sm";shareBtn.innerHTML="&#8679; Share";
+    shareBtn.onclick=function(){shareMatches();};hdr.appendChild(shareBtn);
+    dEl.appendChild(hdr);
+    // Stats
+    var inferredG=genres.length?genres:inferGenres(spD.artists||[]);
+    var stats=[
+      {v:spD.artists.length,l:"Top Artists"},
+      {v:sorted.filter(function(f){return(sc(f)||0)>30;}).length,l:"Matches"},
+      {v:inferredG.length,l:"Genres"},
+      {v:sv.length,l:"Saved"}
+    ];
+    var statGrid=document.createElement("div");
+    statGrid.style.cssText="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px";
+    stats.forEach(function(s){
+      var cell=document.createElement("div");
+      cell.style.cssText="background:var(--card2);border-radius:12px;padding:16px;text-align:center";
+      cell.innerHTML='<div style="font-size:28px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">'+s.v+'</div><div style="font-size:10px;color:var(--text2);font-weight:700;margin-top:4px;text-transform:uppercase;letter-spacing:.5px">'+s.l+'</div>';
+      statGrid.appendChild(cell);
+    });
+    dEl.appendChild(statGrid);
+    // Genres
+    if(inferredG.length){
+      var gLabel=document.createElement("div");
+      gLabel.style.cssText="font-size:10px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px";
+      gLabel.textContent="YOUR TOP GENRES";dEl.appendChild(gLabel);
+      var gRow=document.createElement("div");gRow.className="dna-genres";gRow.style.marginBottom="20px";
+      inferredG.slice(0,8).forEach(function(g,i){
+        var c=GC[i%GC.length];
+        var pill=document.createElement("span");pill.className="dna-genre";
+        pill.style.cssText="background:"+c.bg+";color:"+c.c+";border-color:"+c.b+";font-size:13px;padding:7px 16px;font-weight:700";
+        pill.textContent=g;gRow.appendChild(pill);
+      });
+      dEl.appendChild(gRow);
+    }
+    // Artists + Tracks grid
+    var grid=document.createElement("div");
+    grid.style.cssText="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:4px";
+    // Artists
+    var aCol=document.createElement("div");
+    var aLbl=document.createElement("div");
+    aLbl.style.cssText="font-size:10px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px";
+    aLbl.textContent="TOP ARTISTS";aCol.appendChild(aLbl);
+    var aList=document.createElement("div");aList.style.cssText="display:flex;flex-direction:column;gap:6px";
+    (spD.artists||[]).slice(0,8).forEach(function(a,i){
+      var row=document.createElement("div");
+      row.style.cssText="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--card2);border-radius:10px";
+      var medal=i===0?"🥇":i===1?"🥈":i===2?"🥉":"";
+      row.innerHTML='<div style="width:22px;height:22px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0">'+(i+1)+'</div><div style="font-size:13px;font-weight:600;flex:1">'+a+'</div>'+(medal?'<span>'+medal+'</span>':"");
+      aList.appendChild(row);
+    });
+    aCol.appendChild(aList);grid.appendChild(aCol);
+    // Tracks
+    var tCol=document.createElement("div");
+    var tLbl=document.createElement("div");
+    tLbl.style.cssText="font-size:10px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px";
+    tLbl.textContent="TOP TRACKS";tCol.appendChild(tLbl);
+    var tList=document.createElement("div");tList.style.cssText="display:flex;flex-direction:column;gap:6px";
+    (spD.tracks||[]).slice(0,10).forEach(function(t,i){
+      var row=document.createElement("div");
+      row.style.cssText="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--card2);border-radius:10px;"+(t.id?"cursor:pointer":"");
+      row.innerHTML='<div style="width:18px;text-align:center;font-size:11px;color:var(--text3);font-weight:600">'+(i+1)+'</div><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+t.name+'</div><div style="font-size:11px;color:var(--text2)">'+t.artist+'</div></div>'+(t.id?'<span style="color:#1DB954;font-size:14px;opacity:.7">&#9654;</span>':"");
+      if(t.id)row.onclick=function(){window.open("https://open.spotify.com/track/"+t.id,"_blank");};
+      tList.appendChild(row);
+    });
+    tCol.appendChild(tList);grid.appendChild(tCol);
+    dEl.appendChild(grid);
+  }
   const rk=["&#127947;","&#127948;","&#127949;","4","5"];const rc=["r1","r2","r3","r45","r45"];
   const t5El=document.getElementById("m-top5");
   if(t5El)t5El.innerHTML='<div class="top5-section"><div class="sec-header"><h2>&#127942; Your Top 5 Matches</h2><a onclick="go(\'discover\')">See all &rarr;</a></div><div class="top5-list">'+sorted.slice(0,5).map((f,i)=>{const s=sc(f)||0;const hit=hitA(f);const isSaved=sv.includes(f.id);return'<div class="top5-item" onclick="openF(\''+f.id+'\')"><div class="top5-rank '+rc[i]+'">'+rk[i]+'</div><div class="top5-thumb" style="background-image:url(\''+f.img+'\')"></div><div class="top5-info"><div class="top5-name">'+f.n+'</div><div class="top5-loc">&#128205; '+f.loc+' &nbsp; &#128197; '+f.d+'</div>'+(hit.length?'<div class="top5-artists-txt">&#10003; '+hit.slice(0,3).join(" · ")+'</div>':'<div style="font-size:11px;color:var(--text3)">Genre match</div>')+'<div class="top5-bar"><div class="top5-fill" style="width:'+s+'%"></div></div></div><div class="top5-right"><div class="top5-pct">'+s+'%</div><div class="top5-pct-sub">match</div><button class="top5-save" style="color:'+(isSaved?"#EC4899":"var(--text3)")+'" onclick="toggleSv(event,\''+f.id+'\')">'+(isSaved?"&#9829;":"&#9825;")+'</button></div></div>';}).join("")+'</div></div>';
@@ -1033,7 +1146,8 @@ function rNews(){
     var fd=document.createElement("div");
     fd.style.cssText="grid-column:1/-1;border-radius:20px;overflow:hidden;position:relative;min-height:280px;cursor:pointer;background:var(--card);border:1px solid var(--border)";
     var ftag=getTag(featured.title);var fc2=tagColors[ftag.toLowerCase()]||"#8B5CF6";
-    fd.innerHTML='<div style="position:absolute;inset:0;background:linear-gradient(135deg,'+fc2+'22,rgba(0,0,0,.8))"></div>'
+    fd.innerHTML='<div style="position:absolute;inset:0;background-image:url(https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200&q=80);background-size:cover;background-position:center"></div>'
+      +'<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.4) 60%,transparent 100%)"></div>'
       +'<div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:32px">'
         +'<span style="background:'+fc2+';color:#fff;padding:4px 12px;border-radius:50px;font-size:11px;font-weight:700;display:inline-block;margin-bottom:12px;width:fit-content">'+ftag+'</span>'
         +'<div style="font-size:clamp(18px,3vw,24px);font-weight:800;line-height:1.3;margin-bottom:8px">'+cleanTitle(featured.title)+'</div>'
@@ -1112,6 +1226,58 @@ function toast(msg,type=""){const t=document.getElementById("toast");t.textConte
 function toggleMobile(){
   var m=document.getElementById("mobile-menu");
   m.classList.toggle("open");
+}
+
+function shareMatches(){
+  // Build top 3 in share card
+  var sorted=[...F].sort(function(a,b){return (sc(b)||0)-(sc(a)||0);});
+  var top3=sorted.slice(0,3);
+  var top3El=document.getElementById("share-top3");
+  if(top3El){
+    top3El.innerHTML=top3.map(function(f,i){
+      var s=sc(f)||0;
+      return '<div style="background:rgba(255,255,255,.15);border-radius:10px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between">'
+        +'<span style="color:#fff;font-weight:700;font-size:13px">'+(i===0?"🥇":i===1?"🥈":"🥉")+" "+f.n+'</span>'
+        +'<span style="color:rgba(255,255,255,.9);font-weight:800;font-size:14px">'+s+'%</span>'
+      +'</div>';
+    }).join("");
+  }
+  document.getElementById("share-overlay").classList.add("on");
+  document.body.style.overflow="hidden";
+}
+function closeShare(e){if(e.target.id==="share-overlay"){document.getElementById("share-overlay").classList.remove("on");document.body.style.overflow="";}}
+function shareToIG(){
+  var text=buildShareText();
+  // Instagram doesn't allow direct share via URL - copy text + open Instagram
+  navigator.clipboard&&navigator.clipboard.writeText(text).catch(function(){});
+  toast("Text copied! Open Instagram and paste in your story","ok");
+  setTimeout(function(){window.open("https://www.instagram.com/","_blank");},1000);
+}
+function shareToTT(){
+  var text=buildShareText();
+  navigator.clipboard&&navigator.clipboard.writeText(text).catch(function(){});
+  toast("Text copied! Open TikTok and paste in your video","ok");
+  setTimeout(function(){window.open("https://www.tiktok.com/","_blank");},1000);
+}
+function shareToFB(){
+  var url="https://index2-beta-rust.vercel.app";
+  window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(url),"_blank","width=600,height=400");
+}
+function copyShareLink(){
+  var text=buildShareText();
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(function(){toast("Copied to clipboard!","ok");});
+  } else {
+    toast("Copy: "+text.slice(0,50)+"...","ok");
+  }
+}
+function buildShareText(){
+  var sorted=[...F].sort(function(a,b){return (sc(b)||0)-(sc(a)||0);});
+  var top3=sorted.slice(0,3);
+  var lines=["My festival matches on Festifys 🎪"];
+  top3.forEach(function(f,i){lines.push((i===0?"🥇":i===1?"🥈":"🥉")+" "+f.n+" ("+( sc(f)||0)+"% match)");});
+  lines.push("");lines.push("Find your match: festifys.nl");
+  return lines.join("\n");
 }
 async function init(){
   if(localStorage.getItem("fy_ck"))document.getElementById("ck").style.display="none";
