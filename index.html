@@ -566,7 +566,7 @@ let spD=JSON.parse(localStorage.getItem("fy_spotify")||"null");
 let sv=JSON.parse(localStorage.getItem("fy_saved")||"[]");
 let aflt="all",cp="";
 const SPC="c6deb55f193a4dcb81325b838b995515";
-const SPR=window.location.origin+"/";
+const SPR="https://index2-beta-rust.vercel.app/";
 const SPS="user-top-read user-read-private user-read-email";
 async function gV(){const a=new Uint8Array(32);crypto.getRandomValues(a);return btoa(String.fromCharCode(...a)).replace(/\+/g,"-").replace(/\//g,"_").replace(/=/g,"");}
 async function gCh(v){const d=new TextEncoder().encode(v);const h=await crypto.subtle.digest("SHA-256",d);return btoa(String.fromCharCode(...new Uint8Array(h))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=/g,"");}
