@@ -931,22 +931,33 @@ function openF(id){
     if(info.time){var t=document.createElement("div");t.style.cssText="font-size:10px;font-weight:600;color:var(--text2);background:var(--card2);padding:1px 6px;border-radius:50px;display:inline-block;margin-bottom:2px";t.textContent=info.time;info2.appendChild(t);}
     if(info.stage){var st=document.createElement("div");st.style.cssText="font-size:9px;color:var(--text3);font-weight:500";st.textContent=info.stage;info2.appendChild(st);}
     card.appendChild(imgBox);card.appendChild(info2);grid.appendChild(card);
-    (function(box,name){
-      fetch("https://itunes.apple.com/search?term="+encodeURIComponent(name)+"&entity=musicArtist&limit=1")
-      .then(function(r){return r.json();})
-      .then(function(d){
-        if(d.results&&d.results[0]){
-          var art=d.results[0].artworkUrl100;
-          if(art){
-            var url=art.replace("100x100","600x600");
+    (function(box,name,isMatch){
+      // Use Spotify image for matched artists
+      var spImg=null;
+      if(isMatch&&spD.artistsFull){
+        var af=spD.artistsFull.find(function(x){return x.name.toLowerCase()===name.toLowerCase();});
+        if(af&&af.img)spImg=af.img;
+      }
+      if(spImg){
+        box.style.backgroundImage="url("+spImg+")";
+        box.style.backgroundSize="cover";
+        box.style.backgroundPosition="center top";
+        box.innerHTML="";
+      } else {
+        // iTunes track search for album art as proxy
+        fetch("https://itunes.apple.com/search?term="+encodeURIComponent(name)+"&entity=musicTrack&limit=1")
+        .then(function(r){return r.json();})
+        .then(function(d){
+          if(d.results&&d.results[0]&&d.results[0].artworkUrl100){
+            var url=d.results[0].artworkUrl100.replace("100x100","600x600");
             box.style.backgroundImage="url("+url+")";
             box.style.backgroundSize="cover";
             box.style.backgroundPosition="center";
             box.innerHTML="";
           }
-        }
-      }).catch(function(){});
-    })(imgBox,a);
+        }).catch(function(){});
+      }
+    })(imgBox,a,isHit);
   })
   document.getElementById("tab-info").innerHTML='<div style="display:grid;gap:10px"><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Date</div><div style="font-weight:600">'+f.d+'</div></div><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Location</div><div style="font-weight:600">'+f.loc+'</div></div><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Price</div><div style="font-weight:600">'+f.price+'</div></div><div style="background:var(--card);border-radius:12px;padding:16px"><div style="font-size:11px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">Capacity</div><div style="font-weight:600">'+f.cap+'</div></div></div><div class="modal-acts" style="margin-top:20px"><button class="btn btn-sp btn-sm" onclick="window.open(\''+f.url+'\',\'_blank\')">&#127243; Get Tickets</button></div>';
   // Populate news tab
