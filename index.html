@@ -1279,6 +1279,36 @@ function buildShareText(){
   lines.push("");lines.push("Find your match: festifys.nl");
   return lines.join("\n");
 }
+
+function addToCalendar(f){
+  var months={Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12"};
+  function parseDate(d,year){
+    // Parse "Aug 21-23, 2026" or "Jun 24-28, 2026"
+    var m=d.match(/(\w+)\s+(\d+)[\-–](\d+)/);
+    if(!m)return null;
+    var mo=months[m[1]]||"01";
+    var y=year||"2026";
+    var start=y+mo+(m[2].length===1?"0":"")+m[2];
+    var end=y+mo+(m[3].length===1?"0":"")+m[3];
+    return {start:start,end:end};
+  }
+  var dates=parseDate(f.d);
+  var title=encodeURIComponent(f.n+" 2026");
+  var loc=encodeURIComponent(f.loc);
+  var desc=encodeURIComponent(f.desc+" | Tickets: "+f.url);
+  if(dates){
+    var gcal="https://calendar.google.com/calendar/render?action=TEMPLATE"
+      +"&text="+title
+      +"&dates="+dates.start+"/"+dates.end
+      +"&details="+desc
+      +"&location="+loc;
+    window.open(gcal,"_blank");
+  } else {
+    // Fallback - open Google Calendar search
+    window.open("https://calendar.google.com/calendar/r/eventedit?text="+title+"&location="+loc,"_blank");
+  }
+  toast("Opening Google Calendar...","ok");
+}
 async function init(){
   if(localStorage.getItem("fy_ck"))document.getElementById("ck").style.display="none";
   updateNav();
