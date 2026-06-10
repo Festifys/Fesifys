@@ -1038,8 +1038,10 @@ function openF(id){
 +'<div class="modal-acts">'
       +'<button class="btn btn-sp btn-sm" id="ov-ticket">&#127243; Get Tickets</button>'
       +'<button class="btn btn-dark btn-sm" id="ov-save" onclick="toggleSvM(this.dataset.id)" data-id="'+f.id+'">'+(isSv2?"&#9829; Saved":"&#9825; Save")+'</button>'
+      +'<button class="btn btn-dark btn-sm" id="ov-cal">&#128197; Add to Calendar</button>'
     +'</div>';
   document.getElementById("ov-ticket").onclick=function(){window.open(f.url,"_blank");};
+  document.getElementById("ov-cal").onclick=function(){addToCalendar(f);};
   document.getElementById("tab-lineup").innerHTML="<div id='lg-"+f.id+"'></div>";
   var lg=document.getElementById("lg-"+f.id);
   var colors=["linear-gradient(135deg,#8B5CF6,#EC4899)","linear-gradient(135deg,#EC4899,#f97316)","linear-gradient(135deg,#0ea5e9,#8B5CF6)","linear-gradient(135deg,#14b8a6,#0ea5e9)","linear-gradient(135deg,#f59e0b,#EC4899)","linear-gradient(135deg,#dc2626,#f97316)"];
